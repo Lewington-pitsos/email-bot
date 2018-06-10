@@ -1,10 +1,17 @@
 package helpers
 
-import "math/rand"
+import (
+	"math/rand"
+	"time"
+)
 
 // +-------------------------------------------------------------------------------------+
 // 									EXPOSED FUNCTIONS
 // +-------------------------------------------------------------------------------------+
+
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
 
 // GetRandom returns a copy of a random element from the array
 func GetRandom(slice []string) string {

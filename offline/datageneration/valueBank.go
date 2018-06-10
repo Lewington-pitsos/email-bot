@@ -1,12 +1,15 @@
-package detailType
+// Package datageneration contains structs that generate and store values.
+// These values are later used to craete user profiles.
+package datageneration
 
-import "email-bot/helpers"
+import "email-bot/offline/helpers"
 
 // +-------------------------------------------------------------------------------------+
 // 							DEFINING valueBank STRUCT
 // +-------------------------------------------------------------------------------------+
 
 type valueBank struct {
+	Name    string
 	bank    []string
 	modBank []string
 }
@@ -51,9 +54,11 @@ func (v *valueBank) giveModValue() string {
 // 									EXPOSED FUNCTIONS
 // +-------------------------------------------------------------------------------------+
 
-// NewValueBank returns a new valueBank struct
-func NewValueBank(bankValues []string, modBankValues []string) *valueBank {
+// NewValueBank returns a new valueBank struct.
+// It's the only way to get hold of a valueBank struct outside valueGenerator.
+func NewValueBank(name string, bankValues []string, modBankValues []string) *valueBank {
 	return &valueBank{
+		Name:    name,
 		bank:    bankValues,
 		modBank: modBankValues,
 	}

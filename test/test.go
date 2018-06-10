@@ -1,7 +1,7 @@
 package test
 
 import (
-	"email-bot/offline/detailType"
+	"email-bot/offline/datageneration"
 	"fmt"
 )
 
@@ -33,7 +33,7 @@ func Test() {
 		"1234",
 	}
 
-	b := detailType.NewValueBank(bank, modBank)
+	b := datageneration.NewValueBank(bank, modBank)
 
 	for i := 0; i < 20; i++ {
 		fmt.Println(b.GiveValue())
