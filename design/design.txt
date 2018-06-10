@@ -1,0 +1,74 @@
+Online:
+	- Scrape
+	Represents a single queue of sequential actions, independent of anything
+	else that's going on. Gets loaded up with a bunch of actions. Performs
+	each one in sequence. Depending on the action, failed actions can lead
+	to a restart of the scrape. Scrape's can gather and return data. 
+	
+	- Multiple Scrape
+	Actualy a bunch of independent scrapes tied together. Each scrape waits 
+	for a signal form the Multi-scrape before executing certain actions.
+	Confirmation is only given if the other scrapes have reached some point.	
+	
+	- Action
+	Performs an expectation, and if it passes, performs the an Interaction.
+	When the Interaction is finished, it exits. If the Expectation fails
+	returns a failure message to the Scraper.
+
+	- Expectation
+	Performs a check on the current state of the website and returns an error
+	if something was unexpected, or returns true. Can have multiple checks.
+	Can wait and re-check on command.
+	
+	- Interaction
+	Performs some action on the webpage, like filling a bunch of fields or 
+	clicking a link.
+	
+	Workflow:
+		1. Scrape is loaded up with a bunch of sequential actions
+		2. Scrape performs each action in sequence
+		3. depending on the importance of each action, failures can
+		   either lead to retrys, or else the scrape exits
+		4. Scrape exits when all actions have been performed.
+
+Offline:
+	- InfoGenerator
+	This takes Info Profiles. Using the info profile is generates details
+	for each field (more than one set for certain fields like email which
+	might get rejected) in the profile, using DetailType objects" and 
+	returns a hash. Gives each an id.  
+
+	- Info Profile
+	I guess just a hash that passes config to InfoGenerator, specifying 
+	which fields are needed. Also specifies a selector for each field.
+	Associated with a specific login script.
+	
+	- Login Script
+	Sets out a sequence of actions to perform in order to log in.
+	Includes filling in login fields according to the passed in Info 
+	Profile Also contains the selectors needed to perform those actions. 
+	Also specifies a selector/identifier for the capicha stage and 
+	post-capicha stage.Waits untill capicha is entered.
+	
+	- DetailType
+	Generates a certain kind of detail, e.g. email, or password. You can 
+	pass in limited config. 
+	
+	- InfoBank
+	Just a paramater bank that stores to a database, or maybe saves it all
+	to the database instantly. 
+
+	- WebsiteBank
+	again, parambag, stores each website, it's links and its infoProfile.
+Workflow
+
+	1. We specify to make an account on website X.
+	2. Go to that website, get its infoProfile and link.
+	3. pass infoprofile to InfoGenerator
+	4. InfoGenerator gathers detail fields from the appripriate 
+	   DetailTypes and returns a hash
+	5. The Hash is passed to Logginer, which uses the field selectors to
+	   enter the correct info into each field
+	6. When capicha is identified, wait untill the post-capicha
+	   identifier is visible
+	7. complete login process
