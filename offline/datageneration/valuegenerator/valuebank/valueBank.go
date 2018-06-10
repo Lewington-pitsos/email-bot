@@ -1,14 +1,14 @@
 // Package datageneration contains structs that generate and store values.
 // These values are later used to craete user profiles.
-package datageneration
+package valuebank
 
 import "email-bot/offline/helpers"
 
 // +-------------------------------------------------------------------------------------+
-// 							DEFINING valueBank STRUCT
+// 							DEFINING ValueBank STRUCT
 // +-------------------------------------------------------------------------------------+
 
-type valueBank struct {
+type ValueBank struct {
 	Name    string
 	bank    []string
 	modBank []string
@@ -20,7 +20,7 @@ type valueBank struct {
 
 // Returns GiveValue() except a string from v.modBank is inserted in palace of one of the
 // characters
-func (v *valueBank) GiveModifiedValue() string {
+func (v *ValueBank) GiveModifiedValue() string {
 	selectedString := v.GiveValue()
 	modIndex := helpers.GetRandomIndex(selectedString)
 	modString := v.giveModValue()
@@ -30,7 +30,7 @@ func (v *valueBank) GiveModifiedValue() string {
 
 // Insers the insert into the string at index and returns the result
 // Doesn't add back the remaining half of str if index is too close to the end of str
-func (v *valueBank) makeModifiedString(str string, insert string, index int) string {
+func (v *ValueBank) makeModifiedString(str string, insert string, index int) string {
 	if index <= len(str)-1 {
 		return str[:index] + insert + str[index+1:]
 	} else {
@@ -42,11 +42,11 @@ func (v *valueBank) makeModifiedString(str string, insert string, index int) str
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (v *valueBank) GiveValue() string {
+func (v *ValueBank) GiveValue() string {
 	return helpers.GetRandom(v.bank)
 }
 
-func (v *valueBank) giveModValue() string {
+func (v *ValueBank) giveModValue() string {
 	return helpers.GetRandom(v.modBank)
 }
 
@@ -54,10 +54,10 @@ func (v *valueBank) giveModValue() string {
 // 									EXPOSED FUNCTIONS
 // +-------------------------------------------------------------------------------------+
 
-// NewvalueBank returns a new valueBank struct.
-// It's the only way to get hold of a valueBank struct outside valueGenerator.
-func NewvalueBank(name string, bankValues []string, modBankValues []string) *valueBank {
-	return &valueBank{
+// NewValueBank returns a new ValueBank struct.
+// It's the only way to get hold of a ValueBank struct outside valueGenerator.
+func NewValueBank(name string, bankValues []string, modBankValues []string) *ValueBank {
+	return &ValueBank{
 		Name:    name,
 		bank:    bankValues,
 		modBank: modBankValues,

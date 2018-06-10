@@ -1,6 +1,7 @@
-package datageneration
+package valuegenerator
 
 import (
+	"email-bot/offline/datageneration/valuegenerator/valuebank"
 	"fmt"
 )
 
@@ -32,16 +33,16 @@ func Test() {
 		"1234",
 	}
 
-	b := NewvalueBank("word", bank, modBank)
+	b := valuebank.NewValueBank("word", bank, modBank)
 
-	format := []*SubValueSpec{
-		NewSubValueSpec(false, "word", true),
-		NewSubValueSpec(true, "@", false),
-		NewSubValueSpec(false, "word", false),
-		NewSubValueSpec(false, "word", true),
+	format := []*subValueSpec{
+		newsubValueSpec(false, "word", true),
+		newsubValueSpec(true, "@", false),
+		newsubValueSpec(false, "word", false),
+		newsubValueSpec(false, "word", true),
 	}
 
-	banks := make(map[string]*valueBank)
+	banks := make(map[string]*valuebank.ValueBank)
 	banks[b.Name] = b
 
 	nvg := NewvalueGenerator("username", banks, format)

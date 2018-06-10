@@ -2,14 +2,10 @@ package main
 
 import (
 	"email-bot/logger"
-	"email-bot/offline/datageneration"
-	"fmt"
+	"email-bot/offline/datageneration/valuegenerator"
 )
 
-var Henry string = "xxxx"
-
 func main() {
-	fmt.Println("ddasadasd", Henry)
 	logger.Log.Println("and awaaaaaaay we go")
-	datageneration.Test()
+	valuegenerator.Test()
 }
