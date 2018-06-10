@@ -32,16 +32,9 @@ Online:
 		4. Scrape exits when all actions have been performed.
 
 Offline:
-	- InfoGenerator
-	This takes Info Profiles. Using the info profile is generates details
-	for each field (more than one set for certain fields like email which
-	might get rejected) in the profile, using DetailType objects" and 
-	returns a hash. Gives each an id.  
-
 	- Info Profile
 	I guess just a hash that passes config to InfoGenerator, specifying 
-	which fields are needed. Also specifies a selector for each field.
-	Associated with a specific login script.
+	which fields are needed. Associated with a specific login script.
 	
 	- Login Script
 	Sets out a sequence of actions to perform in order to log in.
@@ -59,7 +52,7 @@ Offline:
 	to the database instantly. 
 
 	- WebsiteBank
-	again, parambag, stores each website, it's links and its infoProfile.
+	again, parambag, stores each website, it's links and its infoProfile type.
 Workflow
 
 	1. We specify to make an account on website X.
