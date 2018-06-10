@@ -11,13 +11,9 @@ type valueBank struct {
 	modBank []string
 }
 
-func (v *valueBank) GiveValue() string {
-	return helpers.GetRandom(v.bank)
-}
-
-func (v *valueBank) giveModValue() string {
-	return helpers.GetRandom(v.modBank)
-}
+//
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//
 
 // Returns GiveValue() except a string from v.modBank is inserted in palace of one of the
 // characters
@@ -30,13 +26,25 @@ func (v *valueBank) GiveModifiedValue() string {
 }
 
 // Insers the insert into the string at index and returns the result
-// Doesn't ad back the remaining half of str if index is too close to the end of str
+// Doesn't add back the remaining half of str if index is too close to the end of str
 func (v *valueBank) makeModifiedString(str string, insert string, index int) string {
 	if index <= len(str)-1 {
 		return str[:index] + insert + str[index+1:]
 	} else {
 		return str[:index] + insert
 	}
+}
+
+//
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//
+
+func (v *valueBank) GiveValue() string {
+	return helpers.GetRandom(v.bank)
+}
+
+func (v *valueBank) giveModValue() string {
+	return helpers.GetRandom(v.modBank)
 }
 
 // +-------------------------------------------------------------------------------------+
