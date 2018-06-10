@@ -54,9 +54,9 @@ func (v *valueBank) giveModValue() string {
 // 									EXPOSED FUNCTIONS
 // +-------------------------------------------------------------------------------------+
 
-// NewValueBank returns a new valueBank struct.
+// NewvalueBank returns a new valueBank struct.
 // It's the only way to get hold of a valueBank struct outside valueGenerator.
-func NewValueBank(name string, bankValues []string, modBankValues []string) *valueBank {
+func NewvalueBank(name string, bankValues []string, modBankValues []string) *valueBank {
 	return &valueBank{
 		Name:    name,
 		bank:    bankValues,
