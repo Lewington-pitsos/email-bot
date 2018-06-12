@@ -1,32 +1,31 @@
 package valuegenerator
 
-import "email-bot/offline/datageneration/valuegenerator/valuebank"
+import "email-bot/offline/datageneration/valuebank"
 
-// valueGenerator generates a string value according to the instructions laid out in Format.
+// +-------------------------------------------------------------------------------------+
+// 									ValueGenerator STRUCT
+// +-------------------------------------------------------------------------------------+
+
+// ValueGenerator generates a string value according to the instructions laid out in Format.
 // ValueBanks contain sub-string which eventually combine into the returned string.
-type valueGenerator struct {
+type ValueGenerator struct {
 	Name   string
-	banks  map[string]*valuebank.ValueBank
+	bank  valuebank.Bank
 	format []*subValueSpec
 }
 
-// NewValueGenerator returns a valuegGenerator struct
-func NewvalueGenerator(
-	name string,
-	banks map[string]*valuebank.ValueBank,
-	format []*subValueSpec,
-) *valueGenerator {
-	return &valueGenerator{
-		Name:   name,
-		banks:  banks,
-		format: format,
-	}
-}
+//
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//
+
+//
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//
 
 // Generate iterates over all the subValueSpec's in format.
 // For each of these it generates a string, according to that spec.
 // All the substrings are concatonated, and the result is returned.
-func (vg *valueGenerator) Generate() string {
+func (vg *ValueGenerator) Generate() string {
 	output := ""
 	for _, spec := range vg.format {
 		output += vg.getSubValue(spec)
@@ -38,15 +37,32 @@ func (vg *valueGenerator) Generate() string {
 // getSubValue checks if the passed in subValueSpec is a litral.
 // If so, it simply return's the spec's output field.
 // Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
-func (vg *valueGenerator) getSubValue(svs *subValueSpec) string {
+func (vg *ValueGenerator) getSubValue(svs *subValueSpec) string {
 	if svs.Literal {
 		return svs.Output
 	} else {
-		bank := vg.banks[svs.Output]
+		bank := vg.bank.GiveVault(svs.Output)
 		if svs.Modified {
 			return bank.GiveModifiedValue()
 		} else {
 			return bank.GiveValue()
 		}
+	}
+}
+
+// +-------------------------------------------------------------------------------------+
+// 									EXPOSED FUNCTIONS
+// +-------------------------------------------------------------------------------------+
+
+// NewValueGenerator returns a ValueGenerator struct
+func NewValueGenerator(
+	name string,
+	bank valuebank.Bank,
+	format []*subValueSpec,
+) *ValueGenerator {
+	return &ValueGenerator{
+		Name:   name,
+		bank:   bank,
+		format: format,
 	}
 }

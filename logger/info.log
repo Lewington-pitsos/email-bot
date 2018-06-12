@@ -48,3 +48,7 @@
 2018/06/10 23:56:21 main.go:13: and awaaaaaaay we go
 2018/06/10 23:56:35 logger.go:24: LogFile : /home/lewington/xxx/go/src/email-bot/logger/info.log
 2018/06/10 23:56:35 main.go:9: and awaaaaaaay we go
+2018/06/13 08:29:38 logger.go:24: LogFile : /home/lewington/code/go/src/email-bot/logger/info.log
+2018/06/13 08:29:38 main.go:9: and awaaaaaaay we go
+2018/06/13 08:30:52 logger.go:24: LogFile : /home/lewington/code/go/src/email-bot/logger/info.log
+2018/06/13 08:30:52 main.go:9: and awaaaaaaay we go

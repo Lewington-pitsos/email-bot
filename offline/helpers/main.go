@@ -22,3 +22,9 @@ func GetRandom(slice []string) string {
 func GetRandomIndex(str string) int {
 	return rand.Intn(len(str))
 }
+
+func Check(err error) {
+	if	err != nil {
+		panic(err)
+	}
+}

@@ -2,10 +2,10 @@ package main
 
 import (
 	"email-bot/logger"
-	"email-bot/offline/datageneration/valuegenerator"
+	"email-bot/offline/datageneration"
 )
 
 func main() {
 	logger.Log.Println("and awaaaaaaay we go")
-	valuegenerator.Test()
+	datageneration.Test()
 }
