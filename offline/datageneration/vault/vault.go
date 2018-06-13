@@ -18,22 +18,11 @@ var dataSuffix = ".json"
 
 type Vault struct {
 	bankFile    string
-	modBankFile string
 }
 
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
-
-// Insers the insert into the string at index and returns the result
-// Doesn't add back the remaining half of str if index is too close to the end of str
-func (v *Vault) modifiedString(str string, insert string, index int) string {
-	if index <= len(str)-1 {
-		return str[:index] + insert + str[index+1:]
-	} else {
-		return str[:index] + insert
-	}
-}
 
 func (v *Vault) filePath(filename string) string {
 	return dataPath + filename + dataSuffix
@@ -48,7 +37,7 @@ func (v *Vault) allValues(filename string) []string {
 	helpers.Check(error)
 
 	fileSlice := make([]string, 0, 10000)
-	json.Unmarshal(fileBytes, fileSlice)
+	json.Unmarshal(fileBytes, &fileSlice)
 
 	return fileSlice
 }
@@ -67,12 +56,6 @@ func (v *Vault) GiveValue() string {
 	return v.randomValue(v.bankFile)
 }
 
-func (v *Vault) GiveModifiedValue() string {
-	value := v.randomValue(v.bankFile)
-	mod := v.randomValue(v.modBankFile)
-	modIndex := helpers.GetRandomIndex(value)
-	return v.modifiedString(value, mod, modIndex)
-}
 
 // +-------------------------------------------------------------------------------------+
 // 									EXPOSED FUNCTIONS
@@ -80,9 +63,8 @@ func (v *Vault) GiveModifiedValue() string {
 
 // NewVault returns a new Vault struct.
 // It's the only way to get hold of a Vault struct outside valueGenerator.
-func NewVault(bankFile string, modFile string) *Vault {
+func NewVault(bankFile string) *Vault {
 	return &Vault{
 		bankFile:    bankFile,
-		modBankFile: modFile,
 	}
 }

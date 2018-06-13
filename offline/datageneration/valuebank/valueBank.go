@@ -20,12 +20,12 @@ type Bank struct {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (b *Bank) AddVault(vaultName string, bankFile string, modFile string) {
-	b.vaults[vaultName] = vault.NewVault(bankFile, modFile)
+func (b *Bank) AddVault(vaultName string, bankFile string) {
+	b.vaults[vaultName] = vault.NewVault(bankFile)
 }
 
-func (b *Bank) GiveVault(vaultName string) *vault.Vault {
-	return b.vaults[vaultName]
+func (b *Bank) GiveValue(vaultName string) string {
+	return b.vaults[vaultName].GiveValue()
 }
 
 // +-------------------------------------------------------------------------------------+
