@@ -2,6 +2,7 @@ package valuegenerator
 
 import (
 	"email-bot/offline/datageneration/valuebank"
+	"email-bot/offline/datastructure"
 	"email-bot/offline/helpers"
 )
 
@@ -14,7 +15,7 @@ import (
 type ValueGenerator struct {
 	Name   string
 	bank   *valuebank.Bank
-	format []*ValueSpec
+	format []*datastructure.ValueSpec
 }
 
 //
@@ -29,6 +30,11 @@ func (vg *ValueGenerator) modifiedString(str string, insert string, index int) s
 	} else {
 		return str[:index] + insert
 	}
+}
+
+func (vg *ValueGenerator) modifiedValue(value string, modification string) string {
+	modIndex := helpers.GetRandomIndex(value)
+	return vg.modifiedString(value, modification, modIndex)
 }
 
 //
@@ -47,21 +53,16 @@ func (vg *ValueGenerator) Generate() string {
 	return output
 }
 
-func (vg *ValueGenerator) ModifiedValue(value string, modification string) string {
-	modIndex := helpers.GetRandomIndex(value)
-	return vg.modifiedString(value, modification, modIndex)
-}
-
 // getSubValue checks if the passed in ValueSpec is a litral.
 // If so, it simply return's the spec's output field.
 // Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
-func (vg *ValueGenerator) getSubValue(svs *ValueSpec) string {
+func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
 	if svs.Literal {
 		return svs.Output
 	} else {
 		value := vg.bank.GiveValue(svs.Output)
 		if svs.Modified {
-			modification := vg.GiveValue(svs.ModBank)
+			modification := vg.bank.GiveValue(svs.ModBank)
 			return vg.modifiedValue(value, modification)
 		} else {
 			return value
@@ -77,7 +78,7 @@ func (vg *ValueGenerator) getSubValue(svs *ValueSpec) string {
 func NewValueGenerator(
 	name string,
 	bank *valuebank.Bank,
-	format []*ValueSpec,
+	format []*datastructure.ValueSpec,
 ) *ValueGenerator {
 	return &ValueGenerator{
 		Name:   name,

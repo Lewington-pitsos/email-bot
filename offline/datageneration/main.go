@@ -3,6 +3,7 @@ package datageneration
 import (
 	"email-bot/offline/datageneration/valuebank"
 	"email-bot/offline/datageneration/valuegenerator"
+	"email-bot/offline/datastructure"
 	"fmt"
 )
 
@@ -11,12 +12,27 @@ func Test() {
 	bank.AddVault("username", "female-en")
 	bank.AddVault("slang", "internet-slang")
 
-	format := make([]*valuegenerator.ValueSpec, 0, 10) 
-	spec := valuegenerator.NewValueSpec(false, "username", false, "slang")
+	format := make([]*datastructure.ValueSpec, 0, 10)
+	spec := &datastructure.ValueSpec{
+		Literal:  false,
+		Output:   "username",
+		Modified: false,
+		ModBank:  "slang",
+	}
 	format = append(format, spec)
-	spec2 := valuegenerator.NewValueSpec(false, "username", true, "slang")
+	spec2 := &datastructure.ValueSpec{
+		Literal:  false,
+		Output:   "username",
+		Modified: true,
+		ModBank:  "slang",
+	}
 	format = append(format, spec2)
-	spec3 := valuegenerator.NewValueSpec(true, "@hotmail.com", false, "slang")
+	spec3 := &datastructure.ValueSpec{
+		Literal:  true,
+		Output:   "@hotmail.com",
+		Modified: true,
+		ModBank:  "slang",
+	}
 	format = append(format, spec3)
 
 	vg := valuegenerator.NewValueGenerator("username", bank, format)
