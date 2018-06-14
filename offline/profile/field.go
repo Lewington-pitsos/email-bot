@@ -32,7 +32,7 @@ func (d *field) Generate() {
 // 									EXPOSED FUNCTIONS
 // +-------------------------------------------------------------------------------------+
 
-func Newfield(name string, valuesNeeded int, generator *valuegenerator.ValueGenerator) *field {
+func NewField(name string, valuesNeeded int, generator *valuegenerator.ValueGenerator) *field {
 	return &field{
 		Name:      name,
 		Values:    make([]string, valuesNeeded),

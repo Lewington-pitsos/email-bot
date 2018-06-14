@@ -9,3 +9,19 @@ type ValueSpec struct {
 	Modified bool
 	ModBank  string
 }
+
+func (v *ValueSpec) SetModification(modBank string) *ValueSpec {
+	v.Modified = true
+	v.ModBank = modBank
+
+	return v
+}
+
+func NewValueSpec(literal bool, output string) *ValueSpec {
+	return &ValueSpec{
+		Literal:  literal,
+		Output:   output,
+		Modified: false,
+		ModBank:  "",
+	}
+}

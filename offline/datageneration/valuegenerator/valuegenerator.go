@@ -13,7 +13,6 @@ import (
 // ValueGenerator generates a string value according to the instructions laid out in Format.
 // ValueBanks contain sub-string which eventually combine into the returned string.
 type ValueGenerator struct {
-	Name   string
 	bank   *valuebank.Bank
 	format []*datastructure.ValueSpec
 }
@@ -75,9 +74,8 @@ func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
 // +-------------------------------------------------------------------------------------+
 
 // NewValueGenerator returns a ValueGenerator struct
-func NewValueGenerator(name string, bank *valuebank.Bank, format []*datastructure.ValueSpec) *ValueGenerator {
+func NewValueGenerator(bank *valuebank.Bank, format []*datastructure.ValueSpec) *ValueGenerator {
 	return &ValueGenerator{
-		Name:   name,
 		bank:   bank,
 		format: format,
 	}

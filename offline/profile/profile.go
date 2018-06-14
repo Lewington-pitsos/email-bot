@@ -1,12 +1,19 @@
 package profile
 
 type Profile struct {
-	Name   string
 	fields []*field
 }
 
 func (p *Profile) AddField(d *field) *Profile {
 	p.fields = append(p.fields, d)
+
+	return p
+}
+
+func (p *Profile) Generate() *Profile {
+	for _, field := range p.fields {
+		field.Generate()
+	}
 
 	return p
 }
@@ -20,9 +27,8 @@ func (p *Profile) Profile() *map[string][]string {
 	return &profile
 }
 
-func NewProfile(name string) *Profile {
+func NewProfile() *Profile {
 	return &Profile{
-		Name:   name,
 		fields: make([]*field, 0, 50),
 	}
 }
