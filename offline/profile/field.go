@@ -1,41 +1,21 @@
 package profile
 
-import (
-	"email-bot/offline/datageneration/valuegenerator"
-)
+import "email-bot/offline/datastructure"
 
 // +-------------------------------------------------------------------------------------+
 // 									field STRUCT
 // +-------------------------------------------------------------------------------------+
 
 type field struct {
-	Name      string
-	Values    []string
-	generator *valuegenerator.ValueGenerator
+	Name   string
+	Values []string
+	Format []*datastructure.ValueSpec
 }
 
-//
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//
-
-//
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//
-
-func (d *field) Generate() {
-	for i := 0; i < cap(d.Values); i++ {
-		d.Values[i] = d.generator.Generate()
-	}
-}
-
-// +-------------------------------------------------------------------------------------+
-// 									EXPOSED FUNCTIONS
-// +-------------------------------------------------------------------------------------+
-
-func NewField(name string, valuesNeeded int, generator *valuegenerator.ValueGenerator) *field {
+func NewField(name string, valuesNeeded int, format []*datastructure.ValueSpec) *field {
 	return &field{
-		Name:      name,
-		Values:    make([]string, valuesNeeded),
-		generator: generator,
+		Name:   name,
+		Values: make([]string, valuesNeeded),
+		Format: format,
 	}
 }

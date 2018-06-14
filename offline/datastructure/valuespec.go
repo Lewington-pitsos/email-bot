@@ -8,11 +8,19 @@ type ValueSpec struct {
 	Output   string
 	Modified bool
 	ModBank  string
+	Derived  bool
 }
 
 func (v *ValueSpec) SetModification(modBank string) *ValueSpec {
 	v.Modified = true
 	v.ModBank = modBank
+
+	return v
+}
+
+func (v *ValueSpec) SetProgenitor(progenitor string) *ValueSpec {
+	v.Derived = true
+	v.Output = progenitor
 
 	return v
 }

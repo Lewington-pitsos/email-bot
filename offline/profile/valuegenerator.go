@@ -1,4 +1,4 @@
-package valuegenerator
+package profile
 
 import (
 	"email-bot/offline/datageneration/valuebank"
@@ -14,7 +14,7 @@ import (
 // ValueBanks contain sub-string which eventually combine into the returned string.
 type ValueGenerator struct {
 	bank   *valuebank.Bank
-	format []*datastructure.ValueSpec
+	values map[string][]string
 }
 
 //
@@ -36,6 +36,32 @@ func (vg *ValueGenerator) modifiedValue(value string, modification string) strin
 	return vg.modifiedString(value, modification, modIndex)
 }
 
+// getSubValue checks if the passed in ValueSpec is a litral.
+// If so, it simply return's the spec's output field.
+// Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
+func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
+	unmodifiedValue := vg.unmodifiedValue(svs)
+
+	if svs.Modified {
+		modification := vg.bank.GiveValue(svs.ModBank)
+		return vg.modifiedValue(unmodifiedValue, modification)
+	}
+
+	return unmodifiedValue
+}
+
+func (vg *ValueGenerator) unmodifiedValue(svs *datastructure.ValueSpec) string {
+	if svs.Literal {
+		return svs.Output
+	}
+
+	if svs.Derived {
+		return helpers.GetRandom(vg.values[svs.Output])
+	}
+
+	return vg.bank.GiveValue(svs.Output)
+}
+
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
@@ -43,30 +69,13 @@ func (vg *ValueGenerator) modifiedValue(value string, modification string) strin
 // Generate iterates over all the ValueSpec's in format.
 // For each of these it generates a string, according to that spec.
 // All the substrings are concatonated, and the result is returned.
-func (vg *ValueGenerator) Generate() string {
+func (vg *ValueGenerator) Generate(format []*datastructure.ValueSpec) string {
 	output := ""
-	for _, spec := range vg.format {
+	for _, spec := range format {
 		output += vg.getSubValue(spec)
 	}
 
 	return output
-}
-
-// getSubValue checks if the passed in ValueSpec is a litral.
-// If so, it simply return's the spec's output field.
-// Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
-func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
-	if svs.Literal {
-		return svs.Output
-	} else {
-		value := vg.bank.GiveValue(svs.Output)
-		if svs.Modified {
-			modification := vg.bank.GiveValue(svs.ModBank)
-			return vg.modifiedValue(value, modification)
-		} else {
-			return value
-		}
-	}
 }
 
 // +-------------------------------------------------------------------------------------+
@@ -74,9 +83,9 @@ func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
 // +-------------------------------------------------------------------------------------+
 
 // NewValueGenerator returns a ValueGenerator struct
-func NewValueGenerator(bank *valuebank.Bank, format []*datastructure.ValueSpec) *ValueGenerator {
+func NewValueGenerator(bank *valuebank.Bank, values map[string][]string) *ValueGenerator {
 	return &ValueGenerator{
 		bank:   bank,
-		format: format,
+		values: values,
 	}
 }

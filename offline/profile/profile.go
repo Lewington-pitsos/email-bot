@@ -1,7 +1,11 @@
 package profile
 
+import "email-bot/offline/datageneration/valuebank"
+
 type Profile struct {
-	fields []*field
+	values    *map[string][]string
+	fields    []*field
+	Generator *ValueGenerator
 }
 
 func (p *Profile) AddField(d *field) *Profile {
@@ -10,25 +14,12 @@ func (p *Profile) AddField(d *field) *Profile {
 	return p
 }
 
-func (p *Profile) Generate() *Profile {
-	for _, field := range p.fields {
-		field.Generate()
-	}
+func NewProfile(name string, bank *valuebank.Bank) *Profile {
+	values := make(map[string][]string)
 
-	return p
-}
-
-func (p *Profile) Profile() *map[string][]string {
-	profile := make(map[string][]string)
-	for _, field := range p.fields {
-		profile[field.Name] = field.Values
-	}
-
-	return &profile
-}
-
-func NewProfile() *Profile {
 	return &Profile{
-		fields: make([]*field, 0, 50),
+		values:    &values,
+		fields:    make([]*field, 0, 50),
+		Generator: NewValueGenerator(bank, &values),
 	}
 }

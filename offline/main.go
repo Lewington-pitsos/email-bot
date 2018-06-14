@@ -14,6 +14,11 @@ func Test() {
 	bank := setupBank()
 	userProfile = profile.NewProfile()
 
+	usernameFormat := setupUsernameFormat()
+	usernameGenerator := valuegenerator.NewValueGenerator(bank, usernameFormat)
+	usernameField := profile.NewField("username", 3, usernameGenerator)
+	userProfile.AddField(usernameField)
+
 	emailFormat := setupEmailFormat()
 	emailGenerator := valuegenerator.NewValueGenerator(bank, emailFormat)
 	emailField := profile.NewField("email", 100, emailGenerator)
@@ -38,13 +43,22 @@ func setupBank() *valuebank.Bank {
 	return bank
 }
 
+func setupUsernameFormat() []*datastructure.ValueSpec {
+	usernameFormat := make([]*datastructure.ValueSpec, 0, 10)
+	spec1 := datastructure.NewValueSpec(false, "username")
+	spec2 := datastructure.NewValueSpec(false, "username")
+
+	usernameFormat = append(usernameFormat, spec1)
+	usernameFormat = append(usernameFormat, spec2)
+
+	return usernameFormat
+}
+
 func setupEmailFormat() []*datastructure.ValueSpec {
 	emailFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec(false, "username")
-	spec2 := datastructure.NewValueSpec(false, "username").SetModification("slang")
+	spec2 := datastructure.NewValueSpec(false, "username").SetModification("slang").SetProgenitor("username")
 	spec3 := datastructure.NewValueSpec(true, "@hotmail.com")
 
-	emailFormat = append(emailFormat, spec1)
 	emailFormat = append(emailFormat, spec2)
 	emailFormat = append(emailFormat, spec3)
 
