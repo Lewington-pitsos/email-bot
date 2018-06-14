@@ -42,4 +42,5 @@ func Test() {
 
 	vg := valuegenerator.NewValueGenerator("username", bank, format)
 	fmt.Println(vg.Generate())
+
 }
