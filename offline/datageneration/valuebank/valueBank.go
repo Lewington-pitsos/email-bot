@@ -1,15 +1,17 @@
 // Package valuebank is just a bag for Vault objects
 package valuebank
 
-import "email-bot/offline/datageneration/vault"
+import (
+	"email-bot/offline/datageneration/vault"
+	"fmt"
+)
 
 // +-------------------------------------------------------------------------------------+
 // 									Bank STRUCT
 // +-------------------------------------------------------------------------------------+
 
-
 type Bank struct {
-	vaults map[string]*vault.Vault
+	vaults map[string]vault.VaultInterface
 }
 
 //
@@ -20,8 +22,19 @@ type Bank struct {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (b *Bank) AddVault(vaultName string, bankFile string) {
+func (b *Bank) AddSpecialVault(vaultName string) *Bank {
+	switch vaultName {
+	case "datevault":
+		fmt.Println("lol")
+		b.vaults[vaultName] = vault.NewDateVault()
+	}
+
+	return b
+}
+
+func (b *Bank) AddVault(vaultName string, bankFile string) *Bank {
 	b.vaults[vaultName] = vault.NewVault(bankFile)
+	return b
 }
 
 func (b *Bank) GiveValue(vaultName string) string {
@@ -33,7 +46,7 @@ func (b *Bank) GiveValue(vaultName string) string {
 // +-------------------------------------------------------------------------------------+
 
 func NewBank() *Bank {
-	return &Bank {
-		vaults: make(map[string]*vault.Vault),
+	return &Bank{
+		vaults: make(map[string]vault.VaultInterface),
 	}
 }

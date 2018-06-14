@@ -8,9 +8,7 @@ import (
 )
 
 func Test() {
-	bank := valuebank.NewBank()
-	bank.AddVault("username", "female-en")
-	bank.AddVault("slang", "internet-slang")
+	bank := valuebank.NewBank().AddVault("username", "female-en").AddVault("slang", "internet-slang").AddSpecialVault("datevault")
 
 	format := make([]*datastructure.ValueSpec, 0, 10)
 	spec := &datastructure.ValueSpec{
@@ -34,6 +32,13 @@ func Test() {
 		ModBank:  "slang",
 	}
 	format = append(format, spec3)
+	spec4 := &datastructure.ValueSpec{
+		Literal:  false,
+		Output:   "datevault",
+		Modified: false,
+		ModBank:  "slang",
+	}
+	format = append(format, spec4)
 
 	vg := valuegenerator.NewValueGenerator("username", bank, format)
 	fmt.Println(vg.Generate())

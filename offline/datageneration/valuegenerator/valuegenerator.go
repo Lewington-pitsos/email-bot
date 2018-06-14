@@ -75,11 +75,7 @@ func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
 // +-------------------------------------------------------------------------------------+
 
 // NewValueGenerator returns a ValueGenerator struct
-func NewValueGenerator(
-	name string,
-	bank *valuebank.Bank,
-	format []*datastructure.ValueSpec,
-) *ValueGenerator {
+func NewValueGenerator(name string, bank *valuebank.Bank, format []*datastructure.ValueSpec) *ValueGenerator {
 	return &ValueGenerator{
 		Name:   name,
 		bank:   bank,
