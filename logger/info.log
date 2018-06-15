@@ -170,3 +170,9 @@
 2018/06/15 03:43:13 main.go:9: and awaaaaaaay we go
 2018/06/15 03:46:53 logger.go:24: LogFile : /home/lewington/xxx/go/src/email-bot/logger/info.log
 2018/06/15 03:46:53 main.go:9: and awaaaaaaay we go
+2018/06/15 17:39:10 logger.go:24: LogFile : /home/lewington/xxx/go/src/email-bot/logger/info.log
+2018/06/15 17:39:10 main.go:9: and awaaaaaaay we go
+2018/06/15 17:39:19 logger.go:24: LogFile : /home/lewington/xxx/go/src/email-bot/logger/info.log
+2018/06/15 17:39:19 main.go:9: and awaaaaaaay we go
+2018/06/15 17:39:39 logger.go:24: LogFile : /home/lewington/xxx/go/src/email-bot/logger/info.log
+2018/06/15 17:39:39 main.go:9: and awaaaaaaay we go

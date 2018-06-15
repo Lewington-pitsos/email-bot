@@ -2,7 +2,6 @@ package offline
 
 import (
 	"email-bot/offline/datageneration/valuebank"
-	"email-bot/offline/datageneration/valuegenerator"
 	"email-bot/offline/datastructure"
 	"email-bot/offline/profile"
 	"fmt"
@@ -12,26 +11,23 @@ var userProfile *profile.Profile
 
 func Test() {
 	bank := setupBank()
-	userProfile = profile.NewProfile()
+	userProfile = profile.NewProfile(bank)
 
 	usernameFormat := setupUsernameFormat()
-	usernameGenerator := valuegenerator.NewValueGenerator(bank, usernameFormat)
-	usernameField := profile.NewField("username", 3, usernameGenerator)
+	usernameField := profile.NewField("username", 3, usernameFormat)
 	userProfile.AddField(usernameField)
 
 	emailFormat := setupEmailFormat()
-	emailGenerator := valuegenerator.NewValueGenerator(bank, emailFormat)
-	emailField := profile.NewField("email", 100, emailGenerator)
+	emailField := profile.NewField("email", 10, emailFormat)
 	userProfile.AddField(emailField)
 
 	dateFormat := setupDateFormat()
-	dateGenerator := valuegenerator.NewValueGenerator(bank, dateFormat)
-	dateField := profile.NewField("birthdate", 1, dateGenerator)
+	dateField := profile.NewField("birthdate", 1, dateFormat)
 	userProfile.AddField(dateField)
 
 	userProfile.Generate()
 
-	fmt.Println(userProfile.Profile())
+	fmt.Println(userProfile.Values)
 }
 
 func setupBank() *valuebank.Bank {
