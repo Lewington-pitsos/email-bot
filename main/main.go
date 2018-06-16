@@ -4,7 +4,9 @@ import (
 	"email-bot/offline/datageneration/generator"
 	"email-bot/offline/datageneration/valuebank"
 	"email-bot/offline/profile"
+	"email-bot/online/scrape"
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -17,4 +19,10 @@ func main() {
 
 	values := userProfile.Values
 	fmt.Println(values)
+
+	m := scrape.NewManager(8081, values)
+	m.ProvisionHotmailNewAccount()
+	m.Scrape()
+
+	time.Sleep(time.Millisecond * 80000)
 }

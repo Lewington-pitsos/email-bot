@@ -8,6 +8,7 @@ import (
 )
 
 type Manager struct {
+	values  map[string][]string
 	scrape  *Scrape
 	browser selenium.WebDriver
 }
@@ -20,8 +21,9 @@ func (m *Manager) Scrape() {
 	m.scrape.Scrape()
 }
 
-func NewManager(port int) *Manager {
+func NewManager(port int, values map[string][]string) *Manager {
 	return &Manager{
+		values:  values,
 		browser: crawler.NewWebDriver(port),
 		scrape:  NewScrape(),
 	}
@@ -45,7 +47,7 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a2 := action.NewAction(m.browser)
-	a2.AddFillOperation(emailInput, "jacobKedssrrim@hotmail.com")
+	a2.AddFillOperation(emailInput, m.values["email"][0])
 	a2.AddSubmitOperation(submitInput)
 
 	// ========================================================
@@ -57,8 +59,8 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a4 := action.NewAction(m.browser)
-	a4.AddFillOperation(firstInput, "bob")
-	a4.AddFillOperation(lastInput, "Dowel")
+	a4.AddFillOperation(firstInput, m.values["username"][0])
+	a4.AddFillOperation(lastInput, m.values["username"][1])
 	a4.AddSubmitOperation(submitInput)
 
 	// ========================================================
