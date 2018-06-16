@@ -1,6 +1,10 @@
 package scrape
 
-import "email-bot/online/action"
+import (
+	"email-bot/online/action"
+	"fmt"
+	"time"
+)
 
 type Scrape struct {
 	actions []*action.Action
@@ -14,6 +18,8 @@ func (s *Scrape) AddAction(action *action.Action) *Scrape {
 
 func (s *Scrape) Scrape() {
 	for _, action := range s.actions {
+		time.Sleep(time.Millisecond * 2000)
+		fmt.Println(action)
 		action.Perform()
 	}
 }

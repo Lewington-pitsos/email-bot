@@ -2,16 +2,18 @@ package action
 
 import (
 	"fmt"
+
+	"github.com/tebeka/selenium"
 )
 
 type Action struct {
-	expectation *spec
+	spec        *spec
 	interaction *interaction
 }
 
 func (a *Action) Perform() bool {
 	fmt.Println(a)
-	if a.expectation.check() {
+	if a.spec.check() {
 		a.interaction.run()
 		return true
 	}
@@ -19,9 +21,28 @@ func (a *Action) Perform() bool {
 	return false
 }
 
-func NewAction(expectation *spec, interaction *interaction) *Action {
+func (a *Action) AddToInteraction(command func(selenium.WebDriver)) *Action {
+	a.interaction.AddCommand(command)
+
+	return a
+}
+
+func (a *Action) AddToSpec(command func(selenium.WebDriver) bool) *Action {
+	a.spec.AddCommand(command)
+
+	return a
+}
+
+func (a *Action) AddFillOperation(selector string, value string) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(FillField(selector, value))
+
+	return a
+}
+
+func NewAction(browser selenium.WebDriver) *Action {
 	return &Action{
-		expectation: expectation,
-		interaction: interaction,
+		spec:        NewSpec(browser),
+		interaction: NewInteraction(browser),
 	}
 }
