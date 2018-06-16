@@ -8,8 +8,8 @@ type interaction struct {
 	commands []func(*interaction)
 }
 
-func (i *interaction) run() {
-	i.tries++
+func (i *interaction) run(tries int) {
+	i.tries = tries
 	for _, command := range i.commands {
 		command(i)
 	}

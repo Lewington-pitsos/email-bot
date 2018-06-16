@@ -7,6 +7,7 @@ import (
 )
 
 type Action struct {
+	tries		int
 	spec        *spec
 	interaction *interaction
 }
@@ -14,7 +15,8 @@ type Action struct {
 func (a *Action) Perform() bool {
 	fmt.Println(a)
 	if a.spec.check() {
-		a.interaction.run()
+		a.interaction.run(a.tries)
+		a.tries++
 		fmt.Println("interaction performed")
 		return true
 	}
@@ -52,6 +54,7 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 
 func NewAction(browser selenium.WebDriver) *Action {
 	return &Action{
+		tries: 		0,
 		spec:        NewSpec(browser),
 		interaction: NewInteraction(browser),
 	}
