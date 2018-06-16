@@ -21,6 +21,7 @@ func (m *Manager) Scrape() {
 	m.scrape.Scrape()
 }
 
+
 func NewManager(port int, values map[string][]string) *Manager {
 	return &Manager{
 		values:  values,

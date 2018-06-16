@@ -5,18 +5,18 @@ import "github.com/tebeka/selenium"
 type interaction struct {
 	tries    int
 	browser  selenium.WebDriver
-	commands []func(*interaction)
+	operations []operation
 }
 
 func (i *interaction) run(tries int) {
 	i.tries = tries
-	for _, command := range i.commands {
-		command(i)
+	for _, operation := range i.operations {
+		opperation.Operate(i)
 	}
 }
 
-func (i *interaction) AddCommand(command func(*interaction)) *interaction {
-	i.commands = append(i.commands, command)
+func (i *interaction) AddCommand(operation *operation) *interaction {
+	i.operations = append(i.operations, operation)
 	return i
 }
 
@@ -24,6 +24,6 @@ func NewInteraction(browser selenium.WebDriver) *interaction {
 	return &interaction{
 		tries:    0,
 		browser:  browser,
-		commands: make([]func(*interaction), 0, 20),
+		operations: make([]operation, 0, 20),
 	}
 }
