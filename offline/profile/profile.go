@@ -8,8 +8,10 @@ type Profile struct {
 	Generator *generator.ValueGenerator
 }
 
-func (p *Profile) AddField(d *field) *Profile {
-	p.fields = append(p.fields, d)
+func (p *Profile) AddFields(fields ...*field) *Profile {
+	for _, field := range fields {
+		p.fields = append(p.fields, field)
+	}
 
 	return p
 }
