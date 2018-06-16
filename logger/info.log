@@ -300,3 +300,9 @@
 2018/06/16 17:14:15 main.go:9: and awaaaaaaay we go
 2018/06/16 17:15:23 logger.go:24: LogFile : /home/louka/code/go/src/email-bot/logger/info.log
 2018/06/16 17:15:23 main.go:9: and awaaaaaaay we go
+2018/06/16 17:52:38 logger.go:24: LogFile : /home/louka/code/go/src/email-bot/logger/info.log
+2018/06/16 17:52:38 main.go:9: and awaaaaaaay we go
+2018/06/16 17:57:16 logger.go:24: LogFile : /home/louka/code/go/src/email-bot/logger/info.log
+2018/06/16 17:57:16 main.go:9: and awaaaaaaay we go
+2018/06/16 18:02:51 logger.go:24: LogFile : /home/louka/code/go/src/email-bot/logger/info.log
+2018/06/16 18:02:51 main.go:9: and awaaaaaaay we go

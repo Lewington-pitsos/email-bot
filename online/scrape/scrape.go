@@ -10,8 +10,10 @@ type Scrape struct {
 	actions []*action.Action
 }
 
-func (s *Scrape) AddAction(action *action.Action) *Scrape {
-	s.actions = append(s.actions, action)
+func (s *Scrape) AddActions(actions ...*action.Action) *Scrape {
+	for _, action := range actions {
+		s.actions = append(s.actions, action)
+	}
 
 	return s
 }

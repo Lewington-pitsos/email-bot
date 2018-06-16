@@ -40,6 +40,13 @@ func (a *Action) AddFillOperation(selector string, value string) *Action {
 	return a
 }
 
+func (a *Action) AddSubmitOperation(selector string) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(Click(selector))
+
+	return a
+}
+
 func NewAction(browser selenium.WebDriver) *Action {
 	return &Action{
 		spec:        NewSpec(browser),
