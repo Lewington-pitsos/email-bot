@@ -3,7 +3,6 @@ package valuebank
 
 import (
 	"email-bot/offline/datageneration/vault"
-	"fmt"
 )
 
 // +-------------------------------------------------------------------------------------+
@@ -25,7 +24,6 @@ type Bank struct {
 func (b *Bank) AddSpecialVault(vaultName string) *Bank {
 	switch vaultName {
 	case "datevault":
-		fmt.Println("lol")
 		b.vaults[vaultName] = vault.NewDateVault()
 	}
 

@@ -1,4 +1,4 @@
-package profile
+package generator
 
 import (
 	"email-bot/offline/datageneration/valuebank"
@@ -66,6 +66,12 @@ func (vg *ValueGenerator) unmodifiedValue(svs *datastructure.ValueSpec) string {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
+
+func (vg *ValueGenerator) SetValues(values map[string][]string) *ValueGenerator {
+	vg.values = values
+	return vg
+}
+
 // Generate iterates over all the ValueSpec's in format.
 // For each of these it generates a string, according to that spec.
 // All the substrings are concatonated, and the result is returned.
@@ -83,9 +89,8 @@ func (vg *ValueGenerator) Generate(format []*datastructure.ValueSpec) string {
 // +-------------------------------------------------------------------------------------+
 
 // NewValueGenerator returns a ValueGenerator struct
-func NewValueGenerator(bank *valuebank.Bank, values map[string][]string) *ValueGenerator {
+func NewValueGenerator(bank *valuebank.Bank) *ValueGenerator {
 	return &ValueGenerator{
 		bank:   bank,
-		values: values,
 	}
 }

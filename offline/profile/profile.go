@@ -1,11 +1,11 @@
 package profile
 
-import "email-bot/offline/datageneration/valuebank"
+import "email-bot/offline/datageneration/generator"
 
 type Profile struct {
 	Values    map[string][]string
 	fields    []*field
-	Generator *ValueGenerator
+	Generator *generator.ValueGenerator
 }
 
 func (p *Profile) AddField(d *field) *Profile {
@@ -25,12 +25,13 @@ func (p *Profile) Generate() *Profile {
 	return p
 }
 
-func NewProfile(bank *valuebank.Bank) *Profile {
+func NewProfile(generator *generator.ValueGenerator) *Profile {
 	values := make(map[string][]string)
+	generator.SetValues(values)
 
 	return &Profile{
 		Values:    values,
 		fields:    make([]*field, 0, 50),
-		Generator: NewValueGenerator(bank, values),
+		Generator: generator,
 	}
 }
