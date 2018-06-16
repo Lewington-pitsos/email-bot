@@ -2,10 +2,10 @@ package main
 
 import (
 	"email-bot/logger"
-	"email-bot/offline"
+	"email-bot/online"
 )
 
 func main() {
 	logger.Log.Println("and awaaaaaaay we go")
-	offline.Test()
+	online.Test()
 }
