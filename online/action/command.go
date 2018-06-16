@@ -11,25 +11,26 @@ import (
 //										INTERACTIONS
 // +---------------------------------------------------------------------------------------+
 
-func VisitPage(url string) func(selenium.WebDriver) {
-	return func(browser selenium.WebDriver) {
-		browser.Get(url)
+func VisitPage(url string) func(*interaction) {
+	return func(i *interaction) {
+		i.browser.Get(url)
+		time.Sleep(time.Millisecond * 3000)
 	}
 }
 
-func FillField(selector string, value string) func(selenium.WebDriver) {
-	return func(browser selenium.WebDriver) {
-		element, err := browser.FindElement("xpath", selector)
+func FillField(selector string, value []string) func(*interaction) {
+	return func(i *interaction) {
+		element, err := i.browser.FindElement("xpath", selector)
 		helpers.CheckSafe(err)
 
-		element.SendKeys(value)
+		element.SendKeys(value[i.tries])
 		time.Sleep(time.Millisecond * 300)
 	}
 }
 
-func Click(selector string) func(selenium.WebDriver) {
-	return func(browser selenium.WebDriver) {
-		element, err := browser.FindElement("xpath", selector)
+func Click(selector string) func(*interaction) {
+	return func(i *interaction) {
+		element, err := i.browser.FindElement("xpath", selector)
 		helpers.CheckSafe(err)
 
 		element.Click()

@@ -47,28 +47,28 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a2 := action.NewAction(m.browser)
-	a2.AddFillOperation(emailInput, m.values["email"][0])
+	a2.AddFillOperation(emailInput, m.values["email"])
 	a2.AddSubmitOperation(submitInput)
 
 	// ========================================================
 
 	a3 := action.NewAction(m.browser)
-	a3.AddFillOperation(passInput, "mj8fdsayum9o1ws")
+	a3.AddFillOperation(passInput, []string{"mj8fdsayum9o1ws", "mj8fdsayum9-0dfd8s", "mj8fdsayum9-0dfd8s", "mj8fdsayum9-0dfd8s", "mj8fdsayum9-0dfd8s"})
 	a3.AddSubmitOperation(submitInput)
 
 	// ========================================================
 
 	a4 := action.NewAction(m.browser)
-	a4.AddFillOperation(firstInput, m.values["username"][0])
-	a4.AddFillOperation(lastInput, m.values["username"][1])
+	a4.AddFillOperation(firstInput, m.values["username"])
+	a4.AddFillOperation(lastInput, m.values["username"])
 	a4.AddSubmitOperation(submitInput)
 
 	// ========================================================
 
 	a5 := action.NewAction(m.browser)
-	a5.AddFillOperation(dayInput, "2")
-	a5.AddFillOperation(monthInput, "January")
-	a5.AddFillOperation(yearInput, "1992")
+	a5.AddFillOperation(dayInput, []string{"2", "2", "2", "2"})
+	a5.AddFillOperation(monthInput, []string{"January", "January", "January", "January", "January"})
+	a5.AddFillOperation(yearInput, []string{"1992", "1992", "1992", "1992", "1992", "1992"})
 	a5.AddToSpec(action.CheckExists(submitInput))
 	a5.AddToInteraction(action.Click(submitInput))
 

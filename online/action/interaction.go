@@ -3,24 +3,27 @@ package action
 import "github.com/tebeka/selenium"
 
 type interaction struct {
+	tries    int
 	browser  selenium.WebDriver
-	commands []func(selenium.WebDriver)
+	commands []func(*interaction)
 }
 
 func (i *interaction) run() {
+	i.tries++
 	for _, command := range i.commands {
-		command(i.browser)
+		command(i)
 	}
 }
 
-func (i *interaction) AddCommand(command func(selenium.WebDriver)) *interaction {
+func (i *interaction) AddCommand(command func(*interaction)) *interaction {
 	i.commands = append(i.commands, command)
 	return i
 }
 
 func NewInteraction(browser selenium.WebDriver) *interaction {
 	return &interaction{
+		tries:    0,
 		browser:  browser,
-		commands: make([]func(selenium.WebDriver), 0, 20),
+		commands: make([]func(*interaction), 0, 20),
 	}
 }

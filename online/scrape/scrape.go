@@ -18,12 +18,24 @@ func (s *Scrape) AddActions(actions ...*action.Action) *Scrape {
 	return s
 }
 
-func (s *Scrape) Scrape() {
-	for _, action := range s.actions {
-		time.Sleep(time.Millisecond * 2000)
-		fmt.Println(action)
-		action.Perform()
+func (s *Scrape) Scrape() bool {
+	for i := 0; i < len(s.actions); {
+		action := s.actions[i]
+		result := action.Perform()
+		fmt.Println(result)
+		if !result {
+			i--
+		} else {
+			i++
+		}
+
+		if i < 0 {
+			return false
+		}
+		time.Sleep(time.Millisecond * 200)
 	}
+
+	return true
 }
 
 func NewScrape() *Scrape {
