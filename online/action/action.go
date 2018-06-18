@@ -1,9 +1,8 @@
 package action
 
 import (
+	"email-bot/online/browser"
 	"fmt"
-
-	"github.com/tebeka/selenium"
 )
 
 type Action struct {
@@ -30,7 +29,7 @@ func (a *Action) AddToInteraction(command func(*interaction)) *Action {
 	return a
 }
 
-func (a *Action) AddToSpec(command func(selenium.WebDriver) bool) *Action {
+func (a *Action) AddToSpec(command func(*browser.Browser) bool) *Action {
 	a.spec.AddCommand(command)
 
 	return a
@@ -50,7 +49,7 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 	return a
 }
 
-func NewAction(browser selenium.WebDriver) *Action {
+func NewAction(browser *browser.Browser) *Action {
 	return &Action{
 		spec:        NewSpec(browser),
 		interaction: NewInteraction(browser),

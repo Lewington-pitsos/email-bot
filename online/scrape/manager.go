@@ -2,15 +2,14 @@ package scrape
 
 import (
 	"email-bot/online/action"
-	"email-bot/online/crawler"
-
-	"github.com/tebeka/selenium"
+	"email-bot/online/browser"
+	"time"
 )
 
 type Manager struct {
 	values  map[string][]string
 	scrape  *Scrape
-	browser selenium.WebDriver
+	browser *browser.Browser
 }
 
 func (m *Manager) AddAction(action *action.Action) {
@@ -19,12 +18,14 @@ func (m *Manager) AddAction(action *action.Action) {
 
 func (m *Manager) Scrape() {
 	m.scrape.Scrape()
+	time.Sleep(time.Millisecond * 100000)
+	m.browser.Quit()
 }
 
 func NewManager(port int, values map[string][]string) *Manager {
 	return &Manager{
 		values:  values,
-		browser: crawler.NewWebDriver(port),
+		browser: browser.NewBrowser(port),
 		scrape:  NewScrape(),
 	}
 }

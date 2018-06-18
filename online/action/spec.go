@@ -1,14 +1,13 @@
 package action
 
 import (
+	"email-bot/online/browser"
 	"fmt"
-
-	"github.com/tebeka/selenium"
 )
 
 type spec struct {
-	browser  selenium.WebDriver
-	commands []func(selenium.WebDriver) bool
+	browser  *browser.Browser
+	commands []func(*browser.Browser) bool
 }
 
 func (s *spec) check() bool {
@@ -31,14 +30,14 @@ func (s *spec) runChecks() bool {
 	return true
 }
 
-func (s *spec) AddCommand(command func(selenium.WebDriver) bool) *spec {
-	s.commands = append(s.commands, command)
-	return s
+func NewSpec(br *browser.Browser) *spec {
+	return &spec{
+		browser:  br,
+		commands: make([]func(*browser.Browser) bool, 0, 20),
+	}
 }
 
-func NewSpec(browser selenium.WebDriver) *spec {
-	return &spec{
-		browser:  browser,
-		commands: make([]func(selenium.WebDriver) bool, 0, 20),
-	}
+func (s *spec) AddCommand(command func(*browser.Browser) bool) *spec {
+	s.commands = append(s.commands, command)
+	return s
 }

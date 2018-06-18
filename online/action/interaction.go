@@ -1,10 +1,10 @@
 package action
 
-import "github.com/tebeka/selenium"
+import "email-bot/online/browser"
 
 type interaction struct {
 	tries    int
-	browser  selenium.WebDriver
+	browser  *browser.Browser
 	commands []func(*interaction)
 }
 
@@ -20,7 +20,7 @@ func (i *interaction) AddCommand(command func(*interaction)) *interaction {
 	return i
 }
 
-func NewInteraction(browser selenium.WebDriver) *interaction {
+func NewInteraction(browser *browser.Browser) *interaction {
 	return &interaction{
 		tries:    0,
 		browser:  browser,

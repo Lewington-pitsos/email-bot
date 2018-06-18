@@ -1,10 +1,9 @@
 package action
 
 import (
+	"email-bot/online/browser"
 	"email-bot/online/helpers"
 	"time"
-
-	"github.com/tebeka/selenium"
 )
 
 // +---------------------------------------------------------------------------------------+
@@ -13,14 +12,14 @@ import (
 
 func VisitPage(url string) func(*interaction) {
 	return func(i *interaction) {
-		i.browser.Get(url)
+		i.browser.Wd.Get(url)
 		time.Sleep(time.Millisecond * 3000)
 	}
 }
 
 func FillField(selector string, value []string) func(*interaction) {
 	return func(i *interaction) {
-		element, err := i.browser.FindElement("xpath", selector)
+		element, err := i.browser.Wd.FindElement("xpath", selector)
 		helpers.CheckSafe(err)
 
 		element.SendKeys(value[i.tries])
@@ -30,7 +29,7 @@ func FillField(selector string, value []string) func(*interaction) {
 
 func Click(selector string) func(*interaction) {
 	return func(i *interaction) {
-		element, err := i.browser.FindElement("xpath", selector)
+		element, err := i.browser.Wd.FindElement("xpath", selector)
 		helpers.CheckSafe(err)
 
 		element.Click()
@@ -41,9 +40,9 @@ func Click(selector string) func(*interaction) {
 //										SPECS
 // +---------------------------------------------------------------------------------------+
 
-func CheckExists(selector string) func(selenium.WebDriver) bool {
-	return func(browser selenium.WebDriver) bool {
-		elements, err := browser.FindElements("xpath", selector)
+func CheckExists(selector string) func(*browser.Browser) bool {
+	return func(browser *browser.Browser) bool {
+		elements, err := browser.Wd.FindElements("xpath", selector)
 		helpers.CheckSafe(err)
 
 		return len(elements) > 0
