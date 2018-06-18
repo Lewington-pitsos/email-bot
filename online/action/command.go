@@ -2,6 +2,7 @@ package action
 
 import (
 	"email-bot/online/browser"
+	"email-bot/online/data"
 	"email-bot/online/helpers"
 	"time"
 )
@@ -17,12 +18,12 @@ func VisitPage(url string) func(*interaction) {
 	}
 }
 
-func FillField(selector string, value []string) func(*interaction) {
+func FillField(selector string, detail *data.Detail) func(*interaction) {
 	return func(i *interaction) {
 		element, err := i.browser.Wd.FindElement("xpath", selector)
 		helpers.CheckSafe(err)
 
-		element.SendKeys(value[i.tries])
+		element.SendKeys(detail.ValueAt(i.tries))
 		time.Sleep(time.Millisecond * 300)
 	}
 }

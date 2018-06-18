@@ -3,11 +3,12 @@ package scrape
 import (
 	"email-bot/online/action"
 	"email-bot/online/browser"
+	"email-bot/online/data"
 	"time"
 )
 
 type Manager struct {
-	values  map[string][]string
+	details map[string]*data.Detail
 	scrape  *Scrape
 	browser *browser.Browser
 }
@@ -23,8 +24,14 @@ func (m *Manager) Scrape() {
 }
 
 func NewManager(port int, values map[string][]string) *Manager {
+	detailArray := make(map[string]*data.Detail)
+
+	for name, valueSlice := range values {
+		detailArray[name] = data.NewDetail(valueSlice)
+	}
+
 	return &Manager{
-		values:  values,
+		details: detailArray,
 		browser: browser.NewBrowser(port),
 		scrape:  NewScrape(),
 	}
@@ -48,7 +55,7 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a2 := action.NewAction(m.browser)
-	a2.AddFillOperation(emailInput, m.values["email"])
+	a2.AddFillOperation(emailInput, m.details["email"])
 	a2.AddSubmitOperation(submitInput)
 
 	// ========================================================
@@ -60,8 +67,8 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a4 := action.NewAction(m.browser)
-	a4.AddFillOperation(firstInput, m.values["username"])
-	a4.AddFillOperation(lastInput, m.values["username"])
+	a4.AddFillOperation(firstInput, m.details["username"])
+	a4.AddFillOperation(lastInput, m.details["username"])
 	a4.AddSubmitOperation(submitInput)
 
 	// ========================================================

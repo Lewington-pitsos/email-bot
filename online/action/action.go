@@ -2,6 +2,7 @@ package action
 
 import (
 	"email-bot/online/browser"
+	"email-bot/online/data"
 	"fmt"
 )
 
@@ -35,9 +36,9 @@ func (a *Action) AddToSpec(command func(*browser.Browser) bool) *Action {
 	return a
 }
 
-func (a *Action) AddFillOperation(selector string, value []string) *Action {
+func (a *Action) AddFillOperation(selector string, detail *data.Detail) *Action {
 	a.spec.AddCommand(CheckExists(selector))
-	a.interaction.AddCommand(FillField(selector, value))
+	a.interaction.AddCommand(FillField(selector, detail))
 
 	return a
 }
