@@ -20,7 +20,8 @@ func main() {
 	values := userProfile.Values
 	fmt.Println(values)
 
-	m := scrape.NewManager(8083, values)
+	m := scrape.NewManager(8083)
+	m.AddValues(valies)
 	m.ProvisionHotmailNewAccount()
 	m.Scrape()
 

@@ -12,7 +12,8 @@ func NewManager() *Manager {
 	return &Manager{}
 }
 
-func (m *Manager) StandardProfile(generator *generator.ValueGenerator) *Profile {
+func (m *Manager) StandardProfile() *Profile {
+	generator := generator.NewValueGenerator()
 	profile := NewProfile(generator)
 
 	usernameField := NewField("username", 10, m.usernameFormat())

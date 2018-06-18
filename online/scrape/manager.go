@@ -25,21 +25,26 @@ func (m *Manager) Scrape() {
 	m.browser.Quit()
 }
 
-func (m *Manager) SaveValues() {
-	for _, detail := range m.details {
-		fmt.Println(detail.CurrentValue())
+func (m *Manager) ProfileData() map[string]string {
+	profile := make(map[string]string)
+
+	for name, detail := range m.details {
+		profile[name] = detail.CurrentValue()
 	}
+
+	return profile
 }
 
-func NewManager(port int, values map[string][]string) *Manager {
-	detailArray := make(map[string]*data.Detail)
-
+func (m *Manager) AddValues(values map[string][]string) {
 	for name, valueSlice := range values {
-		detailArray[name] = data.NewDetail(valueSlice)
-	}
+		m.details[name] = data.NewDetail(valueSlice)
+	}	
+}
 
+
+func NewManager(port int, ) *Manager {
 	return &Manager{
-		details: detailArray,
+		details: make(map[string]*data.Detail)
 		browser: browser.NewBrowser(port),
 		scrape:  NewScrape(),
 	}

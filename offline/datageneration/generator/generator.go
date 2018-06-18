@@ -89,8 +89,8 @@ func (vg *ValueGenerator) Generate(format []*datastructure.ValueSpec) string {
 // +-------------------------------------------------------------------------------------+
 
 // NewValueGenerator returns a ValueGenerator struct
-func NewValueGenerator(bank *valuebank.Bank) *ValueGenerator {
+func NewValueGenerator() *ValueGenerator {
 	return &ValueGenerator{
-		bank:   bank,
+		bank:   valuebank.SetupBank(),
 	}
 }
