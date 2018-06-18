@@ -5,8 +5,8 @@ import (
 	"time"
 )
 
-var StartTime int = -410227200
-var endTime int = 915148800
+const StartTime int = -410227200
+const endTime int = 915148800
 
 type DateVault struct {
 }

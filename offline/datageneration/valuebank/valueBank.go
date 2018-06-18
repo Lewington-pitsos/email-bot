@@ -25,6 +25,8 @@ func (b *Bank) AddSpecialVault(vaultName string) *Bank {
 	switch vaultName {
 	case "datevault":
 		b.vaults[vaultName] = vault.NewDateVault()
+	case "passvault":
+		b.vaults[vaultName] = vault.NewPassVault()
 	}
 
 	return b
