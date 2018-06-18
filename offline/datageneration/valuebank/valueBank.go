@@ -24,7 +24,13 @@ type Bank struct {
 func (b *Bank) AddSpecialVault(vaultName string) *Bank {
 	switch vaultName {
 	case "datevault":
-		b.vaults[vaultName] = vault.NewDateVault()
+		b.vaults[vaultName] = vault.NewDateVault("02/01/2006")
+	case "yearvault":
+		b.vaults[vaultName] = vault.NewDateVault("2006")
+	case "monthvault":
+		b.vaults[vaultName] = vault.NewDateVault("January")
+	case "dayvault":
+		b.vaults[vaultName] = vault.NewDateVault("02")
 	case "passvault":
 		b.vaults[vaultName] = vault.NewPassVault()
 	}

@@ -4,6 +4,7 @@ import (
 	"email-bot/online/action"
 	"email-bot/online/browser"
 	"email-bot/online/data"
+	"fmt"
 	"time"
 )
 
@@ -19,8 +20,15 @@ func (m *Manager) AddAction(action *action.Action) {
 
 func (m *Manager) Scrape() {
 	m.scrape.Scrape()
+	m.SaveValues()
 	time.Sleep(time.Millisecond * 100000)
 	m.browser.Quit()
+}
+
+func (m *Manager) SaveValues() {
+	for _, detail := range m.details {
+		fmt.Println(detail.CurrentValue())
+	}
 }
 
 func NewManager(port int, values map[string][]string) *Manager {
@@ -45,6 +53,7 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	dayInput := "//select[@id='BirthDay']"
 	monthInput := "//select[@id='BirthMonth']"
 	yearInput := "//select[@id='BirthYear']"
+	capchaBox := "//div[@id='hipTemplateContainer']"
 
 	submitInput := "//input[@id='iSignupAction']"
 
@@ -61,7 +70,7 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a3 := action.NewAction(m.browser)
-	a3.AddFillOperation(passInput, []string{"mj8fdsayum9o1ws", "mj8fdsayum9-0dfd8s", "mj8fdsayum9-0dfd8s", "mj8fdsayum9-0dfd8s", "mj8fdsayum9-0dfd8s"})
+	a3.AddFillOperation(passInput, m.details["password"])
 	a3.AddSubmitOperation(submitInput)
 
 	// ========================================================
@@ -74,13 +83,16 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	// ========================================================
 
 	a5 := action.NewAction(m.browser)
-	a5.AddFillOperation(dayInput, []string{"2", "2", "2", "2"})
-	a5.AddFillOperation(monthInput, []string{"January", "January", "January", "January", "January"})
-	a5.AddFillOperation(yearInput, []string{"1992", "1992", "1992", "1992", "1992", "1992"})
+	a5.AddFillOperation(dayInput, m.details["day"])
+	a5.AddFillOperation(monthInput, m.details["month"])
+	a5.AddFillOperation(yearInput, m.details["year"])
 	a5.AddToSpec(action.CheckExists(submitInput))
 	a5.AddToInteraction(action.Click(submitInput))
 
 	// ========================================================
 
-	m.scrape.AddActions(a, a2, a3, a4, a5)
+	a6 := action.NewAction(m.browser)
+	a6.AddToSpec(action.CheckExists(capchaBox))
+
+	m.scrape.AddActions(a, a2, a3, a4, a5, a6)
 }

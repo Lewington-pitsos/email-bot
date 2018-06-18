@@ -1,6 +1,9 @@
 package action
 
-import "email-bot/online/browser"
+import (
+	"email-bot/online/browser"
+	"fmt"
+)
 
 type interaction struct {
 	tries    int
@@ -10,6 +13,7 @@ type interaction struct {
 
 func (i *interaction) run() {
 	i.tries++
+	fmt.Println(i.commands)
 	for _, command := range i.commands {
 		command(i)
 	}

@@ -43,6 +43,7 @@ func Click(selector string) func(*interaction) {
 
 func CheckExists(selector string) func(*browser.Browser) bool {
 	return func(browser *browser.Browser) bool {
+		time.Sleep(time.Millisecond * 300)
 		elements, err := browser.Wd.FindElements("xpath", selector)
 		helpers.CheckSafe(err)
 
