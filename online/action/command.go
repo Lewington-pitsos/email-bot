@@ -36,7 +36,7 @@ func Click(selector string) func(*interaction) {
 
 func Wait(wait int) func(*interaction) {
 	return func(i *interaction) {
-		Wait(wait)
+		helpers.Wait(wait)
 	}
 }
 
