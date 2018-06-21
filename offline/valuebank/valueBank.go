@@ -2,7 +2,7 @@
 package valuebank
 
 import (
-	"email-bot/offline/datageneration/vault"
+	"email-bot/offline/vault"
 )
 
 // +-------------------------------------------------------------------------------------+

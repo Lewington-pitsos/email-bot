@@ -1,4 +1,4 @@
-// Package datageneration contains structs that generate and store values.
+// Package contains structs that generate and store values.
 // These values are later used to craete user profiles.
 package vault
 

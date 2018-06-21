@@ -1,7 +1,7 @@
 package profile
 
 import (
-	"email-bot/offline/datageneration/generator"
+	"email-bot/offline/generator"
 	"email-bot/offline/datastructure"
 )
 

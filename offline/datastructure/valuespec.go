@@ -30,6 +30,5 @@ func NewValueSpec(literal bool, output string) *ValueSpec {
 		Literal:  literal,
 		Output:   output,
 		Modified: false,
-		ModBank:  "",
 	}
 }

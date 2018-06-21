@@ -18,11 +18,6 @@ func NewLogger(logName string) *Logger {
 	}
 }
 
-var (
-	// Log the global logger for our project
-	Log *log.Logger
-)
-
 func (l *Logger)Log(message string) {
 	l.logger.Println(message)
 }

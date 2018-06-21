@@ -1,7 +1,7 @@
 package generator
 
 import (
-	"email-bot/offline/datageneration/valuebank"
+	"email-bot/offline/valuebank"
 	"email-bot/offline/datastructure"
 	"email-bot/offline/helpers"
 )

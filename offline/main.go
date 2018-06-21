@@ -1,8 +1,8 @@
 package offline
 
 import (
-	"email-bot/offline/datageneration/generator"
-	"email-bot/offline/datageneration/valuebank"
+	"email-bot/offline/generator"
+	"email-bot/offline/valuebank"
 	"email-bot/offline/profile"
 	"fmt"
 )

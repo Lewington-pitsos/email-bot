@@ -1,6 +1,6 @@
 package profile
 
-import "email-bot/offline/datageneration/generator"
+import "email-bot/offline/generator"
 
 type Profile struct {
 	Values    map[string][]string
