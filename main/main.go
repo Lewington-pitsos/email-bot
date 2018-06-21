@@ -1,12 +1,12 @@
 package main
 
 import (
-	"email-bot/offline/profile"
+	"email-bot/master"
 )
 
 func main() {
-	profile := profile.NewActiveProfile("bettywhite")
-	profile.Populate()
+	master := master.NewMaster()
+	master.Scrape()
 }
 
 func mainn() {

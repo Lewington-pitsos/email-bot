@@ -2,6 +2,7 @@ package files
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 )
 
@@ -36,12 +37,24 @@ func (m *Manager) populate(filename string, emptyObject interface{}) {
 	check(err2)
 }
 
-func (m *Manager) SaveProfile(profileName string, data interface{}) {
-	dataBytes := make([]byte, 0, 10000)
-	err := json.Unmarshal(dataBytes, data)
+func (m *Manager) saveFile(fileName string, data interface{}) {
+	fmt.Println(data)
+	dataBytes, err := json.Marshal(data)
 	check(err)
 
-	ioutil.WriteFile(profileName, dataBytes, 0777)
+	ioutil.WriteFile(fileName, dataBytes, 0777)
+}
+
+func (m *Manager) SaveProfile(profileName string, profileData map[string]string) {
+	m.saveFile(m.filePath(profileName), profileData)
+}
+
+func (m *Manager) RecordProfile(profileName string) {
+	profileLedger := make([]string, 0, 1000)
+	m.populate(profileLedgerPath, profileLedger)
+	profileLedger = append(profileLedger, profileName)
+	m.saveFile(profileLedgerPath, profileLedger)
+
 }
 
 // Constructs an absolote path to the relevent profile file name.

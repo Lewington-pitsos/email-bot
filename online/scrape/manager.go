@@ -4,8 +4,6 @@ import (
 	"email-bot/online/action"
 	"email-bot/online/browser"
 	"email-bot/online/data"
-	"fmt"
-	"time"
 )
 
 type Manager struct {
@@ -20,8 +18,6 @@ func (m *Manager) AddAction(action *action.Action) {
 
 func (m *Manager) Scrape() {
 	m.scrape.Scrape()
-	m.SaveValues()
-	time.Sleep(time.Millisecond * 100000)
 	m.browser.Quit()
 }
 
@@ -38,13 +34,12 @@ func (m *Manager) ProfileData() map[string]string {
 func (m *Manager) AddValues(values map[string][]string) {
 	for name, valueSlice := range values {
 		m.details[name] = data.NewDetail(valueSlice)
-	}	
+	}
 }
 
-
-func NewManager(port int, ) *Manager {
+func NewManager(port int) *Manager {
 	return &Manager{
-		details: make(map[string]*data.Detail)
+		details: make(map[string]*data.Detail),
 		browser: browser.NewBrowser(port),
 		scrape:  NewScrape(),
 	}
