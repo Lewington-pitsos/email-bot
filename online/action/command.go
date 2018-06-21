@@ -4,7 +4,6 @@ import (
 	"email-bot/online/browser"
 	"email-bot/online/data"
 	"email-bot/online/helpers"
-	"time"
 )
 
 // +---------------------------------------------------------------------------------------+
@@ -14,7 +13,6 @@ import (
 func VisitPage(url string) func(*interaction) {
 	return func(i *interaction) {
 		i.browser.Wd.Get(url)
-		time.Sleep(time.Millisecond * 3000)
 	}
 }
 
@@ -24,7 +22,6 @@ func FillField(selector string, detail *data.Detail) func(*interaction) {
 		helpers.CheckSafe(err)
 
 		element.SendKeys(detail.ValueAt(i.tries))
-		time.Sleep(time.Millisecond * 300)
 	}
 }
 
@@ -37,13 +34,18 @@ func Click(selector string) func(*interaction) {
 	}
 }
 
+func Wait(wait int) func(*interaction) {
+	return func(i *interaction) {
+		Wait(wait)
+	}
+}
+
 // +---------------------------------------------------------------------------------------+
 //										SPECS
 // +---------------------------------------------------------------------------------------+
 
 func CheckExists(selector string) func(*browser.Browser) bool {
 	return func(browser *browser.Browser) bool {
-		time.Sleep(time.Millisecond * 300)
 		elements, err := browser.Wd.FindElements("xpath", selector)
 		helpers.CheckSafe(err)
 

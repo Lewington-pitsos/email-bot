@@ -35,6 +35,12 @@ func (a *Action) AddToSpec(command func(*browser.Browser) bool) *Action {
 	return a
 }
 
+func (a *Action) AddWait(wait int) *Action {
+	a.interaction.AddCommand(Wait(wait))
+
+	return a
+}
+
 func (a *Action) AddFillOperation(selector string, detail *data.Detail) *Action {
 	a.spec.AddCommand(CheckExists(selector))
 	a.interaction.AddCommand(FillField(selector, detail))

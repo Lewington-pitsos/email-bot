@@ -32,7 +32,7 @@ func (s *Scrape) Scrape() bool {
 		if i < 0 {
 			return false
 		}
-		time.Sleep(time.Millisecond * 800)
+		time.Sleep(time.Millisecond * 300)
 	}
 
 	return true

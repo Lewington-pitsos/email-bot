@@ -60,17 +60,20 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	a := action.NewAction(m.browser)
 	command := action.VisitPage("https://signup.live.com/signup")
 	a.AddToInteraction(command)
+	a.AddWait(3000)
 
 	// ========================================================
 
 	a2 := action.NewAction(m.browser)
 	a2.AddFillOperation(emailInput, m.details["email"])
+	a.AddWait(300)
 	a2.AddSubmitOperation(submitInput)
 
 	// ========================================================
 
 	a3 := action.NewAction(m.browser)
 	a3.AddFillOperation(passInput, m.details["password"])
+	a.AddWait(300)
 	a3.AddSubmitOperation(submitInput)
 
 	// ========================================================
@@ -78,6 +81,7 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	a4 := action.NewAction(m.browser)
 	a4.AddFillOperation(firstInput, m.details["username"])
 	a4.AddFillOperation(lastInput, m.details["username"])
+	a.AddWait(300)
 	a4.AddSubmitOperation(submitInput)
 
 	// ========================================================
@@ -86,8 +90,10 @@ func (m *Manager) ProvisionHotmailNewAccount() {
 	a5.AddFillOperation(dayInput, m.details["day"])
 	a5.AddFillOperation(monthInput, m.details["month"])
 	a5.AddFillOperation(yearInput, m.details["year"])
+	a.AddWait(300)
 	a5.AddToSpec(action.CheckExists(submitInput))
 	a5.AddToInteraction(action.Click(submitInput))
+	a.AddWait(3000)
 
 	// ========================================================
 
