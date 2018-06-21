@@ -10,28 +10,47 @@ import (
 var profileBankPath = build.Default.GOPATH + "src/email-bot/data/"
 var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 
+// +---------------------------------------------------------------------------------------+
+//										Master STRUCT
+// +---------------------------------------------------------------------------------------+
+
+
 type Master struct {
 	profileManager *profile.Manager
 	scrapeManager  *scrape.Manager
 }
 
-func (m *Master) Scrape() {
-	m.scrapeManager.AddValues(m.generateData())
-	m.scrapeManager.ProvisionHotmailNewAccount()
-	m.scrapeManager.Scrape()
-	m.saveProfile(m.scrapeManager.ProfileData())
-}
+//
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//
 
 func (m *Master) saveProfile(profile map[string]string) {
 	saver := files.NewManager()
 	saver.RecordProfile(profile["email"], profile)
 }
 
-func (m *Master) generateData() map[string][]string {
+func (m *Master) generatedata() map[string][]string {
 	profile := m.profileManager.StandardProfile()
 	profile.Generate()
 	return profile.Values
 }
+
+//
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//
+
+func (m *Master) Scrape() {
+	m.scrapeManager.AddValues(m.generatedData())
+	m.scrapeManager.ProvisionHotmailNewAccountscrape()
+	m.scrapeManager.Scrape()
+	m.saveProfile(m.scrapeManager.ActiveProfileData())
+}
+
+
+// +---------------------------------------------------------------------------------------+
+//									EXPOSED FUNCTIONS
+// +---------------------------------------------------------------------------------------+
+
 
 func NewMaster() *Master {
 	return &Master{
