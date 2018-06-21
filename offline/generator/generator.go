@@ -51,15 +51,17 @@ func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
 }
 
 func (vg *ValueGenerator) unmodifiedValue(svs *datastructure.ValueSpec) string {
-	if svs.Literal {
+	switch svs.Mode {
+	case "literal":
 		return svs.Output
-	}
-
-	if svs.Derived {
+	case "derived":
 		return helpers.GetRandom(vg.values[svs.Output])
+	case "bank":
+		return vg.bank.GiveValue(svs.Output)
 	}
 
-	return vg.bank.GiveValue(svs.Output)
+	panic("invalid mode")
+	return "invalid mode"
 }
 
 //

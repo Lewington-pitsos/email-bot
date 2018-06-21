@@ -30,8 +30,8 @@ func (m *Manager) StandardProfile() *Profile {
 
 func (m *Manager) usernameFormat() []*datastructure.ValueSpec {
 	usernameFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec(false, "username")
-	spec2 := datastructure.NewValueSpec(false, "username")
+	spec1 := datastructure.NewValueSpec("bank", "username")
+	spec2 := datastructure.NewValueSpec("bank", "username")
 
 	usernameFormat = append(usernameFormat, spec1)
 	usernameFormat = append(usernameFormat, spec2)
@@ -41,8 +41,8 @@ func (m *Manager) usernameFormat() []*datastructure.ValueSpec {
 
 func (m *Manager) emailFormat() []*datastructure.ValueSpec {
 	emailFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec2 := datastructure.NewValueSpec(false, "username").SetModification("slang").SetProgenitor("username")
-	spec3 := datastructure.NewValueSpec(true, "@hotmail.com")
+	spec2 := datastructure.NewValueSpec("derived", "username").SetModification("slang")
+	spec3 := datastructure.NewValueSpec("literal", "@hotmail.com")
 
 	emailFormat = append(emailFormat, spec2)
 	emailFormat = append(emailFormat, spec3)
@@ -52,7 +52,7 @@ func (m *Manager) emailFormat() []*datastructure.ValueSpec {
 
 func (m *Manager) yearFormat() []*datastructure.ValueSpec {
 	yearFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec(false, "yearvault")
+	spec1 := datastructure.NewValueSpec("bank", "yearvault")
 
 	yearFormat = append(yearFormat, spec1)
 
@@ -61,7 +61,7 @@ func (m *Manager) yearFormat() []*datastructure.ValueSpec {
 
 func (m *Manager) dayFormat() []*datastructure.ValueSpec {
 	dayFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec(false, "dayvault")
+	spec1 := datastructure.NewValueSpec("bank", "dayvault")
 
 	dayFormat = append(dayFormat, spec1)
 
@@ -70,7 +70,7 @@ func (m *Manager) dayFormat() []*datastructure.ValueSpec {
 
 func (m *Manager) monthFormat() []*datastructure.ValueSpec {
 	monthFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec(false, "monthvault")
+	spec1 := datastructure.NewValueSpec("bank", "monthvault")
 
 	monthFormat = append(monthFormat, spec1)
 
@@ -79,7 +79,7 @@ func (m *Manager) monthFormat() []*datastructure.ValueSpec {
 
 func (m *Manager) passFormat() []*datastructure.ValueSpec {
 	passFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec(false, "passvault")
+	spec1 := datastructure.NewValueSpec("bank", "passvault")
 
 	passFormat = append(passFormat, spec1)
 

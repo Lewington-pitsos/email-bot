@@ -4,11 +4,10 @@ package datastructure
 // This string will ultimately make up part of a Profile.
 // It has no methods, basically justa a bag.
 type ValueSpec struct {
-	Literal  bool
+	Mode 	 string
 	Output   string
 	Modified bool
 	ModBank  string
-	Derived  bool
 }
 
 func (v *ValueSpec) SetModification(modBank string) *ValueSpec {
@@ -18,17 +17,10 @@ func (v *ValueSpec) SetModification(modBank string) *ValueSpec {
 	return v
 }
 
-func (v *ValueSpec) SetProgenitor(progenitor string) *ValueSpec {
-	v.Derived = true
-	v.Output = progenitor
-
-	return v
-}
-
-func NewValueSpec(literal bool, output string) *ValueSpec {
+func NewValueSpec(mode string, output string) *ValueSpec {
 	return &ValueSpec{
-		Literal:  literal,
-		Output:   output,
+		Mode: mode,
 		Modified: false,
+		Output:   output,
 	}
 }
