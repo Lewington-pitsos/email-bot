@@ -5,9 +5,12 @@ import (
 	"email-bot/online/scrape"
 	"build"
 	"email-bot/offline/helpers"
+	"io/ioutil"
+	"encoding/json"
 )
 
-var profileBankPath = build.Default.GOPATH + "src/email-bot/data/profiles.json"
+var profileBankPath = build.Default.GOPATH + "src/email-bot/data/"
+var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 
 type Master struct {
 	profileManager *profile.Manager
@@ -25,8 +28,20 @@ func(m *Master) SaveProfile(profile map[string]string) {
 	fileBytes, error := ioutil.ReadFile(profileBankPath)
 	helpers.Check(error)
 
-	fileSlice := make(map[string]map[string]string, 0, 10000)
-	json.Unmarshal(fileBytes, &fileSlice)
+	currentProfiles := make(map[string]map[string]string, 0, 10000)
+	json.Unmarshal(fileBytes, &currentProfiles)
+
+	currentProfiles[profile["email"]] = profile
+	
+}
+
+func(m *Master) recordProfile(profileName) {
+	// appends the profilename to the list of profile names in the profileList file
+}
+
+func(m *Master) writeToFile(data, filename) {
+	bytes, _ := json.Unmarshal(data)
+	_ := ioutil.WriteFile(profileBankFileName + filename, data, 0777)
 }
 
 func(m *Master) generateData() {
