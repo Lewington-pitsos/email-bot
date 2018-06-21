@@ -2,7 +2,7 @@ package profile
 
 import "email-bot/online/action"
 
-func provisionHotmailNewAccount(candidateValues) []*actions.Action {
+func hotmailNewAccountScrapeActions(candidateValues) []*actions.Action {
 	emailInput := "//input[@id='MemberName']"
 	passInput := "//input[@id='PasswordInput']"
 	firstInput := "//input[@id='FirstName']"

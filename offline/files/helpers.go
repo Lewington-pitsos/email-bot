@@ -2,7 +2,7 @@ package files
 
 import "go/build"
 
-func Check(err error) {
+func check(err error) {
 	if err != nil {
 		panic(err)
 	}

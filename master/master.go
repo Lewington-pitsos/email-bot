@@ -24,8 +24,7 @@ func (m *Master) Scrape() {
 
 func (m *Master) saveProfile(profile map[string]string) {
 	saver := files.NewManager()
-	saver.SaveProfile(profile["email"], profile)
-
+	saver.RecordProfile(profile["email"], profile)
 }
 
 func (m *Master) generateData() map[string][]string {

@@ -41,6 +41,6 @@ func NewManager(port int) *Manager {
 }
 
 func (m *Manager) ProvisionHotmailNewAccount() {
-	actions := ProvisionHotmailNewAccount(m.candidateValues)
+	actions := hotmailNewAccountScrapeActions(m.candidateValues)
 	m.scrape.AddActions(actions)
 }
