@@ -3,40 +3,10 @@ package profile
 import (
 	"email-bot/offline/generator"
 	"email-bot/offline/datastructure"
+	"email-bot/logger"
 )
 
 type Manager struct {
-}
-
-func NewManager() *Manager {
-	return &Manager{}
-}
-
-func (m *Manager) StandardProfile() *Profile {
-	generator := generator.NewValueGenerator()
-	profile := NewProfile(generator)
-
-	usernameField := NewField("username", 10, m.usernameFormat())
-	emailField := NewField("email", 100, m.emailFormat())
-	dayField := NewField("day", 10, m.dayFormat())
-	monthField := NewField("month", 10, m.monthFormat())
-	yearField := NewField("year", 10, m.yearFormat())
-	passField := NewField("password", 20, m.passFormat())
-
-	profile.AddFields(usernameField, emailField, dayField, monthField, yearField, passField)
-
-	return profile
-}
-
-func (m *Manager) usernameFormat() []*datastructure.ValueSpec {
-	usernameFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec("bank", "username")
-	spec2 := datastructure.NewValueSpec("bank", "username")
-
-	usernameFormat = append(usernameFormat, spec1)
-	usernameFormat = append(usernameFormat, spec2)
-
-	return usernameFormat
 }
 
 func (m *Manager) emailFormat() []*datastructure.ValueSpec {
@@ -84,4 +54,29 @@ func (m *Manager) passFormat() []*datastructure.ValueSpec {
 	passFormat = append(passFormat, spec1)
 
 	return passFormat
+}
+
+func (m *Manager) StandardProfile() *Profile {
+	logger.LoggerInterface.Println("Generating standard profile")
+	generator := generator.NewValueGenerator()
+	profile := NewProfile(generator)
+
+	usernameField := NewField("username", 10, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "username"),
+		datastructure.NewValueSpec("bank", "username"),
+	})
+
+	emailField := NewField("email", 100, m.emailFormat())
+	dayField := NewField("day", 10, m.dayFormat())
+	monthField := NewField("month", 10, m.monthFormat())
+	yearField := NewField("year", 10, m.yearFormat())
+	passField := NewField("password", 20, m.passFormat())
+
+	profile.AddFields(usernameField, emailField, dayField, monthField, yearField, passField)
+
+	return profile
+}
+
+func NewManager() *Manager {
+	return &Manager{}
 }

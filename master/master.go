@@ -29,7 +29,7 @@ func (m *Master) saveProfile(profile map[string]string) {
 	saver.RecordProfile(profile["email"], profile)
 }
 
-func (m *Master) generatedata() map[string][]string {
+func (m *Master) Generatedata() map[string][]string {
 	profile := m.profileManager.StandardProfile()
 	profile.Generate()
 	return profile.Values
@@ -40,7 +40,7 @@ func (m *Master) generatedata() map[string][]string {
 //
 
 func (m *Master) Scrape() {
-	m.scrapeManager.AddValues(m.generatedData())
+	m.scrapeManager.AddValues(m.GeneratedData())
 	m.scrapeManager.ProvisionHotmailNewAccountscrape()
 	m.scrapeManager.Scrape()
 	m.saveProfile(m.scrapeManager.ActiveProfileData())

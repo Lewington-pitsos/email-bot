@@ -1,0 +1,9 @@
+2018/06/23 09:32:02 logger.go:21: LogFile : /home/lewington/code/go/src/email-bot/logger/scrape
+2018/06/23 09:32:02 manager.go:60: Generating standard profile
+2018/06/23 09:32:02 profile.go:36: Creating Profile
+2018/06/23 09:32:02 profile.go:16: Adding field: username
+2018/06/23 09:32:02 profile.go:16: Adding field: email
+2018/06/23 09:32:02 profile.go:16: Adding field: day
+2018/06/23 09:32:02 profile.go:16: Adding field: month
+2018/06/23 09:32:02 profile.go:16: Adding field: year
+2018/06/23 09:32:02 profile.go:16: Adding field: password

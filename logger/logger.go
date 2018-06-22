@@ -6,21 +6,6 @@ import (
 	"os"
 )
 
-type Logger struct {
-	name string
-	logger *log.Logger
-}
-
-func NewLogger(logName string) *Logger {
-	return &Logger{
-		name: logName,
-		logger: actualLogger(logName),
-	}
-}
-
-func (l *Logger)Log(message string) {
-	l.logger.Println(message)
-}
 
 func actualLogger(logName string) *log.Logger {
 	// set location of log file
@@ -36,4 +21,10 @@ func actualLogger(logName string) *log.Logger {
 	logger.Println("LogFile : " + logpath)
 
 	return logger;
+}
+
+var LoggerInterface *log.Logger
+
+func init() {
+	LoggerInterface = actualLogger("scrape")
 }

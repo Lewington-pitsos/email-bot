@@ -1,4 +1,4 @@
-package profile
+package scrape
 
 import "email-bot/online/action"
 
