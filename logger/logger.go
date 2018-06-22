@@ -26,5 +26,5 @@ func actualLogger(logName string) *log.Logger {
 var LoggerInterface *log.Logger
 
 func init() {
-	LoggerInterface = actualLogger("scrape")
+	LoggerInterface = actualLogger("scrape.log")
 }

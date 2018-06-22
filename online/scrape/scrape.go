@@ -2,6 +2,7 @@ package scrape
 
 import (
 	"email-bot/online/action"
+	"email-bot/logger"
 	"fmt"
 	"time"
 )
@@ -26,13 +27,15 @@ func (s *Scrape) AddActions(actions []*action.Action) *Scrape {
 }
 
 func (s *Scrape) Scrape() bool {
+	logger.LoggerInterface.Println("Commencing Scrape")
 	for i := 0; i < len(s.actions); {
 		action := s.actions[i]
 		result := action.Perform()
-		fmt.Println(result)
 		if !result {
+			logger.LoggerInterface.Println("Action failed")
 			i--
 		} else {
+			logger.LoggerInterface.Println("Action Succeeded")
 			i++
 		}
 
@@ -41,11 +44,13 @@ func (s *Scrape) Scrape() bool {
 		}
 		time.Sleep(time.Millisecond * 300)
 	}
-
+	
+	logger.LoggerInterface.Println("Scrape Complete")
 	return true
 }
 
 func NewScrape() *Scrape {
+	logger.LoggerInterface.Println("Creating Scrape")
 	return &Scrape{
 		actions: make([]*action.Action, 0, 50),
 	}

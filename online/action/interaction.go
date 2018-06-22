@@ -2,6 +2,7 @@ package action
 
 import (
 	"email-bot/online/browser"
+	"email-bot/logger"
 	"fmt"
 )
 
@@ -14,6 +15,7 @@ type interaction struct {
 func (i *interaction) run() {
 	i.tries++
 	fmt.Println(i.commands)
+	logger.LoggerInterface.Println("Running interaction, try number:", i.tries)
 	for _, command := range i.commands {
 		command(i)
 	}

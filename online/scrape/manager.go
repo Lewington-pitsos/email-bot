@@ -32,6 +32,8 @@ func (m *Manager) Scrape() {
 
 func (m *Manager) ActiveProfileData() map[string]string {
 	profile := make(map[string]string)
+	profileName := profile[name]
+	logger.LoggerInterface.Println("Extracting data for entered profile: ", profileName)
 
 	for name, detail := range m.candidateValues {
 		profile[name] = detail.CurrentValue()

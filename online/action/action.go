@@ -27,11 +27,8 @@ type Action struct {
 func (a *Action) Perform() bool {
 	if a.spec.check() {
 		a.interaction.run()
-		fmt.Println("interaction performed")
 		return true
 	}
-
-	fmt.Println("spec failed")
 
 	return false
 }
