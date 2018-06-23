@@ -1,9 +1,8 @@
 package action
 
 import (
-	"email-bot/online/browser"
 	"email-bot/logger"
-	"fmt"
+	"email-bot/online/browser"
 )
 
 type spec struct {

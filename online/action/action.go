@@ -3,13 +3,11 @@ package action
 import (
 	"email-bot/online/browser"
 	"email-bot/online/data"
-	"fmt"
 )
 
 // +---------------------------------------------------------------------------------------+
 //										Action STRUCT
 // +---------------------------------------------------------------------------------------+
-
 
 type Action struct {
 	spec        *spec
