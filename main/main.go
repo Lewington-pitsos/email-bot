@@ -1,10 +1,11 @@
 package main
 
-import "email-bot/master"
+import "email-bot/offline/profile"
 
 func main() {
-	master := master.NewMaster()
-	master.Scrape()
+	// master := master.NewMaster()
+	// master.Scrape()
+
 	// profile := map[string]string{
 	// 	"day":       "19",
 	// 	"email":     "Ame123hystAudriana@hotmail.com",
@@ -19,6 +20,10 @@ func main() {
 
 	// archivist := database.NewArchivist()
 	// archivist.RecordProfile(profile)
+
+	profile := profile.NewActiveProfile("floob")
+
+	profile.Populate()
 }
 
 func mainn() {

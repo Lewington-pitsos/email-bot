@@ -784,3 +784,6 @@
 2018/06/23 18:50:33 spec.go:29: Spec Passed... proceeding to interaction
 2018/06/23 18:50:33 interaction.go:16: Running interaction, value number:
 2018/06/23 18:50:33 command.go:63: Waiting: 90000 miliseconds
+2018/06/23 19:20:17 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/06/23 19:21:01 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/06/23 19:21:18 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log

@@ -9,7 +9,7 @@ CREATE TABLE profiles (
     PRIMARY KEY(id) 
 );
 
-SELECT id, first_name, last_name, pass, email, birthdate FROM profiles;
+SELECT first_name, last_name, pass, email, birthdate FROM profiles;
 
 INSERT INTO profiles (
     first_name, 
