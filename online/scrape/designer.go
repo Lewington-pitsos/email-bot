@@ -65,7 +65,7 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 
 	a6 := action.NewAction(browser, false)
 	a6.AddToSpec(action.CheckExists(capchaBox))
-	a6.AddWait(10000)
+	a6.AddWait(90000)
 
 	// ========================================================
 

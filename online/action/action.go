@@ -52,8 +52,6 @@ func (a *Action) AddWait(wait int) *Action {
 
 func (a *Action) AddFillOperation(selector string, detail *data.Detail) *Action {
 	a.spec.AddCommand(CheckExists(selector))
-	a.interaction.AddCommand(Click(selector))
-	a.interaction.AddCommand(Wait(100))
 	a.interaction.AddCommand(FillField(selector, detail))
 
 	return a

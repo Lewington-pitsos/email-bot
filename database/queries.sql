@@ -12,11 +12,11 @@ CREATE TABLE profiles (
 SELECT id, first_name, last_name, pass, email, birthdate FROM profiles;
 
 INSERT INTO profiles (
-    id, 
     first_name, 
     last_name, 
     pass, 
     email, 
     birthdate
+) VALUES (
 
 )

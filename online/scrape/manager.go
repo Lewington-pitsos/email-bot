@@ -44,6 +44,7 @@ func (m *Manager) ActiveProfileData() map[string]string {
 	}
 
 	profile["birthdate"] = m.birthDate(profile)
+	logger.LoggerInterface.Println(profile["birthdate"])
 
 	return profile
 }
