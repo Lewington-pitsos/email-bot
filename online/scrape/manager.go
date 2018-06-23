@@ -1,6 +1,7 @@
 package scrape
 
 import (
+	"email-bot/logger"
 	"email-bot/online/browser"
 	"email-bot/online/data"
 )
@@ -9,11 +10,10 @@ import (
 //										Manager STRUCT
 // +---------------------------------------------------------------------------------------+
 
-
 type Manager struct {
 	candidateValues map[string]*data.Detail
-	scrape  *Scrape
-	browser *browser.Browser
+	scrape          *Scrape
+	browser         *browser.Browser
 }
 
 //
@@ -24,7 +24,6 @@ type Manager struct {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-
 func (m *Manager) Scrape() {
 	m.scrape.Scrape()
 	m.browser.Quit()
@@ -32,8 +31,7 @@ func (m *Manager) Scrape() {
 
 func (m *Manager) ActiveProfileData() map[string]string {
 	profile := make(map[string]string)
-	profileName := profile[name]
-	logger.LoggerInterface.Println("Extracting data for entered profile: ", profileName)
+	logger.LoggerInterface.Println("Extracting data for entered profile")
 
 	for name, detail := range m.candidateValues {
 		profile[name] = detail.CurrentValue()
@@ -49,7 +47,7 @@ func (m *Manager) AddValues(values map[string][]string) {
 }
 
 func (m *Manager) ProvisionHotmailNewAccountScrape() {
-	actions := hotmailNewAccountScrapeActions(m.candidateValues)
+	actions := hotmailNewAccountScrapeActions(m.candidateValues, m.browser)
 	m.scrape.AddActions(actions)
 }
 
@@ -57,11 +55,10 @@ func (m *Manager) ProvisionHotmailNewAccountScrape() {
 //										Manager STRUCT
 // +---------------------------------------------------------------------------------------+
 
-
 func NewManager(port int) *Manager {
 	return &Manager{
 		candidateValues: make(map[string]*data.Detail),
-		browser: browser.NewBrowser(port),
-		scrape:  NewScrape(),
+		browser:         browser.NewBrowser(port),
+		scrape:          NewScrape(),
 	}
 }

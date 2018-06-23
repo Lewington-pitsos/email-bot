@@ -1,9 +1,8 @@
 package scrape
 
 import (
-	"email-bot/online/action"
 	"email-bot/logger"
-	"fmt"
+	"email-bot/online/action"
 	"time"
 )
 
@@ -16,7 +15,6 @@ func (s *Scrape) AddAction(action *action.Action) *Scrape {
 
 	return s
 }
-
 
 func (s *Scrape) AddActions(actions []*action.Action) *Scrape {
 	for _, action := range actions {
@@ -44,7 +42,7 @@ func (s *Scrape) Scrape() bool {
 		}
 		time.Sleep(time.Millisecond * 300)
 	}
-	
+
 	logger.LoggerInterface.Println("Scrape Complete")
 	return true
 }

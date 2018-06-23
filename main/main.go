@@ -1,12 +1,10 @@
 package main
 
-import (
-	"email-bot/offline/profile"
-)
+import "email-bot/master"
 
 func main() {
-	manager := profile.NewManager()
-	manager.StandardProfile()
+	master := master.NewMaster()
+	master.Scrape()
 }
 
 func mainn() {

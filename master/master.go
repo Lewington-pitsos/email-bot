@@ -14,7 +14,6 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 //										Master STRUCT
 // +---------------------------------------------------------------------------------------+
 
-
 type Master struct {
 	profileManager *profile.Manager
 	scrapeManager  *scrape.Manager
@@ -29,7 +28,7 @@ func (m *Master) saveProfile(profile map[string]string) {
 	saver.RecordProfile(profile["email"], profile)
 }
 
-func (m *Master) Generatedata() map[string][]string {
+func (m *Master) generatedData() map[string][]string {
 	profile := m.profileManager.StandardProfile()
 	profile.Generate()
 	return profile.Values
@@ -40,17 +39,15 @@ func (m *Master) Generatedata() map[string][]string {
 //
 
 func (m *Master) Scrape() {
-	m.scrapeManager.AddValues(m.GeneratedData())
-	m.scrapeManager.ProvisionHotmailNewAccountscrape()
+	m.scrapeManager.AddValues(m.generatedData())
+	m.scrapeManager.ProvisionHotmailNewAccountScrape()
 	m.scrapeManager.Scrape()
 	m.saveProfile(m.scrapeManager.ActiveProfileData())
 }
 
-
 // +---------------------------------------------------------------------------------------+
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
-
 
 func NewMaster() *Master {
 	return &Master{

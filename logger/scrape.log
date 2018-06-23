@@ -1,0 +1,63 @@
+2018/06/23 10:30:09 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/06/23 10:30:12 scrape.go:51: Creating Scrape
+2018/06/23 10:30:12 manager.go:60: Generating standard profile
+2018/06/23 10:30:12 profile.go:36: Creating Profile
+2018/06/23 10:30:12 profile.go:16: Adding field: username
+2018/06/23 10:30:12 profile.go:16: Adding field: email
+2018/06/23 10:30:12 profile.go:16: Adding field: day
+2018/06/23 10:30:12 profile.go:16: Adding field: month
+2018/06/23 10:30:12 profile.go:16: Adding field: year
+2018/06/23 10:30:12 profile.go:16: Adding field: password
+2018/06/23 10:30:12 profile.go:24: Generating Profile data
+2018/06/23 10:30:12 scrape.go:28: Commencing Scrape
+2018/06/23 10:30:12 spec.go:15: Empty Spec: Spec passed
+2018/06/23 10:30:12 interaction.go:18: Running interaction, try number: 1
+2018/06/23 10:30:12 command.go:16: Visiting: https://signup.live.com/signup
+2018/06/23 10:30:20 command.go:45: Waiting: 3000 miliseconds
+2018/06/23 10:30:23 scrape.go:36: Action Succeeded
+2018/06/23 10:30:23 command.go:56: Checking for element: //input[@id='MemberName']
+2018/06/23 10:30:23 command.go:56: Checking for element: //input[@id='iSignupAction']
+2018/06/23 10:30:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/06/23 10:30:23 interaction.go:18: Running interaction, try number: 1
+2018/06/23 10:30:23 command.go:27: Filling element: //input[@id='MemberName'] with: Kal_aElle@hotmail.com
+2018/06/23 10:30:23 command.go:45: Waiting: 200 miliseconds
+2018/06/23 10:30:23 command.go:35: Clicking element: //input[@id='iSignupAction']
+2018/06/23 10:30:23 command.go:45: Waiting: 300 miliseconds
+2018/06/23 10:30:24 scrape.go:36: Action Succeeded
+2018/06/23 10:30:24 command.go:56: Checking for element: //input[@id='PasswordInput']
+2018/06/23 10:30:24 command.go:56: Checking for element: //input[@id='iSignupAction']
+2018/06/23 10:30:24 spec.go:29: Spec Passed... proceeding to interaction
+2018/06/23 10:30:24 interaction.go:18: Running interaction, try number: 1
+2018/06/23 10:30:24 command.go:27: Filling element: //input[@id='PasswordInput'] with: 6E@Mf(4!zks*ts6TizwT
+2018/06/23 10:30:24 command.go:45: Waiting: 200 miliseconds
+2018/06/23 10:30:24 command.go:35: Clicking element: //input[@id='iSignupAction']
+2018/06/23 10:30:25 command.go:45: Waiting: 300 miliseconds
+2018/06/23 10:30:25 scrape.go:36: Action Succeeded
+2018/06/23 10:30:25 command.go:56: Checking for element: //input[@id='FirstName']
+2018/06/23 10:30:25 command.go:56: Checking for element: //input[@id='LastName']
+2018/06/23 10:30:25 command.go:56: Checking for element: //input[@id='iSignupAction']
+2018/06/23 10:30:25 spec.go:29: Spec Passed... proceeding to interaction
+2018/06/23 10:30:25 interaction.go:18: Running interaction, try number: 1
+2018/06/23 10:30:25 command.go:27: Filling element: //input[@id='FirstName'] with: KeraCharley
+2018/06/23 10:30:25 command.go:27: Filling element: //input[@id='LastName'] with: KeraCharley
+2018/06/23 10:30:25 command.go:45: Waiting: 200 miliseconds
+2018/06/23 10:30:25 command.go:35: Clicking element: //input[@id='iSignupAction']
+2018/06/23 10:30:26 command.go:45: Waiting: 300 miliseconds
+2018/06/23 10:30:26 scrape.go:36: Action Succeeded
+2018/06/23 10:30:26 command.go:56: Checking for element: //select[@id='BirthDay']
+2018/06/23 10:30:26 command.go:56: Checking for element: //select[@id='BirthMonth']
+2018/06/23 10:30:26 command.go:56: Checking for element: //select[@id='BirthYear']
+2018/06/23 10:30:26 command.go:56: Checking for element: //input[@id='iSignupAction']
+2018/06/23 10:30:26 spec.go:29: Spec Passed... proceeding to interaction
+2018/06/23 10:30:26 interaction.go:18: Running interaction, try number: 1
+2018/06/23 10:30:26 command.go:27: Filling element: //select[@id='BirthDay'] with: 06
+2018/06/23 10:30:26 command.go:27: Filling element: //select[@id='BirthMonth'] with: April
+2018/06/23 10:30:26 command.go:27: Filling element: //select[@id='BirthYear'] with: 1968
+2018/06/23 10:30:26 command.go:45: Waiting: 300 miliseconds
+2018/06/23 10:30:27 command.go:35: Clicking element: //input[@id='iSignupAction']
+2018/06/23 10:30:27 command.go:45: Waiting: 3000 miliseconds
+2018/06/23 10:30:30 scrape.go:36: Action Succeeded
+2018/06/23 10:30:30 command.go:56: Checking for element: //div[@id='hipTemplateContainer']
+2018/06/23 10:30:30 spec.go:29: Spec Passed... proceeding to interaction
+2018/06/23 10:30:30 interaction.go:18: Running interaction, try number: 1
+2018/06/23 10:30:30 command.go:45: Waiting: 100000 miliseconds
