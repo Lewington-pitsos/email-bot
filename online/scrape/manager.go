@@ -4,6 +4,7 @@ import (
 	"email-bot/logger"
 	"email-bot/online/browser"
 	"email-bot/online/data"
+	"fmt"
 )
 
 // +---------------------------------------------------------------------------------------+
@@ -19,6 +20,10 @@ type Manager struct {
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
+
+func (m *Manager) birthDate(profile map[string]string) string {
+	return fmt.Sprintf("%s %s %s", profile["day"], profile["month"], profile["year"])
+}
 
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -37,6 +42,8 @@ func (m *Manager) ActiveProfileData() map[string]string {
 	for name, detail := range m.candidateValues {
 		profile[name] = detail.CurrentValue()
 	}
+
+	profile["birthdate"] = m.birthDate(profile)
 
 	return profile
 }
