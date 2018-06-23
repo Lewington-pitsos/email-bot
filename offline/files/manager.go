@@ -1,9 +1,7 @@
 package files
 
 import (
-	"email-bot/logger"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 )
 
@@ -26,31 +24,6 @@ func (m *Manager) populate(filename string, emptyObject interface{}) {
 	check(err2)
 }
 
-func (m *Manager) saveFile(fileName string, data interface{}) {
-	fmt.Println(data)
-	dataBytes, err := json.Marshal(data)
-	check(err)
-	logger.LoggerInterface.Println("Saving data to file:", fileName)
-	ioutil.WriteFile(fileName, dataBytes, 0777)
-}
-
-func (m *Manager) saveProfileData(profileName string, profileData map[string]string) {
-	m.saveFile(m.filePath(profileName), profileData)
-}
-
-func (m *Manager) addProfileToLedger(profileName string) {
-	logger.LoggerInterface.Println("Adding profile to ledger:", profileName)
-	profileLedger := make([]string, 0, 1000)
-	m.populate(profileLedgerPath, &profileLedger)
-	profileLedger = append(profileLedger, profileName)
-	m.saveFile(profileLedgerPath, profileLedger)
-}
-
-// Constructs an absolote path to the relevent profile file name.
-func (m *Manager) filePath(fileName string) string {
-	return profileBankPath + fileName + profileFileSuffix
-}
-
 func (m *Manager) bankPath(fileName string) string {
 	return bankFilePath + fileName + bankFileSuffix
 }
@@ -59,30 +32,12 @@ func (m *Manager) bankPath(fileName string) string {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-// Loads the database file matching that name into bytes.
-// Marshals those bytes into Json data.
-// Returns that JSON data.
-func (m *Manager) ProfileData(profileName string) map[string]string {
-	filename := m.filePath(profileName)
-
-	readableProfile := make(map[string]string)
-	m.populate(filename, &readableProfile)
-
-	return readableProfile
-}
-
 func (m *Manager) BankeData(bankName string) []string {
 	filename := m.bankPath(bankName)
 	bankData := make([]string, 0, 10000)
 	m.populate(filename, &bankData)
 
 	return bankData
-}
-
-func (m *Manager) RecordProfile(profileName string, profileData map[string]string) {
-	m.saveProfileData(profileName, profileData)
-	m.addProfileToLedger(profileName)
-	logger.LoggerInterface.Println("Profile Recorded Successfully:", profileName, "\n")
 }
 
 // +-------------------------------------------------------------------------------------+
