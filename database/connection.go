@@ -8,3 +8,7 @@ const driverName string = "postgres"
 type connection struct {
 	db *sql.DB
 }
+
+func (c *connection) Close() {
+	c.db.Close()
+}

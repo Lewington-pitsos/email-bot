@@ -28,9 +28,9 @@ func (b *Bank) AddSpecialVault(vaultName string) *Bank {
 	case "yearvault":
 		b.vaults[vaultName] = vault.NewDateVault("2006")
 	case "monthvault":
-		b.vaults[vaultName] = vault.NewDateVault("January")
+		b.vaults[vaultName] = vault.NewDateVault("1")
 	case "dayvault":
-		b.vaults[vaultName] = vault.NewDateVault("02")
+		b.vaults[vaultName] = vault.NewDateVault("2")
 	case "passvault":
 		b.vaults[vaultName] = vault.NewPassVault()
 	}

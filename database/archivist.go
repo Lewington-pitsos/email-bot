@@ -37,7 +37,7 @@ func (a *Archivist) RecordProfile(profile map[string]string) {
 		profile["lastname"],
 		profile["pass"],
 		profile["email"],
-		profile["birthday"],
+		profile["birthdate"],
 	)
 	generalhelpers.Check(err)
 }

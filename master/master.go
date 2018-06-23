@@ -1,7 +1,7 @@
 package master
 
 import (
-	"email-bot/offline/files"
+	"email-bot/database"
 	"email-bot/offline/profile"
 	"email-bot/online/scrape"
 	"go/build"
@@ -24,8 +24,9 @@ type Master struct {
 //
 
 func (m *Master) saveProfile(profile map[string]string) {
-	saver := files.NewManager()
-	saver.RecordProfile(profile["email"], profile)
+	archivist := database.NewArchivist()
+	archivist.RecordProfile(profile)
+	archivist.Close()
 }
 
 func (m *Master) generatedData() map[string][]string {

@@ -19,11 +19,12 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 	homeHeader := "//div[@id='headerUniversalHeader']"
 
 	submitInput := "//input[@id='iSignupAction']"
+	dateOption := "//option[@value='%s']"
 
 	a := action.NewAction(browser, false)
 	command := action.VisitPage("https://signup.live.com/signup")
 	a.AddToInteraction(command)
-	a.AddWait(3000)
+	a.AddWait(2000)
 
 	// ========================================================
 
@@ -53,9 +54,9 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 	// ========================================================
 
 	a5 := action.NewAction(browser, false)
-	a5.AddFillOperation(dayInput, candidateValues["day"])
-	a5.AddFillOperation(monthInput, candidateValues["month"])
-	a5.AddFillOperation(yearInput, candidateValues["year"])
+	a5.AddSelectOperation(dayInput, dateOption, candidateValues["day"])
+	a5.AddSelectOperation(monthInput, dateOption, candidateValues["month"])
+	a5.AddSelectOperation(yearInput, dateOption, candidateValues["year"])
 	a5.AddWait(300)
 	a5.AddToSpec(action.CheckExists(submitInput))
 	a5.AddToInteraction(action.Click(submitInput))
@@ -65,7 +66,7 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 
 	a6 := action.NewAction(browser, false)
 	a6.AddToSpec(action.CheckExists(capchaBox))
-	a6.AddWait(10000)
+	a6.AddWait(90000)
 
 	// ========================================================
 

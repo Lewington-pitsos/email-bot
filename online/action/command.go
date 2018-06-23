@@ -5,6 +5,7 @@ import (
 	"email-bot/logger"
 	"email-bot/online/browser"
 	"email-bot/online/data"
+	"fmt"
 )
 
 // +---------------------------------------------------------------------------------------+
@@ -28,6 +29,22 @@ func FillField(selector string, detail *data.Detail) func(*interaction) {
 		element.Clear()
 
 		element.SendKeys(value)
+	}
+}
+
+func SelectOption(selector string, detail *data.Detail) func(*interaction) {
+	return func(i *interaction) {
+		value := detail.RandomValue()
+		logger.LoggerInterface.Println("Setting Selection:", selector, "as:", value)
+
+		optionSelector := fmt.Sprintf(selector, value)
+
+		logger.LoggerInterface.Println(optionSelector)
+
+		element, err := i.browser.Wd.FindElement("xpath", optionSelector)
+		generalhelpers.Check(err)
+
+		element.Click()
 	}
 }
 
