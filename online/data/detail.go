@@ -1,8 +1,14 @@
 package data
 
+import "email-bot/helpers/randhelpers"
+
 type Detail struct {
 	values  []string
 	current int
+}
+
+func (d *Detail) RandomValue() string {
+	return d.ValueAt(randhelpers.GetRandomSliceIndex(d.values))
 }
 
 func (d *Detail) ValueAt(index int) string {

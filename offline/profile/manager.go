@@ -1,59 +1,12 @@
 package profile
 
 import (
-	"email-bot/offline/generator"
-	"email-bot/offline/datastructure"
 	"email-bot/logger"
+	"email-bot/offline/datastructure"
+	"email-bot/offline/generator"
 )
 
 type Manager struct {
-}
-
-func (m *Manager) emailFormat() []*datastructure.ValueSpec {
-	emailFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec2 := datastructure.NewValueSpec("derived", "username").SetModification("slang")
-	spec3 := datastructure.NewValueSpec("literal", "@hotmail.com")
-
-	emailFormat = append(emailFormat, spec2)
-	emailFormat = append(emailFormat, spec3)
-
-	return emailFormat
-}
-
-func (m *Manager) yearFormat() []*datastructure.ValueSpec {
-	yearFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec("bank", "yearvault")
-
-	yearFormat = append(yearFormat, spec1)
-
-	return yearFormat
-}
-
-func (m *Manager) dayFormat() []*datastructure.ValueSpec {
-	dayFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec("bank", "dayvault")
-
-	dayFormat = append(dayFormat, spec1)
-
-	return dayFormat
-}
-
-func (m *Manager) monthFormat() []*datastructure.ValueSpec {
-	monthFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec("bank", "monthvault")
-
-	monthFormat = append(monthFormat, spec1)
-
-	return monthFormat
-}
-
-func (m *Manager) passFormat() []*datastructure.ValueSpec {
-	passFormat := make([]*datastructure.ValueSpec, 0, 10)
-	spec1 := datastructure.NewValueSpec("bank", "passvault")
-
-	passFormat = append(passFormat, spec1)
-
-	return passFormat
 }
 
 func (m *Manager) StandardProfile() *Profile {
@@ -61,18 +14,41 @@ func (m *Manager) StandardProfile() *Profile {
 	generator := generator.NewValueGenerator()
 	profile := NewProfile(generator)
 
-	usernameField := NewField("username", 10, []*datastructure.ValueSpec{
-		datastructure.NewValueSpec("bank", "username"),
-		datastructure.NewValueSpec("bank", "username"),
+	firstNameField := NewField("firstname", 1, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "name"),
 	})
 
-	emailField := NewField("email", 100, m.emailFormat())
-	dayField := NewField("day", 10, m.dayFormat())
-	monthField := NewField("month", 10, m.monthFormat())
-	yearField := NewField("year", 10, m.yearFormat())
-	passField := NewField("password", 20, m.passFormat())
+	lastNameField := NewField("lastname", 1, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "name"),
+	})
 
-	profile.AddFields(usernameField, emailField, dayField, monthField, yearField, passField)
+	fullNameField := NewField("fullname", 1, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("derived", "firstname"),
+		datastructure.NewValueSpec("derived", "lastname"),
+	})
+
+	emailField := NewField("email", 100, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("derived", "fullname").SetModification("slang"),
+		datastructure.NewValueSpec("literal", "@hotmail.com"),
+	})
+
+	dayField := NewField("day", 10, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "dayvault"),
+	})
+
+	monthField := NewField("month", 10, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "monthvault"),
+	})
+
+	yearField := NewField("year", 10, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "yearvault"),
+	})
+
+	passField := NewField("password", 20, []*datastructure.ValueSpec{
+		datastructure.NewValueSpec("bank", "passvault"),
+	})
+
+	profile.AddFields(firstNameField, lastNameField, fullNameField, emailField, dayField, monthField, yearField, passField)
 
 	return profile
 }

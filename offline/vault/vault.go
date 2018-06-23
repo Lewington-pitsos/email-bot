@@ -3,8 +3,8 @@
 package vault
 
 import (
+	"email-bot/helpers/randhelpers"
 	"email-bot/offline/files"
-	"email-bot/offline/helpers"
 )
 
 // +-------------------------------------------------------------------------------------+
@@ -29,7 +29,7 @@ func (v *Vault) allValues(filename string) []string {
 
 func (v *Vault) randomValue(valueFileName string) string {
 	values := v.allValues(valueFileName)
-	return helpers.GetRandom(values)
+	return randhelpers.GetRandom(values)
 }
 
 //

@@ -1,10 +1,10 @@
 package action
 
 import (
+	"email-bot/helpers/generalhelpers"
 	"email-bot/logger"
 	"email-bot/online/browser"
 	"email-bot/online/data"
-	"email-bot/online/helpers"
 )
 
 // +---------------------------------------------------------------------------------------+
@@ -21,9 +21,9 @@ func VisitPage(url string) func(*interaction) {
 func FillField(selector string, detail *data.Detail) func(*interaction) {
 	return func(i *interaction) {
 		element, err := i.browser.Wd.FindElement("xpath", selector)
-		helpers.CheckSafe(err)
+		generalhelpers.Check(err)
 
-		value := detail.ValueAt(i.tries)
+		value := detail.RandomValue()
 		logger.LoggerInterface.Println("Filling element:", selector, "with:", value)
 		element.Clear()
 
@@ -35,7 +35,7 @@ func Click(selector string) func(*interaction) {
 	return func(i *interaction) {
 		logger.LoggerInterface.Println("Clicking element:", selector)
 		element, err := i.browser.Wd.FindElement("xpath", selector)
-		helpers.CheckSafe(err)
+		generalhelpers.Check(err)
 
 		element.Click()
 	}
@@ -44,7 +44,7 @@ func Click(selector string) func(*interaction) {
 func Wait(wait int) func(*interaction) {
 	return func(i *interaction) {
 		logger.LoggerInterface.Println("Waiting:", wait, "miliseconds")
-		helpers.Wait(wait)
+		generalhelpers.Wait(wait)
 	}
 }
 
@@ -56,7 +56,7 @@ func CheckExists(selector string) func(*browser.Browser) bool {
 	return func(browser *browser.Browser) bool {
 		logger.LoggerInterface.Println("Checking for element:", selector)
 		elements, err := browser.Wd.FindElements("xpath", selector)
-		helpers.CheckSafe(err)
+		generalhelpers.Check(err)
 
 		return len(elements) > 0
 	}

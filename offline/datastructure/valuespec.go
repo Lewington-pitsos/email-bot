@@ -4,7 +4,7 @@ package datastructure
 // This string will ultimately make up part of a Profile.
 // It has no methods, basically justa a bag.
 type ValueSpec struct {
-	Mode 	 string
+	Mode     string
 	Output   string
 	Modified bool
 	ModBank  string
@@ -19,7 +19,7 @@ func (v *ValueSpec) SetModification(modBank string) *ValueSpec {
 
 func NewValueSpec(mode string, output string) *ValueSpec {
 	return &ValueSpec{
-		Mode: mode,
+		Mode:     mode,
 		Modified: false,
 		Output:   output,
 	}

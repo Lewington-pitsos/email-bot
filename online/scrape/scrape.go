@@ -44,7 +44,7 @@ func (s *Scrape) handleFailure(failedAction *action.Action) {
 	if failedAction.Critical {
 		logger.LoggerInterface.Println("\n\n>>>>>>>>>>>>>>>> Scrape Failed: Critical Action Failed <<<<<<<<<<<<<<<<\n\n")
 		s.continueScrape = false
-	} else if s.fails <= maxFails {
+	} else if s.fails >= maxFails {
 		logger.LoggerInterface.Println("\n\n>>>>>>>>>>>>>>>> Scrape Failed: Too Many Failures <<<<<<<<<<<<<<<<\n\n")
 		s.continueScrape = false
 	} else {
