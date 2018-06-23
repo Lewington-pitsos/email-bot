@@ -1,9 +1,9 @@
 package scrape
 
 import (
+	"email-bot/datastructures"
 	"email-bot/logger"
 	"email-bot/online/browser"
-	"email-bot/online/data"
 	"fmt"
 )
 
@@ -12,7 +12,7 @@ import (
 // +---------------------------------------------------------------------------------------+
 
 type Manager struct {
-	candidateValues map[string]*data.Detail
+	candidateValues map[string]datastructures.Detail
 	scrape          *Scrape
 	browser         *browser.Browser
 }
@@ -49,10 +49,8 @@ func (m *Manager) ActiveProfileData() map[string]string {
 	return profile
 }
 
-func (m *Manager) AddValues(values map[string][]string) {
-	for name, valueSlice := range values {
-		m.candidateValues[name] = data.NewDetail(valueSlice)
-	}
+func (m *Manager) AddValues(values map[string]datastructures.Detail) {
+	m.candidateValues = values
 }
 
 func (m *Manager) ProvisionHotmailNewAccountScrape() {
@@ -66,7 +64,7 @@ func (m *Manager) ProvisionHotmailNewAccountScrape() {
 
 func NewManager(port int) *Manager {
 	return &Manager{
-		candidateValues: make(map[string]*data.Detail),
+		candidateValues: make(map[string]datastructures.Detail),
 		browser:         browser.NewBrowser(port),
 		scrape:          NewScrape(),
 	}

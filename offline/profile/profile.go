@@ -1,12 +1,13 @@
 package profile
 
 import (
-	"email-bot/offline/generator"	
+	"email-bot/datastructures"
 	"email-bot/logger"
-
+	"email-bot/offline/generator"
 )
+
 type Profile struct {
-	Values    map[string][]string
+	Values    map[string]datastructures.Detail
 	fields    []*field
 	Generator *generator.ValueGenerator
 }
@@ -19,14 +20,19 @@ func (p *Profile) AddFields(fields ...*field) *Profile {
 
 	return p
 }
+func (p *Profile) detail(fields ...*field) *Profile {
+	for _, field := range fields {
+		logger.LoggerInterface.Println("Adding field:", field.Name)
+		p.fields = append(p.fields, field)
+	}
+
+	return p
+}
 
 func (p *Profile) Generate() *Profile {
 	logger.LoggerInterface.Println("Generating Profile data")
 	for _, field := range p.fields {
-		p.Values[field.Name] = make([]string, field.ValueNumber)
-		for i := 0; i < field.ValueNumber; i++ {
-			p.Values[field.Name][i] = p.Generator.Generate(field.Format)
-		}
+		p.Values[field.Name] = p.Generator.Generate(field.Format, field.ValueNumber)
 	}
 
 	return p
@@ -34,7 +40,7 @@ func (p *Profile) Generate() *Profile {
 
 func NewProfile(generator *generator.ValueGenerator) *Profile {
 	logger.LoggerInterface.Println("Creating Profile")
-	values := make(map[string][]string)
+	values := make(map[string]datastructures.Detail)
 	generator.SetValues(values)
 
 	return &Profile{

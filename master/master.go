@@ -2,6 +2,7 @@ package master
 
 import (
 	"email-bot/database"
+	"email-bot/datastructures"
 	"email-bot/offline/profile"
 	"email-bot/online/scrape"
 	"go/build"
@@ -15,8 +16,8 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 // +---------------------------------------------------------------------------------------+
 
 type Master struct {
-	profileManager *profile.Manager
-	scrapeManager  *scrape.Manager
+	profileDesigner *profile.Designer
+	scrapeManager   *scrape.Manager
 }
 
 //
@@ -29,8 +30,8 @@ func (m *Master) saveProfile(profile map[string]string) {
 	archivist.Close()
 }
 
-func (m *Master) generatedData() map[string][]string {
-	profile := m.profileManager.StandardProfile()
+func (m *Master) generatedData() map[string]datastructures.Detail {
+	profile := m.profileDesigner.StandardProfile()
 	profile.Generate()
 	return profile.Values
 }
@@ -57,7 +58,7 @@ func (m *Master) Scrape() {
 
 func NewMaster() *Master {
 	return &Master{
-		profileManager: profile.NewManager(),
-		scrapeManager:  scrape.NewManager(8081),
+		profileDesigner: profile.NewDesigner(),
+		scrapeManager:   scrape.NewManager(8081),
 	}
 }

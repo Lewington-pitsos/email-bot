@@ -1,12 +1,12 @@
 package scrape
 
 import (
+	"email-bot/datastructures"
 	"email-bot/online/action"
 	"email-bot/online/browser"
-	"email-bot/online/data"
 )
 
-func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, browser *browser.Browser) []*action.Action {
+func hotmailNewAccountScrapeActions(candidateValues map[string]datastructures.Detail, browser *browser.Browser) []*action.Action {
 	emailInput := "//input[@id='MemberName']"
 	passInput := "//input[@id='PasswordInput']"
 	firstInput := "//input[@id='FirstName']"

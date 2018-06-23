@@ -1,6 +1,6 @@
 package profile
 
-import "email-bot/offline/datastructure"
+import "email-bot/offline/valuespec"
 
 // +-------------------------------------------------------------------------------------+
 // 									field STRUCT
@@ -9,10 +9,10 @@ import "email-bot/offline/datastructure"
 type field struct {
 	Name        string
 	ValueNumber int
-	Format      []*datastructure.ValueSpec
+	Format      []*valuespec.ValueSpec
 }
 
-func NewField(name string, valuesNeeded int, format []*datastructure.ValueSpec) *field {
+func NewField(name string, valuesNeeded int, format []*valuespec.ValueSpec) *field {
 	return &field{
 		Name:        name,
 		ValueNumber: valuesNeeded,

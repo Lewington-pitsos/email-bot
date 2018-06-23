@@ -1,9 +1,10 @@
 package generator
 
 import (
-	"email-bot/offline/valuebank"
-	"email-bot/offline/datastructure"
+	"email-bot/datastructures"
 	"email-bot/offline/helpers"
+	"email-bot/offline/valuebank"
+	"email-bot/offline/valuespec"
 )
 
 // +-------------------------------------------------------------------------------------+
@@ -14,7 +15,7 @@ import (
 // ValueBanks contain sub-string which eventually combine into the returned string.
 type ValueGenerator struct {
 	bank   *valuebank.Bank
-	values map[string][]string
+	values map[string]datastructures.Detail
 }
 
 //
@@ -39,7 +40,7 @@ func (vg *ValueGenerator) modifiedValue(value string, modification string) strin
 // getSubValue checks if the passed in ValueSpec is a litral.
 // If so, it simply return's the spec's output field.
 // Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
-func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
+func (vg *ValueGenerator) getSubValue(svs *valuespec.ValueSpec) string {
 	unmodifiedValue := vg.unmodifiedValue(svs)
 
 	if svs.Modified {
@@ -50,12 +51,12 @@ func (vg *ValueGenerator) getSubValue(svs *datastructure.ValueSpec) string {
 	return unmodifiedValue
 }
 
-func (vg *ValueGenerator) unmodifiedValue(svs *datastructure.ValueSpec) string {
+func (vg *ValueGenerator) unmodifiedValue(svs *valuespec.ValueSpec) string {
 	switch svs.Mode {
 	case "literal":
 		return svs.Output
 	case "derived":
-		return helpers.GetRandom(vg.values[svs.Output])
+		return vg.values[svs.Output].RandomValue()
 	case "bank":
 		return vg.bank.GiveValue(svs.Output)
 	}
@@ -64,12 +65,34 @@ func (vg *ValueGenerator) unmodifiedValue(svs *datastructure.ValueSpec) string {
 	return "invalid mode"
 }
 
+func (vg *ValueGenerator) generateValue(format []*valuespec.ValueSpec) string {
+	value := ""
+	for _, spec := range format {
+		value += vg.getSubValue(spec)
+	}
+
+	return value
+}
+
+func (vg *ValueGenerator) detailMany(format []*valuespec.ValueSpec, valueNumber int) datastructures.Detail {
+	values := make([]string, valueNumber)
+
+	for i := 0; i < valueNumber; i++ {
+		values[i] = vg.generateValue(format)
+	}
+
+	return datastructures.NewDetaiMany(values)
+}
+
+func (vg *ValueGenerator) detailMono(format []*valuespec.ValueSpec) datastructures.Detail {
+	return datastructures.NewDetaiMono(vg.generateValue(format))
+}
+
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-
-func (vg *ValueGenerator) SetValues(values map[string][]string) *ValueGenerator {
+func (vg *ValueGenerator) SetValues(values map[string]datastructures.Detail) *ValueGenerator {
 	vg.values = values
 	return vg
 }
@@ -77,13 +100,12 @@ func (vg *ValueGenerator) SetValues(values map[string][]string) *ValueGenerator 
 // Generate iterates over all the ValueSpec's in format.
 // For each of these it generates a string, according to that spec.
 // All the substrings are concatonated, and the result is returned.
-func (vg *ValueGenerator) Generate(format []*datastructure.ValueSpec) string {
-	output := ""
-	for _, spec := range format {
-		output += vg.getSubValue(spec)
+func (vg *ValueGenerator) Generate(format []*valuespec.ValueSpec, valueNumber int) datastructures.Detail {
+	if valueNumber == 1 {
+		return vg.detailMono(format)
 	}
 
-	return output
+	return vg.detailMany(format, valueNumber)
 }
 
 // +-------------------------------------------------------------------------------------+
@@ -93,6 +115,6 @@ func (vg *ValueGenerator) Generate(format []*datastructure.ValueSpec) string {
 // NewValueGenerator returns a ValueGenerator struct
 func NewValueGenerator() *ValueGenerator {
 	return &ValueGenerator{
-		bank:   valuebank.SetupBank(),
+		bank: valuebank.SetupBank(),
 	}
 }

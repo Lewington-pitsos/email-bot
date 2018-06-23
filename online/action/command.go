@@ -1,10 +1,10 @@
 package action
 
 import (
+	"email-bot/datastructures"
 	"email-bot/helpers/generalhelpers"
 	"email-bot/logger"
 	"email-bot/online/browser"
-	"email-bot/online/data"
 	"fmt"
 )
 
@@ -19,7 +19,7 @@ func VisitPage(url string) func(*interaction) {
 	}
 }
 
-func FillField(selector string, detail *data.Detail) func(*interaction) {
+func FillField(selector string, detail datastructures.Detail) func(*interaction) {
 	return func(i *interaction) {
 		element, err := i.browser.Wd.FindElement("xpath", selector)
 		generalhelpers.Check(err)
@@ -32,7 +32,7 @@ func FillField(selector string, detail *data.Detail) func(*interaction) {
 	}
 }
 
-func SelectOption(selector string, detail *data.Detail) func(*interaction) {
+func SelectOption(selector string, detail datastructures.Detail) func(*interaction) {
 	return func(i *interaction) {
 		value := detail.RandomValue()
 		logger.LoggerInterface.Println("Setting Selection:", selector, "as:", value)
