@@ -24,7 +24,7 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]datastructures.De
 	a := action.NewAction(browser, false)
 	command := action.VisitPage("https://signup.live.com/signup")
 	a.AddToInteraction(command)
-	a.AddWait(2000)
+	a.AddWait(300)
 
 	// ========================================================
 

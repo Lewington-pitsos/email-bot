@@ -10,12 +10,12 @@ import (
 func NewWebDriver(portNum int) (selenium.WebDriver, *selenium.Service) {
 	const (
 		seleniumPath    = "/usr/local/bin/selenium-server-standalone-3.12.0.jar"
-		geckoDriverPath = "/usr/local/bin/geckodriver"
+		geckoDriverPath = "/usr/local/bin/chromedriver"
 	)
 
 	opts := []selenium.ServiceOption{
-		selenium.GeckoDriver(geckoDriverPath), // Specify the path to GeckoDriver in order to use Firefox.
-		selenium.Output(os.Stderr),            // Output debug information to STDERR.
+		selenium.GeckoDriver(geckoDriverPath),
+		selenium.Output(os.Stderr),
 	}
 
 	selenium.SetDebug(true)
@@ -25,7 +25,7 @@ func NewWebDriver(portNum int) (selenium.WebDriver, *selenium.Service) {
 	}
 
 	selenium.SetDebug(true)
-	caps := selenium.Capabilities{"browserName": "firefox"}
+	caps := selenium.Capabilities{"browserName": "chrome"}
 	wd, err := selenium.NewRemote(caps, fmt.Sprintf("http://localhost:%d/wd/hub", portNum))
 	if err != nil {
 		panic(err)
