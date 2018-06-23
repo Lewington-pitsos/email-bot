@@ -50,6 +50,13 @@ func (a *Action) AddWait(wait int) *Action {
 	return a
 }
 
+func (a *Action) AddSelectOperation(selector string, optionSelector string, detail *data.Detail) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(SelectOption(selector+optionSelector, detail))
+
+	return a
+}
+
 func (a *Action) AddFillOperation(selector string, detail *data.Detail) *Action {
 	a.spec.AddCommand(CheckExists(selector))
 	a.interaction.AddCommand(FillField(selector, detail))

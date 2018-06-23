@@ -32,15 +32,15 @@ func (m *Manager) StandardProfile() *Profile {
 		datastructure.NewValueSpec("literal", "@hotmail.com"),
 	})
 
-	dayField := NewField("day", 10, []*datastructure.ValueSpec{
+	dayField := NewField("day", 1, []*datastructure.ValueSpec{
 		datastructure.NewValueSpec("bank", "dayvault"),
 	})
 
-	monthField := NewField("month", 10, []*datastructure.ValueSpec{
+	monthField := NewField("month", 1, []*datastructure.ValueSpec{
 		datastructure.NewValueSpec("bank", "monthvault"),
 	})
 
-	yearField := NewField("year", 10, []*datastructure.ValueSpec{
+	yearField := NewField("year", 1, []*datastructure.ValueSpec{
 		datastructure.NewValueSpec("bank", "yearvault"),
 	})
 
