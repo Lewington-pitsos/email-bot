@@ -56,9 +56,9 @@ func (m *Bot) Scrape() {
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewBot() *Bot {
+func NewBot(port int) *Bot {
 	return &Bot{
 		profileDesigner: profile.NewDesigner(),
-		scrapeManager:   scrape.NewManager(8081),
+		scrapeManager:   scrape.NewManager(port),
 	}
 }

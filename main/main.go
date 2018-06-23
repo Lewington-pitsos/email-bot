@@ -1,10 +1,12 @@
 package main
 
-import "email-bot/master"
+import "email-bot/emailbot"
 
 func main() {
-	master := master.NewMaster()
-	master.Scrape()
+	botManager := emailbot.NewManager()
+	botManager.AddBot(9999)
+	botManager.AddBot(8082)
+	botManager.ScrapeAll()
 
 	// profile := map[string]string{
 	// 	"day":       "19",
