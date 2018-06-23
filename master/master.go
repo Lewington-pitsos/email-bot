@@ -34,6 +34,12 @@ func (m *Master) generatedData() map[string][]string {
 	return profile.Values
 }
 
+func (m *Master) processResults(success bool) {
+	if success {
+		m.saveProfile(m.scrapeManager.ActiveProfileData())
+	}
+}
+
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
@@ -41,8 +47,7 @@ func (m *Master) generatedData() map[string][]string {
 func (m *Master) Scrape() {
 	m.scrapeManager.AddValues(m.generatedData())
 	m.scrapeManager.ProvisionHotmailNewAccountScrape()
-	m.scrapeManager.Scrape()
-	m.saveProfile(m.scrapeManager.ActiveProfileData())
+	m.processResults(m.scrapeManager.Scrape())
 }
 
 // +---------------------------------------------------------------------------------------+

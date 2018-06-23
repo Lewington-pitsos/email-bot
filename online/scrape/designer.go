@@ -15,17 +15,19 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 	monthInput := "//select[@id='BirthMonth']"
 	yearInput := "//select[@id='BirthYear']"
 	capchaBox := "//div[@id='hipTemplateContainer']"
+	//homeBanner := "//div[@id='loaded-home-banner-profile-section']"
+	//homeHeader := "//div[@id='headerUniversalHeader']"
 
 	submitInput := "//input[@id='iSignupAction']"
 
-	a := action.NewAction(browser)
+	a := action.NewAction(browser, false)
 	command := action.VisitPage("https://signup.live.com/signup")
 	a.AddToInteraction(command)
 	a.AddWait(3000)
 
 	// ========================================================
 
-	a2 := action.NewAction(browser)
+	a2 := action.NewAction(browser, false)
 	a2.AddFillOperation(emailInput, candidateValues["email"])
 	a2.AddWait(200)
 	a2.AddSubmitOperation(submitInput)
@@ -33,7 +35,7 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 
 	// ========================================================
 
-	a3 := action.NewAction(browser)
+	a3 := action.NewAction(browser, false)
 	a3.AddFillOperation(passInput, candidateValues["password"])
 	a3.AddWait(200)
 	a3.AddSubmitOperation(submitInput)
@@ -41,7 +43,7 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 
 	// ========================================================
 
-	a4 := action.NewAction(browser)
+	a4 := action.NewAction(browser, false)
 	a4.AddFillOperation(firstInput, candidateValues["username"])
 	a4.AddFillOperation(lastInput, candidateValues["username"])
 	a4.AddWait(200)
@@ -50,7 +52,7 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 
 	// ========================================================
 
-	a5 := action.NewAction(browser)
+	a5 := action.NewAction(browser, false)
 	a5.AddFillOperation(dayInput, candidateValues["day"])
 	a5.AddFillOperation(monthInput, candidateValues["month"])
 	a5.AddFillOperation(yearInput, candidateValues["year"])
@@ -61,15 +63,15 @@ func hotmailNewAccountScrapeActions(candidateValues map[string]*data.Detail, bro
 
 	// ========================================================
 
-	a6 := action.NewAction(browser)
+	a6 := action.NewAction(browser, false)
 	a6.AddToSpec(action.CheckExists(capchaBox))
-	a6.AddWait(100000)
+	a6.AddWait(1000)
 
 	// ========================================================
 
-	a7 := action.NewAction(browser)
-	a7.AddToSpec(action.CheckExists(capchaBox))
-	a6.AddWait(100000)
+	//a7 := action.NewAction(browser, true)
+	//a7.AddToSpec(action.CheckExists(homeBanner))
+	//a7.AddToSpec(action.CheckExists(homeHeader))
 
-	return []*action.Action{a, a2, a3, a4, a5, a6, a7}
+	return []*action.Action{a, a2, a3, a4, a5, a6}
 }

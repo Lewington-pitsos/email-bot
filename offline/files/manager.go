@@ -1,6 +1,7 @@
 package files
 
 import (
+	"email-bot/logger"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -29,7 +30,7 @@ func (m *Manager) saveFile(fileName string, data interface{}) {
 	fmt.Println(data)
 	dataBytes, err := json.Marshal(data)
 	check(err)
-
+	logger.LoggerInterface.Println("Saving data to file:", fileName)
 	ioutil.WriteFile(fileName, dataBytes, 0777)
 }
 
@@ -38,11 +39,11 @@ func (m *Manager) saveProfileData(profileName string, profileData map[string]str
 }
 
 func (m *Manager) addProfileToLedger(profileName string) {
+	logger.LoggerInterface.Println("Adding profile to ledger:", profileName)
 	profileLedger := make([]string, 0, 1000)
-	m.populate(profileLedgerPath, profileLedger)
+	m.populate(profileLedgerPath, &profileLedger)
 	profileLedger = append(profileLedger, profileName)
 	m.saveFile(profileLedgerPath, profileLedger)
-
 }
 
 // Constructs an absolote path to the relevent profile file name.
@@ -57,7 +58,6 @@ func (m *Manager) bankPath(fileName string) string {
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
-
 
 // Loads the database file matching that name into bytes.
 // Marshals those bytes into Json data.
@@ -80,8 +80,9 @@ func (m *Manager) BankeData(bankName string) []string {
 }
 
 func (m *Manager) RecordProfile(profileName string, profileData map[string]string) {
-	m.saveProfileData(m.filePath(profileName), profileData)
+	m.saveProfileData(profileName, profileData)
 	m.addProfileToLedger(profileName)
+	logger.LoggerInterface.Println("Profile Recorded Successfully:", profileName, "\n")
 }
 
 // +-------------------------------------------------------------------------------------+

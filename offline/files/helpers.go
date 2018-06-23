@@ -14,4 +14,4 @@ var profileFileSuffix = ".json"
 var bankFilePath = build.Default.GOPATH + "/src/email-bot/data/bankvalues/"
 var bankFileSuffix = ".json"
 
-var profileLedgerPath = "/src/email-bot/data/hotmail/ledger.json"
+var profileLedgerPath = build.Default.GOPATH + "/src/email-bot/data/hotmail/ledger.json"

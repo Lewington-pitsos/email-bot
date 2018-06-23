@@ -25,6 +25,7 @@ func FillField(selector string, detail *data.Detail) func(*interaction) {
 
 		value := detail.ValueAt(i.tries)
 		logger.LoggerInterface.Println("Filling element:", selector, "with:", value)
+		element.Clear()
 
 		element.SendKeys(value)
 	}

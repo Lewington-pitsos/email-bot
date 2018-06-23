@@ -24,9 +24,10 @@ type Manager struct {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (m *Manager) Scrape() {
+func (m *Manager) Scrape() bool {
 	m.scrape.Scrape()
 	m.browser.Quit()
+	return m.scrape.Success
 }
 
 func (m *Manager) ActiveProfileData() map[string]string {

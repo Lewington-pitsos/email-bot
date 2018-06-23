@@ -12,6 +12,7 @@ import (
 type Action struct {
 	spec        *spec
 	interaction *interaction
+	Critical    bool
 }
 
 //
@@ -67,9 +68,10 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 //										EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewAction(browser *browser.Browser) *Action {
+func NewAction(browser *browser.Browser, critical bool) *Action {
 	return &Action{
 		spec:        NewSpec(browser),
 		interaction: NewInteraction(browser),
+		Critical:    critical,
 	}
 }
