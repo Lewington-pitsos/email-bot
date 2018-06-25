@@ -1,21 +1,25 @@
 package profile
 
-import "email-bot/offline/valuespec"
+import "email-bot/offline/chunk"
 
 // +-------------------------------------------------------------------------------------+
-// 									field STRUCT
+// 									Field STRUCT
 // +-------------------------------------------------------------------------------------+
 
-type field struct {
+type Field struct {
 	Name        string
 	ValueNumber int
 	Format      []*valuespec.ValueSpec
 }
 
-func NewField(name string, valuesNeeded int, format []*valuespec.ValueSpec) *field {
-	return &field{
+func(f *Field) AddChunck(chunk *Chunk) *Field {
+	
+}
+
+func NewField(name string, valuesNeeded int) *Field {
+	return &Field{
 		Name:        name,
 		ValueNumber: valuesNeeded,
-		Format:      format,
+		Format:      make([]*valuspec.valuesNeeded, 0, valuesNeeded)
 	}
 }
