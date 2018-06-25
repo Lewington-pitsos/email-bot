@@ -31,8 +31,8 @@ func (m *Bot) saveProfile(profile map[string]string) {
 }
 
 func (m *Bot) generatedData() map[string]datastructures.Detail {
-	profile.Generate()
-	return profile.Values
+	m.dataProfile.Generate()
+	return m.dataProfile.Values
 }
 
 func (m *Bot) processResults(success bool) {

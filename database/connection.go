@@ -2,7 +2,7 @@ package database
 
 import "database/sql"
 
-const connStr string = "user=email-bot dbname=email-bot password=beepBoop sslmode=disable"
+const connStr string = "user=email_bot dbname=email_bot password=beepBoop sslmode=disable"
 const driverName string = "postgres"
 
 type connection struct {

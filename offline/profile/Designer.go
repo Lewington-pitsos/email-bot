@@ -1,58 +1,58 @@
 package profile
 
-import (
-	"email-bot/logger"
-	"email-bot/offline/generator"
-	"email-bot/offline/valuespec"
-)
+// import (
+// 	"email-bot/logger"
+// 	"email-bot/offline/generator"
+// 	"email-bot/offline/valuespec"
+// )
 
-type Designer struct {
-}
+// type Designer struct {
+// }
 
-func (m *Designer) StandardProfile() *Profile {
-	logger.LoggerInterface.Println("Generating standard profile")
-	generator := generator.NewValueGenerator()
-	profile := NewProfile(generator)
+// func (m *Designer) StandardProfile() *Profile {
+// 	logger.LoggerInterface.Println("Generating standard profile")
+// 	generator := generator.NewValueGenerator()
+// 	profile := NewProfile(generator)
 
-	firstNameField := NewField("firstname", 1, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("bank", "name"),
-	})
+// 	firstNameField := NewField("firstname", 1, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("bank", "name"),
+// 	})
 
-	lastNameField := NewField("lastname", 1, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("bank", "name"),
-	})
+// 	lastNameField := NewField("lastname", 1, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("bank", "name"),
+// 	})
 
-	fullNameField := NewField("fullname", 1, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("derived", "firstname"),
-		valuespec.NewValueSpec("derived", "lastname"),
-	})
+// 	fullNameField := NewField("fullname", 1, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("derived", "firstname"),
+// 		valuespec.NewValueSpec("derived", "lastname"),
+// 	})
 
-	emailField := NewField("email", 100, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("derived", "fullname").SetModification("slang"),
-		valuespec.NewValueSpec("literal", "@hotmail.com"),
-	})
+// 	emailField := NewField("email", 100, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("derived", "fullname").SetModification("slang"),
+// 		valuespec.NewValueSpec("literal", "@hotmail.com"),
+// 	})
 
-	dayField := NewField("day", 1, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("bank", "dayvault"),
-	})
+// 	dayField := NewField("day", 1, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("bank", "dayvault"),
+// 	})
 
-	monthField := NewField("month", 1, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("bank", "monthvault"),
-	})
+// 	monthField := NewField("month", 1, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("bank", "monthvault"),
+// 	})
 
-	yearField := NewField("year", 1, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("bank", "yearvault"),
-	})
+// 	yearField := NewField("year", 1, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("bank", "yearvault"),
+// 	})
 
-	passField := NewField("password", 20, []*valuespec.ValueSpec{
-		valuespec.NewValueSpec("bank", "passvault"),
-	})
+// 	passField := NewField("password", 20, []*valuespec.ValueSpec{
+// 		valuespec.NewValueSpec("bank", "passvault"),
+// 	})
 
-	profile.AddFields(firstNameField, lastNameField, fullNameField, emailField, dayField, monthField, yearField, passField)
+// 	profile.AddFields(firstNameField, lastNameField, fullNameField, emailField, dayField, monthField, yearField, passField)
 
-	return profile
-}
+// 	return profile
+// }
 
-func NewDesigner() *Designer {
-	return &Designer{}
-}
+// func NewDesigner() *Designer {
+// 	return &Designer{}
+// }

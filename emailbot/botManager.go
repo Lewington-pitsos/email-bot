@@ -1,12 +1,12 @@
 package emailbot
 
 import (
-	"time"
 	"email-bot/offline/profile"
+	"time"
 )
 
 type Manager struct {
-	bots []*Bot
+	bots        []*Bot
 	dataProfile *profile.DataProfile
 }
 
@@ -22,13 +22,13 @@ func (m *Manager) ScrapeAll() {
 	time.Sleep(time.Millisecond * 10000)
 }
 
-func (m *Manager) DataProfile() {
-	return m.profile
+func (m *Manager) DataProfile() *profile.DataProfile {
+	return m.dataProfile
 }
 
 func NewManager() *Manager {
 	return &Manager{
-		bots: make([]*Bot, 0, 100),
-		profile: profile.NewDataProfile()
+		bots:        make([]*Bot, 0, 100),
+		dataProfile: profile.NewDataProfile(),
 	}
 }

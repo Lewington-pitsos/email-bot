@@ -12,7 +12,7 @@ type Setup struct {
 }
 
 func (s *Setup) Setup() {
-	s.db.Exec(
+	_, err := s.db.Exec(
 		`CREATE TABLE profiles (
 			id serial,
 			first_name varchar(30) NOT NULL,
@@ -24,6 +24,8 @@ func (s *Setup) Setup() {
 			PRIMARY KEY(id) 
 		);`,
 	)
+
+	generalhelpers.Check(err)
 }
 
 func (s *Setup) Drop() {

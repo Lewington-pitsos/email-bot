@@ -5,25 +5,25 @@ import "email-bot/emailbot"
 func main() {
 	botManager := emailbot.NewManager()
 
-	botManager.DataProfile.
+	botManager.DataProfile().
 		AddField("firstname", 1).
-		__WithChunk("bank", "name").
+		WithChunk("bank", "name").
 		AddField("lastname", 1).
-		__WithChunk("bank", "name").
+		WithChunk("bank", "name").
 		AddField("fullname", 1).
-		__WithChunk("derived", "firstanme").
-		__WithChunk("derived", "firstanme").
+		WithChunk("derived", "firstanme").
+		WithChunk("derived", "firstanme").
 		AddField("email", 30).
-		__WithModifiedChunk("derived", "fullname", "slang").
-		__WithChunk("literal", "@hotmail.com").
+		WithModifiedChunk("derived", "fullname", "slang").
+		WithChunk("literal", "@hotmail.com").
 		AddField("day", 1).
-		__WithChunk("bank", "dayvault").
+		WithChunk("bank", "dayvault").
 		AddField("month", 1).
-		__WithChunk("bank", "monthvault").
+		WithChunk("bank", "monthvault").
 		AddField("year", 1).
-		__WithChunk("bank", "yearvault").
+		WithChunk("bank", "yearvault").
 		AddField("password", 20).
-		__WithChunk("bank", "passvault")
+		WithChunk("bank", "passvault")
 
 	botManager.AddBot(9999)
 	botManager.AddBot(8082)
@@ -46,8 +46,7 @@ func main() {
 
 	// profile := profile.NewActiveProfile("floob")
 	// profile.Populate()
-}
 
-func mainn() {
-
+	// setup := database.NewSetup()
+	// setup.Setup()
 }

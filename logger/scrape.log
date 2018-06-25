@@ -2223,3 +2223,9 @@
 2018/06/23 20:08:21 command.go:63: Waiting: 300 miliseconds
 2018/06/23 20:08:21 command.go:53: Clicking element: //input[@id='iSignupAction']
 2018/06/23 20:08:21 command.go:63: Waiting: 4000 miliseconds
+2018/06/25 19:53:06 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/06/25 19:53:06 dataprofile.go:49: Creating DataProfile
+2018/06/25 19:55:18 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/06/25 19:55:18 dataprofile.go:49: Creating DataProfile
+2018/06/25 19:59:15 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/06/25 19:59:15 dataprofile.go:49: Creating DataProfile

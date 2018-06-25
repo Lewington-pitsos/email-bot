@@ -13,27 +13,26 @@ type DataProfile struct {
 	Generator *generator.ValueGenerator
 }
 
-func (p *DataProfile) AddField(name string, ValueNumber int) *Field {
-	logger.LoggerInterface.Println("Adding field:", field.Name)
+func (p *DataProfile) AddField(name string, ValueNumber int) *DataProfile {
 	field := NewField(name, ValueNumber)
 	p.fields = append(p.fields, field)
 
 	return p
 }
 
-func (p *DataProfile) __WithChunck(mode string, source string) *DataProfile {
-	field := d.fields[len(d.fields)-1]
+func (p *DataProfile) WithChunk(mode string, source string) *DataProfile {
+	field := p.fields[len(p.fields)-1]
 	field.Format = append(field.Format, chunk.NewChunk(mode, source))
 
-	return d
+	return p
 }
 
-func (p *DataProfile) __WithModifiedChunck(mode string, source string, modBank string) *DataProfile {
-	chunk := chunk.NewChunk(mode, source).SetModification(modBank)
-	field := d.fields[len(d.fields)-1]
-	field.Format = append(field.Format, chunk.NewChunk(mode, source))
+func (p *DataProfile) WithModifiedChunk(mode string, source string, modBank string) *DataProfile {
+	modChunk := chunk.NewChunk(mode, source).SetModification(modBank)
+	field := p.fields[len(p.fields)-1]
+	field.Format = append(field.Format, modChunk)
 
-	return d
+	return p
 }
 
 func (p *DataProfile) Generate() *DataProfile {
@@ -53,7 +52,7 @@ func NewDataProfile() *DataProfile {
 
 	return &DataProfile{
 		Values:    values,
-		fields:    make([]*field, 0, 50),
+		fields:    make([]*Field, 0, 50),
 		Generator: generator,
 	}
 }
