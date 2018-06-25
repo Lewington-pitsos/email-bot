@@ -25,8 +25,7 @@ func main() {
 		AddField("password", 20).
 		WithChunk("bank", "passvault")
 
-	botManager.AddBot(9999)
-	botManager.AddBot(8082)
+	botManager.AddBot(8081)
 	botManager.ScrapeAll()
 
 	// profile := map[string]string{
