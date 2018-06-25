@@ -35,6 +35,12 @@ func (m *Manager) Scrape() bool {
 	return m.scrape.Success
 }
 
+func(m *Manager) AddAction() {
+	action := action.NewAction()
+	m.scraoe.AddActions(action)
+	return action
+}
+
 func (m *Manager) ActiveProfileData() map[string]string {
 	profile := make(map[string]string)
 	logger.LoggerInterface.Println("Extracting data for entered profile")

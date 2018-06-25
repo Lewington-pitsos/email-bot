@@ -50,6 +50,12 @@ func (a *Action) AddWait(wait int) *Action {
 	return a
 }
 
+func (a *Action) AddVisit(url string) *Action {
+	a.interaction.AddCommand(VisitPage(url))
+
+	return a
+}
+
 func (a *Action) AddSelectOperation(selector string, optionSelector string, detail datastructures.Detail) *Action {
 	a.spec.AddCommand(CheckExists(selector))
 	a.interaction.AddCommand(SelectOption(selector+optionSelector, detail))
