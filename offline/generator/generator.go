@@ -2,9 +2,9 @@ package generator
 
 import (
 	"email-bot/datastructures"
+	"email-bot/offline/chunk"
 	"email-bot/offline/helpers"
 	"email-bot/offline/valuebank"
-	"email-bot/offline/valuespec"
 )
 
 // +-------------------------------------------------------------------------------------+
@@ -37,10 +37,10 @@ func (vg *ValueGenerator) modifiedValue(value string, modification string) strin
 	return vg.modifiedString(value, modification, modIndex)
 }
 
-// getSubValue checks if the passed in ValueSpec is a litral.
+// getSubValue checks if the passed in Chunk is a litral.
 // If so, it simply return's the spec's output field.
 // Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
-func (vg *ValueGenerator) getSubValue(svs *valuespec.ValueSpec) string {
+func (vg *ValueGenerator) getSubValue(svs *chunk.Chunk) string {
 	unmodifiedValue := vg.unmodifiedValue(svs)
 
 	if svs.Modified {
@@ -51,21 +51,21 @@ func (vg *ValueGenerator) getSubValue(svs *valuespec.ValueSpec) string {
 	return unmodifiedValue
 }
 
-func (vg *ValueGenerator) unmodifiedValue(svs *valuespec.ValueSpec) string {
+func (vg *ValueGenerator) unmodifiedValue(svs *chunk.Chunk) string {
 	switch svs.Mode {
 	case "literal":
-		return svs.Output
+		return svs.Source
 	case "derived":
-		return vg.values[svs.Output].RandomValue()
+		return vg.values[svs.Source].RandomValue()
 	case "bank":
-		return vg.bank.GiveValue(svs.Output)
+		return vg.bank.GiveValue(svs.Source)
 	}
 
 	panic("invalid mode")
 	return "invalid mode"
 }
 
-func (vg *ValueGenerator) generateValue(format []*valuespec.ValueSpec) string {
+func (vg *ValueGenerator) generateValue(format []*chunk.Chunk) string {
 	value := ""
 	for _, spec := range format {
 		value += vg.getSubValue(spec)
@@ -74,7 +74,7 @@ func (vg *ValueGenerator) generateValue(format []*valuespec.ValueSpec) string {
 	return value
 }
 
-func (vg *ValueGenerator) detailMany(format []*valuespec.ValueSpec, valueNumber int) datastructures.Detail {
+func (vg *ValueGenerator) detailMany(format []*chunk.Chunk, valueNumber int) datastructures.Detail {
 	values := make([]string, valueNumber)
 
 	for i := 0; i < valueNumber; i++ {
@@ -84,7 +84,7 @@ func (vg *ValueGenerator) detailMany(format []*valuespec.ValueSpec, valueNumber 
 	return datastructures.NewDetaiMany(values)
 }
 
-func (vg *ValueGenerator) detailMono(format []*valuespec.ValueSpec) datastructures.Detail {
+func (vg *ValueGenerator) detailMono(format []*chunk.Chunk) datastructures.Detail {
 	return datastructures.NewDetaiMono(vg.generateValue(format))
 }
 
@@ -97,10 +97,10 @@ func (vg *ValueGenerator) SetValues(values map[string]datastructures.Detail) *Va
 	return vg
 }
 
-// Generate iterates over all the ValueSpec's in format.
+// Generate iterates over all the Chunk's in format.
 // For each of these it generates a string, according to that spec.
 // All the substrings are concatonated, and the result is returned.
-func (vg *ValueGenerator) Generate(format []*valuespec.ValueSpec, valueNumber int) datastructures.Detail {
+func (vg *ValueGenerator) Generate(format []*chunk.Chunk, valueNumber int) datastructures.Detail {
 	if valueNumber == 1 {
 		return vg.detailMono(format)
 	}

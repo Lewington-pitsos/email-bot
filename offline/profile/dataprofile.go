@@ -3,6 +3,7 @@ package profile
 import (
 	"email-bot/datastructures"
 	"email-bot/logger"
+	"email-bot/offline/chunk"
 	"email-bot/offline/generator"
 )
 
@@ -17,9 +18,23 @@ func (p *DataProfile) AddField(name string, ValueNumber int) *Field {
 	field := NewField(name, ValueNumber)
 	p.fields = append(p.fields, field)
 
-	return field
+	return p
 }
 
+func (p *DataProfile) __WithChunck(mode string, source string) *DataProfile {
+	field := d.fields[len(d.fields)-1]
+	field.Format = append(field.Format, chunk.NewChunk(mode, source))
+
+	return d
+}
+
+func (p *DataProfile) __WithModifiedChunck(mode string, source string, modBank string) *DataProfile {
+	chunk := chunk.NewChunk(mode, source).SetModification(modBank)
+	field := d.fields[len(d.fields)-1]
+	field.Format = append(field.Format, chunk.NewChunk(mode, source))
+
+	return d
+}
 
 func (p *DataProfile) Generate() *DataProfile {
 	logger.LoggerInterface.Println("Generating DataProfile data")

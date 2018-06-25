@@ -5,7 +5,7 @@ package chunk
 // It has no methods, basically justa a bag.
 type Chunk struct {
 	Mode     string
-	Output   string
+	Source   string
 	Modified bool
 	ModBank  string
 }
@@ -17,10 +17,10 @@ func (c *Chunk) SetModification(modBank string) *Chunk {
 	return c
 }
 
-func NewChunk(mode string, output string) *Chunk {
+func NewChunk(mode string, source string) *Chunk {
 	return &Chunk{
 		Mode:     mode,
 		Modified: false,
-		Output:   output,
+		Source:   source,
 	}
 }

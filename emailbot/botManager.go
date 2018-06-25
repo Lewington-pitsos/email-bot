@@ -11,7 +11,7 @@ type Manager struct {
 }
 
 func (m *Manager) AddBot(port int) {
-	m.bots = append(m.bots, NewBot(port))
+	m.bots = append(m.bots, NewBot(port, m.dataProfile))
 }
 
 func (m *Manager) ScrapeAll() {

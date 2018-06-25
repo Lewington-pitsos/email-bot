@@ -12,9 +12,6 @@ type Field struct {
 	Format      []*valuespec.ValueSpec
 }
 
-func(f *Field) AddChunck(chunk *Chunk) *Field {
-	
-}
 
 func NewField(name string, valuesNeeded int) *Field {
 	return &Field{
