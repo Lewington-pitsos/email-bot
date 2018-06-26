@@ -2,6 +2,7 @@ package action
 
 import (
 	"email-bot/datastructures"
+	"email-bot/logger"
 	"email-bot/online/browser"
 )
 
@@ -56,16 +57,16 @@ func (a *Action) AddVisit(url string) *Action {
 	return a
 }
 
-func (a *Action) AddSelectOperation(selector string, optionSelector string, detail datastructures.Detail) *Action {
+func (a *Action) AddSelectOperation(selector string, optionSelector string, valueType string) *Action {
 	a.spec.AddCommand(CheckExists(selector))
-	a.interaction.AddCommand(SelectOption(selector+optionSelector, detail))
+	a.interaction.AddValueCommand(SelectOption(selector+optionSelector), valueType)
 
 	return a
 }
 
-func (a *Action) AddFillOperation(selector string, detail datastructures.Detail) *Action {
+func (a *Action) AddFillOperation(selector string, valueType string) *Action {
 	a.spec.AddCommand(CheckExists(selector))
-	a.interaction.AddCommand(FillField(selector, detail))
+	a.interaction.AddValueCommand(FillField(selector), valueType)
 
 	return a
 }
@@ -78,8 +79,14 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 }
 
 func (a *Action) AddBrowser(browser *browser.Browser) *Action {
-	a.spec.addBrowser(browser)
 	a.interaction.addBrowser(browser)
+	a.spec.addBrowser(browser)
+	return a
+}
+
+func (a *Action) AddCandidateValues(candidateValues map[string]datastructures.Detail) *Action {
+	logger.LoggerInterface.Println(a)
+	a.interaction.addCandidateValues(candidateValues)
 	return a
 }
 

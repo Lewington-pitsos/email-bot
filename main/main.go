@@ -1,6 +1,9 @@
 package main
 
-import "email-bot/emailbot"
+import (
+	"email-bot/emailbot"
+	"email-bot/online/action"
+)
 
 func main() {
 	botManager := emailbot.NewManager()
@@ -11,8 +14,8 @@ func main() {
 		AddField("lastname", 1).
 		WithChunk("bank", "name").
 		AddField("fullname", 1).
-		WithChunk("derived", "firstanme").
-		WithChunk("derived", "firstanme").
+		WithChunk("derived", "firstname").
+		WithChunk("derived", "lastname").
 		AddField("email", 30).
 		WithModifiedChunk("derived", "fullname", "slang").
 		WithChunk("literal", "@hotmail.com").
@@ -39,59 +42,60 @@ func main() {
 	submitInput := "//input[@id='iSignupAction']"
 	dateOption := "//option[@value='%s']"
 
-	botManager.AddAction().
+	botManager.AddAction(false).
 		AddVisit("https://signup.live.com/signup").
 		AddWait(300)
 
 	// ========================================================
 
-	botManager.AddAction().
-		AddFillOperation(emailInput, candidateValues["email"]).
+	botManager.AddAction(false).
+		AddFillOperation(emailInput, "email").
 		AddWait(200).
 		AddSubmitOperation(submitInput).
-		AddWait(300).
+		AddWait(300)
 
-	// ========================================================
+		// ========================================================
 
-	botManager.AddAction().
-		AddFillOperation(passInput, candidateValues["password"]).
+	botManager.AddAction(false).
+		AddFillOperation(passInput, "password").
 		AddWait(200).
 		AddSubmitOperation(submitInput).
-		AddWait(300).
+		AddWait(300)
 
-	// ========================================================
+		// ========================================================
 
-	botManager.AddAction().
-		AddFillOperation(firstInput, candidateValues["firstname"]).
-		AddFillOperation(lastInput, candidateValues["lastname"]).
+	botManager.AddAction(false).
+		AddFillOperation(firstInput, "firstname").
+		AddFillOperation(lastInput, "lastname").
 		AddWait(200).
 		AddSubmitOperation(submitInput).
-		AddWait(300).
+		AddWait(300)
 
-	// ========================================================
+		// ========================================================
 
-	botManager.AddAction().
-		AddSelectOperation(dayInput, dateOption, candidateValues["day"]).
-		AddSelectOperation(monthInput, dateOption, candidateValues["month"]).
-		AddSelectOperation(yearInput, dateOption, candidateValues["year"]).
+	botManager.AddAction(false).
+		AddSelectOperation(dayInput, dateOption, "day").
+		AddSelectOperation(monthInput, dateOption, "month").
+		AddSelectOperation(yearInput, dateOption, "year").
 		AddWait(300).
 		AddToSpec(action.CheckExists(submitInput)).
 		AddToInteraction(action.Click(submitInput)).
-		AddWait(4000).
+		AddWait(4000)
 
-	// ========================================================
+		// ========================================================
 
-	botManager.AddAction().
+	botManager.AddAction(false).
 		AddToSpec(action.CheckExists(capchaBox)).
-		AddWait(90000).
+		AddWait(90000)
 
 	// ========================================================
 
-	botManager.AddAction().
+	botManager.AddAction(true).
 		AddToSpec(action.CheckExists(homeBanner)).
-		AddToSpec(action.CheckExists(homeHeader)).
-		
+		AddToSpec(action.CheckExists(homeHeader))
+
 	botManager.AddBot(8081)
+
 	botManager.ScrapeAll()
 
 	// profile := map[string]string{

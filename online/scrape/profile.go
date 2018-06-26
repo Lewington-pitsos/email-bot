@@ -2,8 +2,6 @@ package scrape
 
 import (
 	"email-bot/online/action"
-
-	"github.com/getlantern/deepcopy"
 )
 
 type Profile struct {
@@ -11,9 +9,7 @@ type Profile struct {
 }
 
 func (p *Profile) Instructions() []*action.Action {
-	instructionClone := make([]*action.Action, 0, 40)
-	deepcopy.Copy(instructionClone, p.instructions)
-	return instructionClone
+	return p.instructions
 }
 
 func (p *Profile) AddAction(newAction *action.Action) {

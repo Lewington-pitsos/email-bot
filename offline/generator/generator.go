@@ -40,25 +40,25 @@ func (vg *ValueGenerator) modifiedValue(value string, modification string) strin
 // getSubValue checks if the passed in Chunk is a litral.
 // If so, it simply return's the spec's output field.
 // Otherwise, it retrives the relevent (from vg.banks) and gets that bank to generate an output.
-func (vg *ValueGenerator) getSubValue(svs *chunk.Chunk) string {
-	unmodifiedValue := vg.unmodifiedValue(svs)
+func (vg *ValueGenerator) getSubValue(currentChunk *chunk.Chunk) string {
+	unmodifiedValue := vg.unmodifiedValue(currentChunk)
 
-	if svs.Modified {
-		modification := vg.bank.GiveValue(svs.ModBank)
+	if currentChunk.Modified {
+		modification := vg.bank.GiveValue(currentChunk.ModBank)
 		return vg.modifiedValue(unmodifiedValue, modification)
 	}
 
 	return unmodifiedValue
 }
 
-func (vg *ValueGenerator) unmodifiedValue(svs *chunk.Chunk) string {
-	switch svs.Mode {
+func (vg *ValueGenerator) unmodifiedValue(currentChunk *chunk.Chunk) string {
+	switch currentChunk.Mode {
 	case "literal":
-		return svs.Source
+		return currentChunk.Source
 	case "derived":
-		return vg.values[svs.Source].RandomValue()
+		return vg.values[currentChunk.Source].RandomValue()
 	case "bank":
-		return vg.bank.GiveValue(svs.Source)
+		return vg.bank.GiveValue(currentChunk.Source)
 	}
 
 	panic("invalid mode")

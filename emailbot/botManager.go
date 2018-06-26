@@ -15,7 +15,7 @@ type Manager struct {
 }
 
 func (m *Manager) AddBot(port int) {
-	m.bots = append(m.bots, NewBot(port, m.dataProfile.Values, m.scrapeProfile.Instructions()))
+	m.bots = append(m.bots, NewBot(port, m.dataProfile, m.scrapeProfile.Instructions()))
 }
 
 func (m *Manager) ScrapeAll() {
@@ -26,12 +26,8 @@ func (m *Manager) ScrapeAll() {
 	time.Sleep(time.Millisecond * 10000)
 }
 
-func (m *Manager) GenerateData() {
-	m.dataProfile.Generate()
-}
-
-func (m *Manager) AddAction() *action.Action {
-	action := action.NewAction()
+func (m *Manager) AddAction(critical bool) *action.Action {
+	action := action.NewAction(critical)
 	m.scrapeProfile.AddAction(action)
 	return action
 }

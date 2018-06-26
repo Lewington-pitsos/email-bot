@@ -56,6 +56,7 @@ func (m *Manager) AddValues(values map[string]datastructures.Detail) {
 
 func (m *Manager) ProvisionScrape(actions []*action.Action) {
 	for _, action := range actions {
+		action.AddCandidateValues(m.candidateValues)
 		action.AddBrowser(m.browser)
 		m.scrape.AddAction(action)
 	}

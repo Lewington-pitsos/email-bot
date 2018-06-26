@@ -3,6 +3,8 @@ package emailbot
 import (
 	"email-bot/database"
 	"email-bot/datastructures"
+	"email-bot/logger"
+	"email-bot/offline/profile"
 	"email-bot/online/action"
 	"email-bot/online/scrape"
 	"go/build"
@@ -16,7 +18,7 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 // +---------------------------------------------------------------------------------------+
 
 type Bot struct {
-	data          map[string]datastructures.Detail
+	dataProfile   *profile.DataProfile
 	scrapeManager *scrape.Manager
 	actions       []*action.Action
 }
@@ -25,35 +27,41 @@ type Bot struct {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (m *Bot) saveProfile(profile map[string]string) {
+func (b *Bot) saveProfile(profile map[string]string) {
 	archivist := database.NewArchivist()
 	archivist.RecordProfile(profile)
 	archivist.Close()
 }
 
-func (m *Bot) processResults(success bool) {
+func (b *Bot) processResults(success bool) {
 	if success {
-		m.saveProfile(m.scrapeManager.ActiveProfileData())
+		b.saveProfile(b.scrapeManager.ActiveProfileData())
 	}
+}
+
+func (b *Bot) generatedValues() map[string]datastructures.Detail {
+	b.dataProfile.Generate()
+	return b.dataProfile.GetValues()
 }
 
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (m *Bot) Scrape() {
-	m.scrapeManager.AddValues(m.data)
-	m.scrapeManager.ProvisionScrape(m.actions)
-	m.processResults(m.scrapeManager.Scrape())
+func (b *Bot) Scrape() {
+	logger.LoggerInterface.Println(b.generatedValues())
+	b.scrapeManager.AddValues(b.generatedValues())
+	b.scrapeManager.ProvisionScrape(b.actions)
+	b.processResults(b.scrapeManager.Scrape())
 }
 
 // +---------------------------------------------------------------------------------------+
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewBot(port int, data map[string]datastructures.Detail, actions []*action.Action) *Bot {
+func NewBot(port int, dataProfile *profile.DataProfile, actions []*action.Action) *Bot {
 	return &Bot{
-		data:          data,
+		dataProfile:   dataProfile,
 		scrapeManager: scrape.NewManager(port),
 		actions:       actions,
 	}

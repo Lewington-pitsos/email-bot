@@ -1,26 +1,41 @@
 package action
 
 import (
+	"email-bot/datastructures"
 	"email-bot/logger"
 	"email-bot/online/browser"
-	"fmt"
 )
 
 type interaction struct {
-	browser  *browser.Browser
-	commands []func(*interaction)
+	browser         *browser.Browser
+	commands        []func(*interaction)
+	valueTypes      []string
+	candidateValues []datastructures.Detail
+	valueIndex      int
 }
 
 func (i *interaction) run() {
-	fmt.Println(i.commands)
 	logger.LoggerInterface.Println("Running interaction, value number:")
+	i.valueIndex = 0
 	for _, command := range i.commands {
 		command(i)
 	}
 }
 
+func (i *interaction) CurrentValue() string {
+	value := i.candidateValues[i.valueIndex].RandomValue()
+	i.valueIndex++
+	return value
+}
+
 func (i *interaction) addBrowser(browser *browser.Browser) {
 	i.browser = browser
+}
+
+func (i *interaction) AddValueCommand(command func(*interaction), valueType string) *interaction {
+	i.AddCommand(command)
+	i.addValueType(valueType)
+	return i
 }
 
 func (i *interaction) AddCommand(command func(*interaction)) *interaction {
@@ -28,8 +43,22 @@ func (i *interaction) AddCommand(command func(*interaction)) *interaction {
 	return i
 }
 
+func (i *interaction) addValueType(valueType string) {
+	i.valueTypes = append(i.valueTypes, valueType)
+}
+
+func (i *interaction) addCandidateValues(candidateValues map[string]datastructures.Detail) *interaction {
+	for _, valueType := range i.valueTypes {
+		i.candidateValues = append(i.candidateValues, candidateValues[valueType])
+	}
+	return i
+}
+
 func NewInteraction() *interaction {
 	return &interaction{
-		commands: make([]func(*interaction), 0, 20),
+		commands:        make([]func(*interaction), 0, 20),
+		candidateValues: make([]datastructures.Detail, 0, 20),
+		valueTypes:      make([]string, 0, 20),
+		valueIndex:      0,
 	}
 }
