@@ -7,7 +7,7 @@ import (
 
 type spec struct {
 	browser  *browser.Browser
-	commands []func(*browser.Browser) bool
+	commands []func(*spec) bool
 }
 
 func (s *spec) check() bool {
@@ -21,7 +21,7 @@ func (s *spec) check() bool {
 
 func (s *spec) runChecks() bool {
 	for _, command := range s.commands {
-		if !command(s.browser) {
+		if !command(s) {
 			logger.LoggerInterface.Println("Spec failed")
 			return false
 		}
@@ -30,14 +30,17 @@ func (s *spec) runChecks() bool {
 	return true
 }
 
-func NewSpec(br *browser.Browser) *spec {
-	return &spec{
-		browser:  br,
-		commands: make([]func(*browser.Browser) bool, 0, 20),
-	}
+func (s *spec) addBrowser(browser *browser.Browser) {
+	s.browser = browser
 }
 
-func (s *spec) AddCommand(command func(*browser.Browser) bool) *spec {
+func (s *spec) AddCommand(command func(*spec) bool) *spec {
 	s.commands = append(s.commands, command)
 	return s
+}
+
+func NewSpec() *spec {
+	return &spec{
+		commands: make([]func(*spec) bool, 0, 20),
+	}
 }

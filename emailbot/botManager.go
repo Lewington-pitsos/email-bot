@@ -3,17 +3,19 @@ package emailbot
 import (
 	"email-bot/offline/profile"
 	"email-bot/online/action"
+	"email-bot/online/scrape"
 	"time"
 )
 
 type Manager struct {
-	bots        []*Bot
-	dataProfile *profile.DataProfile
-	instructions []action.Action
+	bots          []*Bot
+	dataProfile   *profile.DataProfile
+	instructions  []action.Action
+	scrapeProfile *scrape.Profile
 }
 
 func (m *Manager) AddBot(port int) {
-	m.bots = append(m.bots, NewBot(port, m.dataProfile))
+	m.bots = append(m.bots, NewBot(port, m.dataProfile.Values, m.scrapeProfile.Instructions()))
 }
 
 func (m *Manager) ScrapeAll() {
@@ -24,9 +26,13 @@ func (m *Manager) ScrapeAll() {
 	time.Sleep(time.Millisecond * 10000)
 }
 
-func (m *Manager)AddAction() *action.Action{
+func (m *Manager) GenerateData() {
+	m.dataProfile.Generate()
+}
+
+func (m *Manager) AddAction() *action.Action {
 	action := action.NewAction()
-	m.instructions := append(m.instructions, action)
+	m.scrapeProfile.AddAction(action)
 	return action
 }
 
@@ -36,8 +42,8 @@ func (m *Manager) DataProfile() *profile.DataProfile {
 
 func NewManager() *Manager {
 	return &Manager{
-		bots:        make([]*Bot, 0, 100),
-		dataProfile: profile.NewDataProfile(),
-		instructions: male([]action.Action, 0, 40),
+		bots:          make([]*Bot, 0, 100),
+		dataProfile:   profile.NewDataProfile(),
+		scrapeProfile: scrape.NewProfile(),
 	}
 }

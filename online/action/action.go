@@ -38,7 +38,7 @@ func (a *Action) AddToInteraction(command func(*interaction)) *Action {
 	return a
 }
 
-func (a *Action) AddToSpec(command func(*browser.Browser) bool) *Action {
+func (a *Action) AddToSpec(command func(*spec) bool) *Action {
 	a.spec.AddCommand(command)
 
 	return a
@@ -77,14 +77,20 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 	return a
 }
 
+func (a *Action) AddBrowser(browser *browser.Browser) *Action {
+	a.spec.addBrowser(browser)
+	a.interaction.addBrowser(browser)
+	return a
+}
+
 // +---------------------------------------------------------------------------------------+
 //										EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewAction(browser *browser.Browser, critical bool) *Action {
+func NewAction(critical bool) *Action {
 	return &Action{
-		spec:        NewSpec(browser),
-		interaction: NewInteraction(browser),
+		spec:        NewSpec(),
+		interaction: NewInteraction(),
 		Critical:    critical,
 	}
 }

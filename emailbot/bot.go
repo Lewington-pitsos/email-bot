@@ -3,7 +3,7 @@ package emailbot
 import (
 	"email-bot/database"
 	"email-bot/datastructures"
-	"email-bot/offline/profile"
+	"email-bot/online/action"
 	"email-bot/online/scrape"
 	"go/build"
 )
@@ -16,8 +16,9 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 // +---------------------------------------------------------------------------------------+
 
 type Bot struct {
-	dataProfile   *profile.DataProfile
+	data          map[string]datastructures.Detail
 	scrapeManager *scrape.Manager
+	actions       []*action.Action
 }
 
 //
@@ -28,11 +29,6 @@ func (m *Bot) saveProfile(profile map[string]string) {
 	archivist := database.NewArchivist()
 	archivist.RecordProfile(profile)
 	archivist.Close()
-}
-
-func (m *Bot) generatedData() map[string]datastructures.Detail {
-	m.dataProfile.Generate()
-	return m.dataProfile.Values
 }
 
 func (m *Bot) processResults(success bool) {
@@ -46,8 +42,8 @@ func (m *Bot) processResults(success bool) {
 //
 
 func (m *Bot) Scrape() {
-	m.scrapeManager.AddValues(m.generatedData())
-	m.scrapeManager.ProvisionHotmailNewAccountScrape()
+	m.scrapeManager.AddValues(m.data)
+	m.scrapeManager.ProvisionScrape(m.actions)
 	m.processResults(m.scrapeManager.Scrape())
 }
 
@@ -55,9 +51,10 @@ func (m *Bot) Scrape() {
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewBot(port int, profile *profile.DataProfile) *Bot {
+func NewBot(port int, data map[string]datastructures.Detail, actions []*action.Action) *Bot {
 	return &Bot{
-		dataProfile:   profile,
+		data:          data,
 		scrapeManager: scrape.NewManager(port),
+		actions:       actions,
 	}
 }

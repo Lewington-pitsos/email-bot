@@ -19,14 +19,17 @@ func (i *interaction) run() {
 	}
 }
 
+func (i *interaction) addBrowser(browser *browser.Browser) {
+	i.browser = browser
+}
+
 func (i *interaction) AddCommand(command func(*interaction)) *interaction {
 	i.commands = append(i.commands, command)
 	return i
 }
 
-func NewInteraction(browser *browser.Browser) *interaction {
+func NewInteraction() *interaction {
 	return &interaction{
-		browser:  browser,
 		commands: make([]func(*interaction), 0, 20),
 	}
 }

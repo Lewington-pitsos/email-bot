@@ -4,7 +4,6 @@ import (
 	"email-bot/datastructures"
 	"email-bot/helpers/generalhelpers"
 	"email-bot/logger"
-	"email-bot/online/browser"
 	"fmt"
 )
 
@@ -69,10 +68,10 @@ func Wait(wait int) func(*interaction) {
 //										SPECS
 // +---------------------------------------------------------------------------------------+
 
-func CheckExists(selector string) func(*browser.Browser) bool {
-	return func(browser *browser.Browser) bool {
+func CheckExists(selector string) func(*spec) bool {
+	return func(s *spec) bool {
 		logger.LoggerInterface.Println("Checking for element:", selector)
-		elements, err := browser.Wd.FindElements("xpath", selector)
+		elements, err := s.browser.Wd.FindElements("xpath", selector)
 		generalhelpers.Check(err)
 
 		return len(elements) > 0

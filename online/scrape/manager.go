@@ -3,6 +3,7 @@ package scrape
 import (
 	"email-bot/datastructures"
 	"email-bot/logger"
+	"email-bot/online/action"
 	"email-bot/online/browser"
 	"fmt"
 )
@@ -35,12 +36,6 @@ func (m *Manager) Scrape() bool {
 	return m.scrape.Success
 }
 
-func(m *Manager) AddAction() {
-	action := action.NewAction()
-	m.scraoe.AddActions(action)
-	return action
-}
-
 func (m *Manager) ActiveProfileData() map[string]string {
 	profile := make(map[string]string)
 	logger.LoggerInterface.Println("Extracting data for entered profile")
@@ -59,9 +54,11 @@ func (m *Manager) AddValues(values map[string]datastructures.Detail) {
 	m.candidateValues = values
 }
 
-func (m *Manager) ProvisionHotmailNewAccountScrape() {
-	actions := hotmailNewAccountScrapeActions(m.candidateValues, m.browser)
-	m.scrape.AddActions(actions)
+func (m *Manager) ProvisionScrape(actions []*action.Action) {
+	for _, action := range actions {
+		action.AddBrowser(m.browser)
+		m.scrape.AddAction(action)
+	}
 }
 
 // +---------------------------------------------------------------------------------------+
