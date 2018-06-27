@@ -9,7 +9,11 @@ type Profile struct {
 }
 
 func (p *Profile) Instructions() []*action.Action {
-	return p.instructions
+	instructionClone := make([]*action.Action)
+	for _, action := range i.instructions {
+		instructionClone = append(instructionClone, action.Clone())
+	}
+	return instructionClone
 }
 
 func (p *Profile) AddAction(newAction *action.Action) {

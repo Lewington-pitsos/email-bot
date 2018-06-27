@@ -90,6 +90,14 @@ func (a *Action) AddCandidateValues(candidateValues map[string]datastructures.De
 	return a
 }
 
+func (a *Action) Clone() *Action {
+	return &Action{
+		spec: a.spec.clone(),
+		interaction: a.interaction.clone(),
+		Critical: a.Critical,
+	}
+}
+
 // +---------------------------------------------------------------------------------------+
 //										EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+

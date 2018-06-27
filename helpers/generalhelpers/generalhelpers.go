@@ -13,3 +13,7 @@ func Wait(milliseconds int) {
 		time.Sleep(time.Millisecond * time.Duration(milliseconds))
 	}
 }
+
+// func CloneSlice(slice []interface{}) *[]interface{} {
+// 	newSlice := make([])
+// }
