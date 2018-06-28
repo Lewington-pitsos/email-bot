@@ -6,8 +6,7 @@ import (
 )
 
 type spec struct {
-	browser  *browser.Browser
-	commands []func(*spec) bool
+	operation
 }
 
 func (s *spec) check() bool {
@@ -30,33 +29,10 @@ func (s *spec) runChecks() bool {
 	return true
 }
 
-func (s *spec) addBrowser(browser *browser.Browser) {
-	s.browser = browser
-}
-
-func (s *spec)clonedCommands() []func(*spec) {
-	newCommands := make([]func(*spec)
-	for _, command := range i.commands {
-		newCommands := append(newCommands, command)
-	}
-
-	return newCommands
-}
-
-
-func (s *spec) clone() *spec {
-	return &spec{
-		commands: s.clonedCommands(),
-	}
-}
-
-func (s *spec) AddCommand(command func(*spec) bool) *spec {
-	s.commands = append(s.commands, command)
-	return s
-}
-
 func NewSpec() *spec {
 	return &spec{
-		commands: make([]func(*spec) bool, 0, 20),
+		operation{
+			commands: make([]func(*spec) bool, 0, 20),
+		},
 	}
 }

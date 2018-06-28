@@ -7,8 +7,7 @@ import (
 )
 
 type interaction struct {
-	browser         *browser.Browser
-	commands        []func(*interaction)
+	operation
 	valueTypes      []string
 	candidateValues []datastructures.Detail
 	valueIndex      int
@@ -20,27 +19,6 @@ func (i *interaction) run() {
 	for _, command := range i.commands {
 		command(i)
 	}
-}
-
-func (i *interaction) CurrentValue() string {
-	value := i.candidateValues[i.valueIndex].RandomValue()
-	i.valueIndex++
-	return value
-}
-
-func (i *interaction) addBrowser(browser *browser.Browser) {
-	i.browser = browser
-}
-
-func (i *interaction) AddValueCommand(command func(*interaction), valueType string) *interaction {
-	i.AddCommand(command)
-	i.addValueType(valueType)
-	return i
-}
-
-func (i *interaction) AddCommand(command func(*interaction)) *interaction {
-	i.commands = append(i.commands, command)
-	return i
 }
 
 func (i *interaction) addValueType(valueType string) {
@@ -56,24 +34,6 @@ func (i *interaction)clonedValueTypes() []string {
 	return newValueTypes
 }
 
-func (i *interaction)clonedCommands() []func(*interaction) {
-	newCommands := make([]func(*interaction)
-	for _, command := range i.commands {
-		newCommands := append(newCommands, command)
-	}
-
-	return newCommands
-}
-
-func clone(i *interaction) *interaction {
-	return &interaction{
-		commands: i.clonedCommands(),
-		candidateValues: make([]datastructures.Detail, 0, 20),
-		valueTypes: i.clonedValueTypes(),
-		valueIndex: 0,
-	}
-}
-
 func (i *interaction) addCandidateValues(candidateValues map[string]datastructures.Detail) *interaction {
 	for _, valueType := range i.valueTypes {
 		i.candidateValues = append(i.candidateValues, candidateValues[valueType])
@@ -81,11 +41,25 @@ func (i *interaction) addCandidateValues(candidateValues map[string]datastructur
 	return i
 }
 
+func (i *interaction) CurrentValue() string {
+	value := i.candidateValues[i.valueIndex].RandomValue()
+	i.valueIndex++
+	return value
+}
+
+func (i *interaction) AddValueCommand(command func(*interaction), valueType string) *interaction {
+	i.AddCommand(command)
+	i.addValueType(valueType)
+	return i
+}
+
 func NewInteraction() *interaction {
 	return &interaction{
-		commands:        make([]func(*interaction), 0, 20),
 		candidateValues: make([]datastructures.Detail, 0, 20),
 		valueTypes:      make([]string, 0, 20),
 		valueIndex:      0,
+		operation{
+			commands: make([]func(*spec) bool, 0, 20),
+		},
 	}
 }
