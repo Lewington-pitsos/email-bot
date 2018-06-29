@@ -40,8 +40,8 @@ func (b *Bot) processResults(success bool) {
 }
 
 func (b *Bot) generatedValues() map[string]datastructures.Detail {
-	b.profile.Generate()
-	return b.profile.Values()
+	b.dataProfile.Populate()
+	return b.dataProfile.GetValues()
 }
 
 //
