@@ -10,17 +10,17 @@ import (
 //										INTERACTIONS
 // +---------------------------------------------------------------------------------------+
 
-func VisitPage(url string) func(*interaction) {
-	return func(i *interaction) {
+func VisitPage(url string) func(*operationInterface) {
+	return func(o *operationInterface) {
 		logger.LoggerInterface.Println("Visiting:", url)
-		i.browser.Wd.Get(url)
+		o.browser.Wd.Get(url)
 	}
 }
 
 func FillField(selector string) func(*interaction) {
 	return func(i *interaction) {
 		element, err := i.browser.Wd.FindElement("xpath", selector)
-		generalhelpers.Check(err)
+		generalhelper.Check(err)
 
 		value := i.CurrentValue()
 		logger.LoggerInterface.Println("Filling element:", selector, "with:", value)
@@ -46,18 +46,18 @@ func SelectOption(selector string) func(*interaction) {
 	}
 }
 
-func Click(selector string) func(*interaction) {
-	return func(i *interaction) {
+func Click(selector string) func(*operationInterface) {
+	return func(o *operationInterface) {
 		logger.LoggerInterface.Println("Clicking element:", selector)
-		element, err := i.browser.Wd.FindElement("xpath", selector)
+		element, err := o.browser.Wd.FindElement("xpath", selector)
 		generalhelpers.Check(err)
 
 		element.Click()
 	}
 }
 
-func Wait(wait int) func(*interaction) {
-	return func(i *interaction) {
+func Wait(wait int) func(*operationInterface) {
+	return func(o *operationInterface) {
 		logger.LoggerInterface.Println("Waiting:", wait, "miliseconds")
 		generalhelpers.Wait(wait)
 	}
@@ -67,10 +67,10 @@ func Wait(wait int) func(*interaction) {
 //										SPECS
 // +---------------------------------------------------------------------------------------+
 
-func CheckExists(selector string) func(*spec) bool {
-	return func(s *spec) bool {
+func CheckExists(selector string) func(*operationInterface) bool {
+	return func(o *operationInterface) bool {
 		logger.LoggerInterface.Println("Checking for element:", selector)
-		elements, err := s.browser.Wd.FindElements("xpath", selector)
+		elements, err := o.browser.Wd.FindElements("xpath", selector)
 		generalhelpers.Check(err)
 
 		return len(elements) > 0
