@@ -6,17 +6,21 @@ import (
 )
 
 type ActiveProfile struct {
-	Values map[string]datastructures.Detail
+	values map[string]datastructures.Detail
 	Name   string
 }
 
 func (a *ActiveProfile) saveDetails(profileData map[string]string) {
 	for key, value := range profileData {
-		a.Values[key] = datastructures.NewDetaiMono(value)
+		a.values[key] = datastructures.NewDetaiMono(value)
 	}
 }
 
-func (a *ActiveProfile) Populate() {
+func(a *ActiveProfile) Values() map[string]datastructures.Detail {
+	return a.values
+}
+
+func (a *ActiveProfile) Generate() {
 	loader := database.NewLibrarian()
 	data := loader.FindProfiles(1)[0]
 	loader.Close()
@@ -25,7 +29,7 @@ func (a *ActiveProfile) Populate() {
 
 func NewActiveProfile(name string) *ActiveProfile {
 	return &ActiveProfile{
-		Values: make(map[string]datastructures.Detail),
+		values: make(map[string]datastructures.Detail),
 		Name:   name,
 	}
 }

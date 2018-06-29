@@ -27,7 +27,7 @@ func (p *DataProfile) WithChunk(mode string, source string) *DataProfile {
 	return p
 }
 
-func (p *DataProfile) GetValues() map[string]datastructures.Detail {
+func (p *DataProfile) Values() map[string]datastructures.Detail {
 	newMap := make(map[string]datastructures.Detail)
 	for key, value := range p.values {
 		newMap[key] = value
