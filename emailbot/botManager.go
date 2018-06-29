@@ -18,6 +18,12 @@ func (m *Manager) AddBot(port int) {
 	m.bots = append(m.bots, NewBot(port, m.dataProfile, m.scrapeProfile.Instructions()))
 }
 
+func (m *Manager) AddBots(startingPort int, number int) {
+	for i := 0; i <= number; i++ {
+		m.AddBot(startingPort + i)
+	}
+}
+
 func (m *Manager) ScrapeAll() {
 	for _, bot := range m.bots {
 		go bot.Scrape()
