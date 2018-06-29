@@ -24,7 +24,7 @@ func (m *Manager) AddBots(startingPort int, number int) {
 	}
 }
 
-func (m *Manager) ScrapeAll() {
+func (m *Manager) Scrape() {
 	for _, bot := range m.bots {
 		go bot.Scrape()
 	}
