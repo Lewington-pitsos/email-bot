@@ -34,15 +34,14 @@ func (s *spec) addBrowser(browser *browser.Browser) {
 	s.browser = browser
 }
 
-func (s *spec)clonedCommands() []func(*spec) {
-	newCommands := make([]func(*spec)
-	for _, command := range i.commands {
-		newCommands := append(newCommands, command)
+func (s *spec) clonedCommands() []func(*spec) bool {
+	newCommands := make([]func(*spec) bool, 0, 20)
+	for _, command := range s.commands {
+		newCommands = append(newCommands, command)
 	}
 
 	return newCommands
 }
-
 
 func (s *spec) clone() *spec {
 	return &spec{

@@ -18,7 +18,7 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 // +---------------------------------------------------------------------------------------+
 
 type Bot struct {
-	profile   *profile.ProfileInterface
+	profile       profile.ProfileInterface
 	scrapeManager *scrape.Manager
 	actions       []*action.Action
 }
@@ -59,9 +59,9 @@ func (b *Bot) Scrape() {
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewBot(port int, profile *profile.ProfileInterface, actions []*action.Action) *Bot {
+func NewBot(port int, profile profile.ProfileInterface, actions []*action.Action) *Bot {
 	return &Bot{
-		profile:   profile,
+		profile:       profile,
 		scrapeManager: scrape.NewManager(port),
 		actions:       actions,
 	}

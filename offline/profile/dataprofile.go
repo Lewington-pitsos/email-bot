@@ -44,7 +44,7 @@ func (p *DataProfile) WithModifiedChunk(mode string, source string, modBank stri
 	return p
 }
 
-func (p *DataProfile) Generate() *DataProfile {
+func (p *DataProfile) Generate() ProfileInterface {
 	logger.LoggerInterface.Println("Generating DataProfile data")
 	for _, field := range p.fields {
 		p.values[field.Name] = p.Generator.Generate(field.Format, field.ValueNumber)

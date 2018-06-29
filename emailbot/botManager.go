@@ -23,7 +23,7 @@ func (m *Manager) ScrapeAll() {
 		go bot.Scrape()
 	}
 
-	time.Sleep(time.Millisecond * 10000)
+	time.Sleep(time.Millisecond * 90000)
 }
 
 func (m *Manager) AddAction(critical bool) *action.Action {

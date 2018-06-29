@@ -92,9 +92,9 @@ func (a *Action) AddCandidateValues(candidateValues map[string]datastructures.De
 
 func (a *Action) Clone() *Action {
 	return &Action{
-		spec: a.spec.clone(),
+		spec:        a.spec.clone(),
 		interaction: a.interaction.clone(),
-		Critical: a.Critical,
+		Critical:    a.Critical,
 	}
 }
 

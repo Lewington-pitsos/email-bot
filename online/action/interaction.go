@@ -47,30 +47,30 @@ func (i *interaction) addValueType(valueType string) {
 	i.valueTypes = append(i.valueTypes, valueType)
 }
 
-func (i *interaction)clonedValueTypes() []string {
-	newValueTypes := make([]func(*interaction)
+func (i *interaction) clonedValueTypes() []string {
+	newValueTypes := make([]string, 0, 20)
 	for _, valueType := range i.valueTypes {
-		newValueTypes := append(newValueTypes, valueType)
+		newValueTypes = append(newValueTypes, valueType)
 	}
 
 	return newValueTypes
 }
 
-func (i *interaction)clonedCommands() []func(*interaction) {
-	newCommands := make([]func(*interaction)
+func (i *interaction) clonedCommands() []func(*interaction) {
+	newCommands := make([]func(*interaction), 0, 20)
 	for _, command := range i.commands {
-		newCommands := append(newCommands, command)
+		newCommands = append(newCommands, command)
 	}
 
 	return newCommands
 }
 
-func clone(i *interaction) *interaction {
+func (i *interaction) clone() *interaction {
 	return &interaction{
-		commands: i.clonedCommands(),
+		commands:        i.clonedCommands(),
 		candidateValues: make([]datastructures.Detail, 0, 20),
-		valueTypes: i.clonedValueTypes(),
-		valueIndex: 0,
+		valueTypes:      i.clonedValueTypes(),
+		valueIndex:      0,
 	}
 }
 
