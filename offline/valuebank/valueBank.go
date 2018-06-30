@@ -52,7 +52,16 @@ func (b *Bank) GiveValue(vaultName string) string {
 // +-------------------------------------------------------------------------------------+
 
 func NewBank() *Bank {
-	return &Bank{
+	bank := &Bank{
 		vaults: make(map[string]vault.VaultInterface),
 	}
+
+	bank.AddVault("name", "female-en")
+	bank.AddVault("slang", "internet-slang")
+	bank.AddSpecialVault("yearvault")
+	bank.AddSpecialVault("monthvault")
+	bank.AddSpecialVault("dayvault")
+	bank.AddSpecialVault("passvault")
+
+	return bank
 }

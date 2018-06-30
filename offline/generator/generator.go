@@ -92,6 +92,10 @@ func (vg *ValueGenerator) detailMono(format []*chunk.Chunk) datastructures.Detai
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
+func (vg *ValueGenerator) AddToBank(fileName string, vaultName string) {
+	vg.bank.AddVault(fileName, vaultName)
+}
+
 func (vg *ValueGenerator) SetValues(values map[string]datastructures.Detail) *ValueGenerator {
 	vg.values = values
 	return vg
@@ -115,6 +119,6 @@ func (vg *ValueGenerator) Generate(format []*chunk.Chunk, valueNumber int) datas
 // NewValueGenerator returns a ValueGenerator struct
 func NewValueGenerator() *ValueGenerator {
 	return &ValueGenerator{
-		bank: valuebank.SetupBank(),
+		bank: valuebank.NewBank(),
 	}
 }

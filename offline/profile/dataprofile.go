@@ -11,6 +11,7 @@ type DataProfile struct {
 	values    map[string]datastructures.Detail
 	fields    []*Field
 	Generator *generator.ValueGenerator
+	Bank 	  valueBank.Bank
 }
 
 func (p *DataProfile) AddField(name string, ValueNumber int) *DataProfile {
@@ -34,6 +35,10 @@ func (p *DataProfile) Values() map[string]datastructures.Detail {
 	}
 
 	return newMap
+}
+
+func (p *DataProfile AddToBank(fileName string, vaultName string) {
+	p.generator.AddToBank(fileName, vaultName)
 }
 
 func (p *DataProfile) WithModifiedChunk(mode string, source string, modBank string) *DataProfile {
