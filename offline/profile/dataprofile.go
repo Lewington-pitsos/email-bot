@@ -10,7 +10,7 @@ import (
 type DataProfile struct {
 	values    map[string]datastructures.Detail
 	fields    []*Field
-	Generator *generator.ValueGenerator
+	generator *generator.Valuegenerator
 	Bank 	  valueBank.Bank
 }
 
@@ -37,8 +37,16 @@ func (p *DataProfile) Values() map[string]datastructures.Detail {
 	return newMap
 }
 
-func (p *DataProfile AddToBank(fileName string, vaultName string) {
+func(p *DataProfile) SetBankPath(bankPath string) *DataProfile {
+	p.generator.SetBankPath(bankPath)
+
+	return p
+}
+
+func (p *DataProfile AddToBank(fileName string, vaultName string) *DataProfile {
 	p.generator.AddToBank(fileName, vaultName)
+
+	return p
 }
 
 func (p *DataProfile) WithModifiedChunk(mode string, source string, modBank string) *DataProfile {
@@ -52,14 +60,14 @@ func (p *DataProfile) WithModifiedChunk(mode string, source string, modBank stri
 func (p *DataProfile) Generate() ProfileInterface {
 	logger.LoggerInterface.Println("Generating DataProfile data")
 	for _, field := range p.fields {
-		p.values[field.Name] = p.Generator.Generate(field.Format, field.ValueNumber)
+		p.values[field.Name] = p.generator.Generate(field.Format, field.ValueNumber)
 	}
 
 	return p
 }
 
 func NewDataProfile() *DataProfile {
-	generator := generator.NewValueGenerator()
+	generator := generator.NewValuegenerator()
 	logger.LoggerInterface.Println("Creating DataProfile")
 	values := make(map[string]datastructures.Detail)
 	generator.SetValues(values)
@@ -67,6 +75,6 @@ func NewDataProfile() *DataProfile {
 	return &DataProfile{
 		values:    values,
 		fields:    make([]*Field, 0, 50),
-		Generator: generator,
+		generator: generator,
 	}
 }

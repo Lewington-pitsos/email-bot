@@ -5,41 +5,42 @@ import (
 	"email-bot/offline/vault"
 )
 
+const bankFileSuffix = ".json"
+
 // +-------------------------------------------------------------------------------------+
 // 									Bank STRUCT
 // +-------------------------------------------------------------------------------------+
 
 type Bank struct {
 	vaults map[string]vault.VaultInterface
+	bankPath string
 }
 
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> HIDDEN METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
+func (b *Bank) bankPath(bankName string) string {
+	return b.bankPath + bankName + bankFileSuffix
+}
+
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (b *Bank) AddSpecialVault(vaultName string) *Bank {
+func(b *Bank) SetBankPath(bankPath string) {
+	b.bankPath = bankPath;
+}
+
+func (b *Bank) AddVault(vaultName string, sourceName string) *Bank {
 	switch vaultName {
 	case "datevault":
-		b.vaults[vaultName] = vault.NewDateVault("02/01/2006")
-	case "yearvault":
-		b.vaults[vaultName] = vault.NewDateVault("2006")
-	case "monthvault":
-		b.vaults[vaultName] = vault.NewDateVault("1")
-	case "dayvault":
-		b.vaults[vaultName] = vault.NewDateVault("2")
+		b.vaults[vaultName] = vault.NewDateVault(sourceName)
 	case "passvault":
 		b.vaults[vaultName] = vault.NewPassVault()
 	}
 
-	return b
-}
-
-func (b *Bank) AddVault(vaultName string, bankFile string) *Bank {
-	b.vaults[vaultName] = vault.NewVault(bankFile)
+	b.vaults[vaultName] = vault.NewVault(b.bankPath(sourceName))
 	return b
 }
 
@@ -52,16 +53,7 @@ func (b *Bank) GiveValue(vaultName string) string {
 // +-------------------------------------------------------------------------------------+
 
 func NewBank() *Bank {
-	bank := &Bank{
+	return &Bank{
 		vaults: make(map[string]vault.VaultInterface),
 	}
-
-	bank.AddVault("name", "female-en")
-	bank.AddVault("slang", "internet-slang")
-	bank.AddSpecialVault("yearvault")
-	bank.AddSpecialVault("monthvault")
-	bank.AddSpecialVault("dayvault")
-	bank.AddSpecialVault("passvault")
-
-	return bank
 }

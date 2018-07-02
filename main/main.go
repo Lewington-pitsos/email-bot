@@ -9,6 +9,15 @@ func main() {
 	botManager := emailbot.NewManager()
 
 	botManager.DataProfile().
+		SetBankPath(os.GetWd()).
+		AddToBank("name", "female-en").
+		AddToBank("slang", "internet-slang").
+		AddToBank("datevault", "2").
+		AddToBank("datevault", "1").
+		AddToBank("datevault", "2006").
+		AddToBank("passvault", "")
+
+	botManager.DataProfile().
 		AddField("firstname", 1).
 		WithChunk("bank", "name").
 		AddField("lastname", 1).
@@ -97,25 +106,4 @@ func main() {
 	botManager.AddBot(8081)
 
 	botManager.ScrapeAll()
-
-	// profile := map[string]string{
-	// 	"day":       "19",
-	// 	"email":     "Ame123hystAudriana@hotmail.com",
-	// 	"firstname": "Amethyst",
-	// 	"fullname":  "AmethystAudriana",
-	// 	"lastname":  "Audriana",
-	// 	"month":     "November",
-	// 	"password":  "bS0x2(M(OCSL4tR%ZNIF",
-	// 	"year":      "1961",
-	// 	"birthdate": "2/6/1993",
-	// }
-
-	// archivist := database.NewArchivist()
-	// archivist.RecordProfile(profile)
-
-	// profile := profile.NewActiveProfile("floob")
-	// profile.Populate()
-
-	// setup := database.NewSetup()
-	// setup.Setup()
 }

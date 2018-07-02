@@ -24,18 +24,13 @@ func (m *Manager) populate(filename string, emptyObject interface{}) {
 	check(err2)
 }
 
-func (m *Manager) bankPath(fileName string) string {
-	return bankFilePath + fileName + bankFileSuffix
-}
-
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
-func (m *Manager) BankeData(bankName string) []string {
-	filename := m.bankPath(bankName)
+func (m *Manager) BankeData(bankFile string) []string {
 	bankData := make([]string, 0, 10000)
-	m.populate(filename, &bankData)
+	m.populate(bankFile, &bankData)
 
 	return bankData
 }

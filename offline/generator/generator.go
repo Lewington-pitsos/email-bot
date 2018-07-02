@@ -92,6 +92,11 @@ func (vg *ValueGenerator) detailMono(format []*chunk.Chunk) datastructures.Detai
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
+func(vg *ValueGenerator) SetBankPath(bankPath string) {
+	vg.bank.SetBankPath(bankPath)
+}
+
+
 func (vg *ValueGenerator) AddToBank(fileName string, vaultName string) {
 	vg.bank.AddVault(fileName, vaultName)
 }
