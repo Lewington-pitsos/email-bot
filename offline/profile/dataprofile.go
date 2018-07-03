@@ -37,12 +37,6 @@ func (p *DataProfile) Values() map[string]datastructures.Detail {
 	return newMap
 }
 
-func(p *DataProfile) SetBankPath(bankPath string) *DataProfile {
-	p.generator.SetBankPath(bankPath)
-
-	return p
-}
-
 func (p *DataProfile AddToBank(fileName string, vaultName string) *DataProfile {
 	p.generator.AddToBank(fileName, vaultName)
 

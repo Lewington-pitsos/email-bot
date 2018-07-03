@@ -3,9 +3,11 @@ package valuebank
 
 import (
 	"email-bot/offline/vault"
+	"go/build"
 )
 
 const bankFileSuffix = ".json"
+var bankPath string = build.Default.GOPATH + "/src/email-bot/data/bankvalues/"
 
 // +-------------------------------------------------------------------------------------+
 // 									Bank STRUCT
@@ -13,7 +15,6 @@ const bankFileSuffix = ".json"
 
 type Bank struct {
 	vaults map[string]vault.VaultInterface
-	bankPath string
 }
 
 //
@@ -21,16 +22,12 @@ type Bank struct {
 //
 
 func (b *Bank) bankPath(bankName string) string {
-	return b.bankPath + bankName + bankFileSuffix
+	return bankPath + bankName + bankFileSuffix
 }
 
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
-
-func(b *Bank) SetBankPath(bankPath string) {
-	b.bankPath = bankPath;
-}
 
 func (b *Bank) AddVault(vaultName string, sourceName string) *Bank {
 	switch vaultName {

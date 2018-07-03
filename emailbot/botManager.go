@@ -30,8 +30,6 @@ func (m *Manager) ScrapeAll() {
 	time.Sleep(time.Millisecond * 90000)
 }
 
-func(m *Manager) AddToBank()
-
 func (m *Manager) AddAction(critical bool) *action.Action {
 	action := action.NewAction(critical)
 	m.scrapeProfile.AddAction(action)

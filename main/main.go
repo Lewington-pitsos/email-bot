@@ -9,7 +9,6 @@ func main() {
 	botManager := emailbot.NewManager()
 
 	botManager.DataProfile().
-		SetBankPath(os.GetWd()).
 		AddToBank("name", "female-en").
 		AddToBank("slang", "internet-slang").
 		AddToBank("datevault", "2").
