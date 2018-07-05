@@ -9,17 +9,13 @@ import (
 
 type Manager struct {
 	bots          []*Bot
-	dataProfile   *profile.DataProfile
+	profile   *profile.ProfileInterface
 	instructions  []action.Action
 	scrapeProfile *scrape.Profile
 }
 
 func (m *Manager) AddBot(port int) {
-	m.bots = append(m.bots, NewBot(port, m.dataProfile, m.scrapeProfile.Instructions()))
-}
-
-func (m * Manager) AddToBank(fileName string, vaultName string) {
-	m.dataProfile.AddToBank(fileName, vaultName)
+	m.bots = append(m.bots, NewBot(port, m.profile, m.scrapeProfile.Instructions()))
 }
 
 func (m *Manager) ScrapeAll() {
@@ -36,14 +32,14 @@ func (m *Manager) AddAction(critical bool) *action.Action {
 	return action
 }
 
-func (m *Manager) DataProfile() *profile.DataProfile {
-	return m.dataProfile
+func (m *Manager)AddProfile(profileInstance profile.ProfileInterface) *Manager {
+	m.profile = profileInstance
+	return m
 }
 
 func NewManager() *Manager {
 	return &Manager{
 		bots:          make([]*Bot, 0, 100),
-		dataProfile:   profile.NewDataProfile(),
 		scrapeProfile: scrape.NewProfile(),
 	}
 }
