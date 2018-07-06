@@ -32,7 +32,7 @@ func (m *Manager) AddAction(critical bool) *action.Action {
 	return action
 }
 
-func (m *Manager)AddProfile(profileInstance profile.ProfileInterface) *Manager {
+func (m *Manager)SetProfile(profileInstance profile.ProfileInterface) *Manager {
 	m.profile = profileInstance
 	return m
 }
