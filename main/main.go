@@ -7,13 +7,13 @@ import (
 
 func main() {
 	botManager := emailbot.NewManager()
-	p = emailbot.NewProfileManager().NewDataProfile()
+	p := emailbot.NewProfileManager().NewDataProfile()
 
 	p.AddToBank("name", "female-en").
 		AddToBank("slang", "internet-slang").
-		AddToBank("datevault", "2").
-		AddToBank("datevault", "1").
-		AddToBank("datevault", "2006").
+		AddToBank("datevault-day", "2").
+		AddToBank("datevault-month", "1").
+		AddToBank("datevault-year", "2006").
 		AddToBank("passvault", "")
 
 	p.AddField("firstname", 1).
@@ -27,16 +27,16 @@ func main() {
 		WithModifiedChunk("derived", "fullname", "slang").
 		WithChunk("literal", "@hotmail.com").
 		AddField("day", 1).
-		WithChunk("bank", "dayvault").
+		WithChunk("bank", "datevault-day").
 		AddField("month", 1).
-		WithChunk("bank", "monthvault").
+		WithChunk("bank", "datevault-month").
 		AddField("year", 1).
-		WithChunk("bank", "yearvault").
+		WithChunk("bank", "datevault-year").
 		AddField("password", 20).
 		WithChunk("bank", "passvault")
 
 	botManager.SetProfile(p)
-	
+
 	emailInput := "//input[@id='MemberName']"
 	passInput := "//input[@id='PasswordInput']"
 	firstInput := "//input[@id='FirstName']"

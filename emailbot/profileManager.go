@@ -7,16 +7,14 @@ import (
 type ProfileManager struct {
 }
 
-func (pm *ProfileManager) NewDataProfile() *profile.dataProfile {
-	return profile.NewProfile()
+func (pm *ProfileManager) NewDataProfile() *profile.DataProfile {
+	return profile.NewDataProfile()
 }
 
-func (pm *ProfileManager) NewExistingProfile(profileName string) *profile.activeProfile {
+func (pm *ProfileManager) NewExistingProfile(profileName string) *profile.ActiveProfile {
 	return profile.NewActiveProfile(profileName)
 }
 
-func NewProfileManager(dataProfile bool) *ProfileManager {
-	return &ProfileManager {
-	}
+func NewProfileManager() *ProfileManager {
+	return &ProfileManager{}
 }
-

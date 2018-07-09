@@ -4,9 +4,11 @@ package valuebank
 import (
 	"email-bot/offline/vault"
 	"go/build"
+	"strings"
 )
 
 const bankFileSuffix = ".json"
+
 var bankPath string = build.Default.GOPATH + "/src/email-bot/data/bankvalues/"
 
 // +-------------------------------------------------------------------------------------+
@@ -30,14 +32,14 @@ func (b *Bank) bankPath(bankName string) string {
 //
 
 func (b *Bank) AddVault(vaultName string, sourceName string) *Bank {
-	switch vaultName {
-	case "datevault":
+	if strings.HasPrefix(vaultName, "datevault-") {
 		b.vaults[vaultName] = vault.NewDateVault(sourceName)
-	case "passvault":
+	} else if vaultName == "passvault" {
 		b.vaults[vaultName] = vault.NewPassVault()
+	} else {
+		b.vaults[vaultName] = vault.NewVault(b.bankPath(sourceName))
 	}
 
-	b.vaults[vaultName] = vault.NewVault(b.bankPath(sourceName))
 	return b
 }
 

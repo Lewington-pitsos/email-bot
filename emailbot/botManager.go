@@ -9,7 +9,7 @@ import (
 
 type Manager struct {
 	bots          []*Bot
-	profile   *profile.ProfileInterface
+	profile       profile.ProfileInterface
 	instructions  []action.Action
 	scrapeProfile *scrape.Profile
 }
@@ -32,7 +32,7 @@ func (m *Manager) AddAction(critical bool) *action.Action {
 	return action
 }
 
-func (m *Manager)SetProfile(profileInstance profile.ProfileInterface) *Manager {
+func (m *Manager) SetProfile(profileInstance profile.ProfileInterface) *Manager {
 	m.profile = profileInstance
 	return m
 }

@@ -5,13 +5,14 @@ import (
 	"email-bot/logger"
 	"email-bot/offline/chunk"
 	"email-bot/offline/generator"
+	"email-bot/offline/valuebank"
 )
 
 type DataProfile struct {
 	values    map[string]datastructures.Detail
 	fields    []*Field
-	generator *generator.Valuegenerator
-	Bank 	  valueBank.Bank
+	generator *generator.ValueGenerator
+	Bank      *valuebank.Bank
 }
 
 func (p *DataProfile) AddField(name string, ValueNumber int) *DataProfile {
@@ -37,7 +38,7 @@ func (p *DataProfile) Values() map[string]datastructures.Detail {
 	return newMap
 }
 
-func (p *DataProfile AddToBank(fileName string, vaultName string) *DataProfile {
+func (p *DataProfile) AddToBank(fileName string, vaultName string) *DataProfile {
 	p.generator.AddToBank(fileName, vaultName)
 
 	return p
@@ -61,7 +62,7 @@ func (p *DataProfile) Generate() ProfileInterface {
 }
 
 func NewDataProfile() *DataProfile {
-	generator := generator.NewValuegenerator()
+	generator := generator.NewValueGenerator()
 	logger.LoggerInterface.Println("Creating DataProfile")
 	values := make(map[string]datastructures.Detail)
 	generator.SetValues(values)

@@ -67,8 +67,8 @@ func Wait(wait int) func(*interaction) {
 //										SPECS
 // +---------------------------------------------------------------------------------------+
 
-func ElementCount(selector string) int {
-	elements, err := s.browser.Wd.FindElements("xpath", selector)
+func ElementCount(spec *spec, selector string) int {
+	elements, err := spec.browser.Wd.FindElements("xpath", selector)
 	generalhelpers.Check(err)
 
 	return len(elements)
@@ -78,7 +78,7 @@ func CheckExists(selector string) func(*spec) bool {
 	return func(s *spec) bool {
 		logger.LoggerInterface.Println("Checking for element:", selector)
 
-		return ElementCount(selector) > 0
+		return ElementCount(s, selector) > 0
 	}
 }
 
@@ -86,6 +86,6 @@ func CheckDoesntExist(selector string) func(*spec) bool {
 	return func(s *spec) bool {
 		logger.LoggerInterface.Println("Confirming missing element:", selector)
 
-		return ElementCount(selector) < 1
+		return ElementCount(s, selector) <= 1
 	}
 }
