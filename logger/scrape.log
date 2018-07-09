@@ -1652,3 +1652,268 @@
 2018/07/09 21:02:55 spec.go:15: Empty Spec: Spec passed
 2018/07/09 21:02:55 interaction.go:18: Running interaction, value number:
 2018/07/09 21:02:55 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:03:33 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:03:34 scrape.go:57: Action Succeeded
+
+2018/07/09 21:03:34 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:03:34 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:03:34 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:03:34 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:03:34 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:03:34 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:03:34 spec.go:25: Spec failed
+2018/07/09 21:03:34 scrape.go:60: Action failed
+
+2018/07/09 21:03:34 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:03:34 interaction.go:18: Running interaction, value number:
+2018/07/09 21:03:34 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:03:53 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:03:53 scrape.go:57: Action Succeeded
+
+2018/07/09 21:03:53 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:03:53 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:03:53 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:03:53 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:03:53 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:03:53 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:03:53 spec.go:25: Spec failed
+2018/07/09 21:03:53 scrape.go:60: Action failed
+
+2018/07/09 21:03:53 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:03:53 interaction.go:18: Running interaction, value number:
+2018/07/09 21:03:53 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:04:08 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:04:09 scrape.go:57: Action Succeeded
+
+2018/07/09 21:04:09 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:04:09 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:04:09 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:04:09 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:04:09 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:04:09 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:04:09 spec.go:25: Spec failed
+2018/07/09 21:04:09 scrape.go:60: Action failed
+
+2018/07/09 21:04:09 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:04:09 interaction.go:18: Running interaction, value number:
+2018/07/09 21:04:09 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:04:16 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:04:16 scrape.go:57: Action Succeeded
+
+2018/07/09 21:04:16 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:04:16 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:04:16 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:04:16 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:04:16 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:04:16 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:04:16 spec.go:25: Spec failed
+2018/07/09 21:04:16 scrape.go:60: Action failed
+
+2018/07/09 21:04:16 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:04:16 interaction.go:18: Running interaction, value number:
+2018/07/09 21:04:16 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:04:25 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:06:01 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/07/09 21:06:01 dataprofile.go:66: Creating DataProfile
+2018/07/09 21:06:04 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/09 21:06:04 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:06:04 bot.go:52: map[email:0xc42000c3a0 password:0xc420156000 question:0xc420156010 answer:0xc420156020 firstname:0xc420156270 lastname:0xc420156280 fullname:0xc420156290]
+2018/07/09 21:06:04 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:06:04 action.go:88: &{0xc420124800 0xc420066540 false}
+2018/07/09 21:06:04 action.go:88: &{0xc420124840 0xc4200665a0 false}
+2018/07/09 21:06:04 action.go:88: &{0xc420124880 0xc420066600 false}
+2018/07/09 21:06:04 action.go:88: &{0xc4201248c0 0xc420066660 false}
+2018/07/09 21:06:04 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/09 21:06:04 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:06:04 interaction.go:18: Running interaction, value number:
+2018/07/09 21:06:04 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:06:27 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:06:28 scrape.go:57: Action Succeeded
+
+2018/07/09 21:06:28 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:06:28 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:06:28 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:06:28 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:06:28 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:06:28 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:06:28 spec.go:25: Spec failed
+2018/07/09 21:06:28 scrape.go:60: Action failed
+
+2018/07/09 21:06:28 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:06:28 interaction.go:18: Running interaction, value number:
+2018/07/09 21:06:28 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:06:36 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:06:37 scrape.go:57: Action Succeeded
+
+2018/07/09 21:06:37 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:06:37 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:06:37 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:06:37 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:06:37 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:06:37 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:06:37 spec.go:25: Spec failed
+2018/07/09 21:06:37 scrape.go:60: Action failed
+
+2018/07/09 21:06:37 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:06:37 interaction.go:18: Running interaction, value number:
+2018/07/09 21:06:37 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:06:40 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:06:40 scrape.go:57: Action Succeeded
+
+2018/07/09 21:06:40 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:06:40 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:06:40 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:06:40 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:06:40 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:06:40 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:06:40 spec.go:25: Spec failed
+2018/07/09 21:06:40 scrape.go:60: Action failed
+
+2018/07/09 21:06:40 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:06:40 interaction.go:18: Running interaction, value number:
+2018/07/09 21:06:40 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:06:57 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/07/09 21:06:57 dataprofile.go:66: Creating DataProfile
+2018/07/09 21:07:00 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/09 21:07:00 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:07:00 bot.go:52: map[lastname:0xc420011030 fullname:0xc420011040 email:0xc4201b81c0 password:0xc4201c0000 question:0xc4201c0010 answer:0xc4201c0020 firstname:0xc420011020]
+2018/07/09 21:07:00 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:07:00 action.go:88: &{0xc420124800 0xc420066540 false}
+2018/07/09 21:07:00 action.go:88: &{0xc420124840 0xc4200665a0 false}
+2018/07/09 21:07:00 action.go:88: &{0xc420124880 0xc420066600 false}
+2018/07/09 21:07:00 action.go:88: &{0xc4201248c0 0xc420066660 false}
+2018/07/09 21:07:00 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/09 21:07:00 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:07:00 interaction.go:18: Running interaction, value number:
+2018/07/09 21:07:00 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:07:23 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:07:24 scrape.go:57: Action Succeeded
+
+2018/07/09 21:07:24 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:07:24 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:07:24 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:07:24 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:07:24 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:07:24 command.go:79: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/09 21:07:24 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:07:24 interaction.go:18: Running interaction, value number:
+2018/07/09 21:07:24 command.go:26: Filling element: //input[@id='firstname'] with: Vanessa
+2018/07/09 21:07:24 command.go:26: Filling element: //input[@id='lastname'] with: Betsy
+2018/07/09 21:07:24 command.go:26: Filling element: //input[@id='login'] with: Vane-saBetsy
+2018/07/09 21:07:24 command.go:26: Filling element: //input[@id='password'] with: X#aZWbK)jhajiySV$zj4
+2018/07/09 21:07:24 command.go:26: Filling element: //input[@id='password_confirm'] with: X#aZWbK)jhajiySV$zj4
+2018/07/09 21:07:24 command.go:51: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/09 21:07:25 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:07:25 scrape.go:57: Action Succeeded
+
+2018/07/09 21:07:25 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:07:25 command.go:79: Checking for element: //input[@id='hint_answer']
+2018/07/09 21:07:25 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:07:25 interaction.go:18: Running interaction, value number:
+2018/07/09 21:07:25 command.go:36: Setting Selection: //button[contains(@class, 'control-questions')]//span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/09 21:07:25 command.go:40: //button[contains(@class, 'control-questions')]//span[contains(text(), 'Your favorite actor or actress')]
+2018/07/09 21:08:37 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/07/09 21:08:37 dataprofile.go:66: Creating DataProfile
+2018/07/09 21:08:40 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/09 21:08:40 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:08:40 bot.go:52: map[email:0xc42000c380 password:0xc420010010 question:0xc4200103b0 answer:0xc420010410 firstname:0xc4201c00c0 lastname:0xc4201c00d0 fullname:0xc4201c00e0]
+2018/07/09 21:08:40 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:08:40 action.go:88: &{0xc420124800 0xc420066540 false}
+2018/07/09 21:08:40 action.go:88: &{0xc420124840 0xc4200665a0 false}
+2018/07/09 21:08:40 action.go:88: &{0xc420124880 0xc420066600 false}
+2018/07/09 21:08:40 action.go:88: &{0xc4201248c0 0xc420066660 false}
+2018/07/09 21:08:40 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/09 21:08:40 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:08:40 interaction.go:18: Running interaction, value number:
+2018/07/09 21:08:40 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:09:05 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:09:06 scrape.go:57: Action Succeeded
+
+2018/07/09 21:09:06 command.go:79: Checking for element: //input[@id='firstname']
+2018/07/09 21:09:06 command.go:79: Checking for element: //input[@id='lastname']
+2018/07/09 21:09:06 command.go:79: Checking for element: //input[@id='login']
+2018/07/09 21:09:06 command.go:79: Checking for element: //input[@id='password']
+2018/07/09 21:09:06 command.go:79: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:09:06 command.go:79: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/09 21:09:06 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:09:06 interaction.go:18: Running interaction, value number:
+2018/07/09 21:09:06 command.go:26: Filling element: //input[@id='firstname'] with: Danika
+2018/07/09 21:09:06 command.go:26: Filling element: //input[@id='lastname'] with: Xia
+2018/07/09 21:09:06 command.go:26: Filling element: //input[@id='login'] with: Dani00aXia
+2018/07/09 21:09:06 command.go:26: Filling element: //input[@id='password'] with: *GkXzox&2&azyvywHJQx
+2018/07/09 21:09:07 command.go:26: Filling element: //input[@id='password_confirm'] with: *GkXzox&2&azyvywHJQx
+2018/07/09 21:09:07 command.go:51: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/09 21:09:07 command.go:61: Waiting: 300 miliseconds
+2018/07/09 21:09:07 scrape.go:57: Action Succeeded
+
+2018/07/09 21:09:07 command.go:79: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:09:07 command.go:79: Checking for element: //input[@id='hint_answer']
+2018/07/09 21:09:07 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:09:07 interaction.go:18: Running interaction, value number:
+2018/07/09 21:09:07 command.go:36: Setting Selection: //button[contains(@class, 'control-questions')]//span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/09 21:09:07 command.go:40: //button[contains(@class, 'control-questions')]//span[contains(text(), 'Your favorite actor or actress')]
+2018/07/09 21:14:43 logger.go:21: LogFile : /home/lewington/xxx/go/src/email-bot/logger/scrape.log
+2018/07/09 21:14:43 dataprofile.go:66: Creating DataProfile
+2018/07/09 21:14:46 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/09 21:14:46 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:14:46 bot.go:52: map[question:0xc4200103b0 answer:0xc420010410 firstname:0xc420156270 lastname:0xc420156280 fullname:0xc420156290 email:0xc42000c380 password:0xc420010010]
+2018/07/09 21:14:46 dataprofile.go:56: Generating DataProfile data
+2018/07/09 21:14:46 action.go:88: &{0xc4201247e0 0xc420066540 false}
+2018/07/09 21:14:46 action.go:88: &{0xc420124820 0xc4200665a0 false}
+2018/07/09 21:14:46 action.go:88: &{0xc420124860 0xc420066600 false}
+2018/07/09 21:14:46 action.go:88: &{0xc4201248a0 0xc420066660 false}
+2018/07/09 21:14:46 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/09 21:14:46 spec.go:15: Empty Spec: Spec passed
+2018/07/09 21:14:46 interaction.go:18: Running interaction, value number:
+2018/07/09 21:14:46 command.go:15: Visiting: https://passport.yandex.com/registration/
+2018/07/09 21:15:05 command.go:67: Waiting: 300 miliseconds
+2018/07/09 21:15:05 scrape.go:57: Action Succeeded
+
+2018/07/09 21:15:05 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/09 21:15:05 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/09 21:15:05 command.go:85: Checking for element: //input[@id='login']
+2018/07/09 21:15:05 command.go:85: Checking for element: //input[@id='password']
+2018/07/09 21:15:05 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/09 21:15:05 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/09 21:15:05 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:15:05 interaction.go:18: Running interaction, value number:
+2018/07/09 21:15:05 command.go:26: Filling element: //input[@id='firstname'] with: Orianna
+2018/07/09 21:15:05 command.go:26: Filling element: //input[@id='lastname'] with: Izabella
+2018/07/09 21:15:05 command.go:26: Filling element: //input[@id='login'] with: OriannaIza-ella
+2018/07/09 21:15:05 command.go:26: Filling element: //input[@id='password'] with: j2crpllHpVAPR7uqP&9M
+2018/07/09 21:15:06 command.go:26: Filling element: //input[@id='password_confirm'] with: j2crpllHpVAPR7uqP&9M
+2018/07/09 21:15:06 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/09 21:15:06 command.go:67: Waiting: 300 miliseconds
+2018/07/09 21:15:06 scrape.go:57: Action Succeeded
+
+2018/07/09 21:15:06 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/09 21:15:06 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/09 21:15:06 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:15:06 interaction.go:18: Running interaction, value number:
+2018/07/09 21:15:07 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/09 21:15:07 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/09 21:15:07 command.go:67: Waiting: 400 miliseconds
+2018/07/09 21:15:08 command.go:26: Filling element: //input[@id='hint_answer'] with: Ricki Shirley
+2018/07/09 21:15:08 command.go:67: Waiting: 2000 miliseconds
+2018/07/09 21:15:10 scrape.go:57: Action Succeeded
+
+2018/07/09 21:15:10 command.go:93: Confirming missing element: //div[@class='error-message']
+2018/07/09 21:15:10 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/09 21:15:10 interaction.go:18: Running interaction, value number:
+2018/07/09 21:15:10 command.go:67: Waiting: 70000 miliseconds

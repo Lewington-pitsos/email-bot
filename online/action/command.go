@@ -30,17 +30,23 @@ func FillField(selector string) func(*interaction) {
 	}
 }
 
-func SelectOption(selector string) func(*interaction) {
+func SelectOption(selector string, option string) func(*interaction) {
 	return func(i *interaction) {
-		value := i.CurrentValue()
-		logger.LoggerInterface.Println("Setting Selection:", selector, "as:", value)
+		element, err := i.browser.Wd.FindElement("xpath", selector)
+		generalhelpers.Check(err)
+		element.Click()
 
-		optionSelector := fmt.Sprintf(selector, value)
+		generalhelpers.Wait(300)
+
+		value := i.CurrentValue()
+		logger.LoggerInterface.Println("Setting Selection:", option, "as:", value)
+
+		optionSelector := fmt.Sprintf(option, value)
 
 		logger.LoggerInterface.Println(optionSelector)
 
-		element, err := i.browser.Wd.FindElement("xpath", optionSelector)
-		generalhelpers.Check(err)
+		element, err2 := i.browser.Wd.FindElement("xpath", optionSelector)
+		generalhelpers.Check(err2)
 
 		element.Click()
 	}

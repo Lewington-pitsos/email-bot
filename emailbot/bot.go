@@ -29,7 +29,7 @@ type Bot struct {
 
 func (b *Bot) saveProfile(profile map[string]string) {
 	archivist := database.NewArchivist()
-	archivist.RecordProfile(profile)
+	archivist.RecordYandexProfile(profile)
 	archivist.Close()
 }
 

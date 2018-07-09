@@ -59,7 +59,7 @@ func (a *Action) AddVisit(url string) *Action {
 
 func (a *Action) AddSelectOperation(selector string, optionSelector string, valueType string) *Action {
 	a.spec.AddCommand(CheckExists(selector))
-	a.interaction.AddValueCommand(SelectOption(selector+optionSelector), valueType)
+	a.interaction.AddValueCommand(SelectOption(selector, optionSelector), valueType)
 
 	return a
 }

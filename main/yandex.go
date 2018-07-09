@@ -62,13 +62,14 @@ func main() {
 		AddFillOperation(emailInput, "email").
 		AddFillOperation(passInput, "password").
 		AddFillOperation(passConfirm, "password").
-		AddSelectOperation(questionSelector, answerSelector, "question").
 		AddSubmitOperation(noPhoneButton).
 		AddWait(300)
 
 		// ========================================================
 
 	botManager.AddAction(false).
+		AddSelectOperation(questionSelector, answerSelector, "question").
+		AddWait(400).
 		AddFillOperation(answerInput, "answer").
 		AddWait(2000)
 
