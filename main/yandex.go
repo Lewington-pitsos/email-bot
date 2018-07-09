@@ -2,6 +2,7 @@ package main
 
 import (
 	"email-bot/emailbot"
+	"email-bot/online/action"
 )
 
 func main() {
@@ -41,8 +42,10 @@ func main() {
 	emailInput := "//input[@id='login']"
 	passInput := "//input[@id='password']"
 	passConfirm := "//input[@id='password_confirm']"
-	//questionSelector := "//button[contains(@class, 'control-questions')]"
+	questionSelector := "//button[contains(@class, 'control-questions')]"
+	answerSelector := "//span[contains(text(), '%s')]"
 	answerInput := "//input[@id='hint_answer']"
+	errorMessage := "//div[@class='error-message']"
 
 	noPhoneButton := "//span[contains(@class, 'link_has-no-phone')]"
 	//submitButton := "//button[contains(@class, 'button2_type_submit js-submit')]"
@@ -59,6 +62,7 @@ func main() {
 		AddFillOperation(emailInput, "email").
 		AddFillOperation(passInput, "password").
 		AddFillOperation(passConfirm, "password").
+		AddSelectOperation(questionSelector, answerSelector, "question").
 		AddSubmitOperation(noPhoneButton).
 		AddWait(300)
 
@@ -66,9 +70,13 @@ func main() {
 
 	botManager.AddAction(false).
 		AddFillOperation(answerInput, "answer").
-		AddWait(40000)
+		AddWait(2000)
 
 		// ========================================================
+
+	botManager.AddAction(false).
+		AddToSpec(action.CheckDoesntExist(errorMessage)).
+		AddWait(70000)
 
 	botManager.AddBot(8081)
 
