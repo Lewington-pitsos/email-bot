@@ -49,6 +49,8 @@ func main() {
 
 	noPhoneButton := "//span[contains(@class, 'link_has-no-phone')]"
 	//submitButton := "//button[contains(@class, 'button2_type_submit js-submit')]"
+	avatar := "//span[@class='avatar-mask']"
+	copywright := "//div[@class='n-footer__rights']"
 
 	botManager.AddAction(false).
 		AddVisit("https://passport.yandex.com/registration/").
@@ -57,7 +59,9 @@ func main() {
 	// ========================================================
 
 	botManager.AddAction(false).
+		AddClick(firstInput).
 		AddFillOperation(firstInput, "firstname").
+		AddClick(lastInput).
 		AddFillOperation(lastInput, "lastname").
 		AddFillOperation(emailInput, "email").
 		AddFillOperation(passInput, "password").
@@ -77,10 +81,15 @@ func main() {
 
 	botManager.AddAction(false).
 		AddToSpec(action.CheckDoesntExist(errorMessage)).
-		AddWait(70000)
+		AddWait(100000)
 
-	botManager.AddBot(8081)
+		// ========================================================
+
+	botManager.AddAction(true).
+		AddToSpec(action.CheckExists(avatar)).
+		AddToSpec(action.CheckExists(copywright))
+
+	botManager.AddBots(8081, 1)
 
 	botManager.ScrapeAll()
-
 }

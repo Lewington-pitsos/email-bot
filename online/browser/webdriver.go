@@ -10,7 +10,7 @@ import (
 func NewWebDriver(portNum int) (selenium.WebDriver, *selenium.Service) {
 	const (
 		seleniumPath    = "/usr/local/bin/selenium-server-standalone-3.12.0.jar"
-		geckoDriverPath = "/usr/local/bin/geckodriver"
+		geckoDriverPath = "/usr/local/bin/gekodriver"
 	)
 
 	fmt.Println(portNum)

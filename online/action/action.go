@@ -78,6 +78,13 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 	return a
 }
 
+func (a *Action) AddClick(selector string) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(Click(selector))
+
+	return a
+}
+
 func (a *Action) AddBrowser(browser *browser.Browser) *Action {
 	a.interaction.addBrowser(browser)
 	a.spec.addBrowser(browser)
