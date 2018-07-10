@@ -2,6 +2,8 @@ package main
 
 import (
 	"email-bot/emailbot"
+	"email-bot/helpers/generalhelpers"
+	"email-bot/logger"
 	"email-bot/online/action"
 )
 
@@ -81,7 +83,7 @@ func main() {
 
 	botManager.AddAction(false).
 		AddToSpec(action.CheckDoesntExist(errorMessage)).
-		AddWait(100000)
+		AddWait(80000)
 
 		// ========================================================
 
@@ -89,7 +91,10 @@ func main() {
 		AddToSpec(action.CheckExists(avatar)).
 		AddToSpec(action.CheckExists(copywright))
 
-	botManager.AddBots(8081, 1)
+	botManager.AddBots(8081, 3)
 
 	botManager.ScrapeAll()
+
+	generalhelpers.Wait(10000)
+	logger.LoggerInterface.Println("end of program")
 }
