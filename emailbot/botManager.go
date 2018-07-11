@@ -4,7 +4,6 @@ import (
 	"email-bot/offline/profile"
 	"email-bot/online/action"
 	"email-bot/online/scrape"
-	"time"
 )
 
 type Manager struct {
@@ -15,7 +14,8 @@ type Manager struct {
 }
 
 func (m *Manager) AddBot(port int) {
-	m.bots = append(m.bots, NewBot(port, m.profile, m.scrapeProfile.Instructions()))
+	botProfile := m.profile.Generate().Values()
+	m.bots = append(m.bots, NewBot(port, botProfile, m.scrapeProfile.Instructions()))
 }
 
 func (m *Manager) AddBots(port int, number int) {
@@ -28,8 +28,6 @@ func (m *Manager) ScrapeAll() {
 	for _, bot := range m.bots {
 		go bot.Scrape()
 	}
-
-	time.Sleep(time.Millisecond * 90000)
 }
 
 func (m *Manager) AddAction(critical bool) *action.Action {

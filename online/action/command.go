@@ -92,6 +92,32 @@ func CheckDoesntExist(selector string) func(*spec) bool {
 	return func(s *spec) bool {
 		logger.LoggerInterface.Println("Confirming missing element:", selector)
 
-		return ElementCount(s, selector) <= 1
+		return ElementCount(s, selector) <= 0
+	}
+}
+
+func allExist(spec *spec, selectors []string) bool {
+	for _, selector := range selectors {
+		elements, err := spec.browser.Wd.FindElements("xpath", selector)
+		generalhelpers.Check(err)
+
+		if len(elements) <= 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func KeepCheckingForElements(selectors []string, interval int, times int) func(*spec) bool {
+	return func(spec *spec) bool {
+		for i := 0; i < times; i++ {
+			generalhelpers.Wait(interval)
+			if allExist(spec, selectors) {
+				return true
+			}
+		}
+
+		return false
 	}
 }

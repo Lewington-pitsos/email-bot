@@ -47,7 +47,7 @@ func main() {
 	questionSelector := "//button[contains(@class, 'control-questions')]"
 	answerSelector := "//span[contains(text(), '%s')]"
 	answerInput := "//input[@id='hint_answer']"
-	errorMessage := "//div[@class='error-message']"
+	errorMessage := "//*[@class='error-message']"
 
 	noPhoneButton := "//span[contains(@class, 'link_has-no-phone')]"
 	//submitButton := "//button[contains(@class, 'button2_type_submit js-submit')]"
@@ -55,7 +55,7 @@ func main() {
 	copywright := "//div[@class='n-footer__rights']"
 
 	botManager.AddAction(false).
-		AddVisit("https://passport.yandex.com/registration/").
+		AddVisit("https://passport.yandex.com/registration").
 		AddWait(300)
 
 	// ========================================================
@@ -77,24 +77,26 @@ func main() {
 		AddSelectOperation(questionSelector, answerSelector, "question").
 		AddWait(400).
 		AddFillOperation(answerInput, "answer").
-		AddWait(2000)
+		AddClick(lastInput).
+		AddWait(4000)
 
 		// ========================================================
 
 	botManager.AddAction(false).
-		AddToSpec(action.CheckDoesntExist(errorMessage)).
-		AddWait(80000)
+		AddToSpec(action.CheckDoesntExist(errorMessage))
 
-		// ========================================================
+	// ========================================================
 
 	botManager.AddAction(true).
-		AddToSpec(action.CheckExists(avatar)).
-		AddToSpec(action.CheckExists(copywright))
+		AddContinuousCheck([]string{avatar, copywright},
+			2000,
+			200,
+		)
 
-	botManager.AddBots(8081, 3)
+	botManager.AddBots(8081, 1)
 
 	botManager.ScrapeAll()
 
-	generalhelpers.Wait(10000)
+	generalhelpers.Wait(200000)
 	logger.LoggerInterface.Println("end of program")
 }

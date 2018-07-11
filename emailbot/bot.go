@@ -3,8 +3,6 @@ package emailbot
 import (
 	"email-bot/database"
 	"email-bot/datastructures"
-	"email-bot/logger"
-	"email-bot/offline/profile"
 	"email-bot/online/action"
 	"email-bot/online/scrape"
 	"go/build"
@@ -18,7 +16,7 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 // +---------------------------------------------------------------------------------------+
 
 type Bot struct {
-	profile       profile.ProfileInterface
+	profile       map[string]datastructures.Detail
 	scrapeManager *scrape.Manager
 	actions       []*action.Action
 }
@@ -39,18 +37,12 @@ func (b *Bot) processResults(success bool) {
 	}
 }
 
-func (b *Bot) generatedValues() map[string]datastructures.Detail {
-	b.profile.Generate()
-	return b.profile.Values()
-}
-
 //
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EXPOSED METHODS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 //
 
 func (b *Bot) Scrape() {
-	logger.LoggerInterface.Println(b.generatedValues())
-	b.scrapeManager.AddValues(b.generatedValues())
+	b.scrapeManager.AddValues(b.profile)
 	b.scrapeManager.ProvisionScrape(b.actions)
 	b.processResults(b.scrapeManager.Scrape())
 }
@@ -59,7 +51,7 @@ func (b *Bot) Scrape() {
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewBot(port int, profile profile.ProfileInterface, actions []*action.Action) *Bot {
+func NewBot(port int, profile map[string]datastructures.Detail, actions []*action.Action) *Bot {
 	return &Bot{
 		profile:       profile,
 		scrapeManager: scrape.NewManager(port),

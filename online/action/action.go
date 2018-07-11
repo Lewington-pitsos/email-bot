@@ -91,6 +91,12 @@ func (a *Action) AddBrowser(browser *browser.Browser) *Action {
 	return a
 }
 
+func (a *Action) AddContinuousCheck(selectors []string, interval int, times int) *Action {
+	a.spec.AddCommand(KeepCheckingForElements(selectors, interval, times))
+
+	return a
+}
+
 func (a *Action) AddCandidateValues(candidateValues map[string]datastructures.Detail) *Action {
 	logger.LoggerInterface.Println(a)
 	a.interaction.addCandidateValues(candidateValues)
