@@ -61,6 +61,10 @@ func (p *DataProfile) Generate() ProfileInterface {
 	return p
 }
 
+func (d *DataProfile) Saveable() bool {
+	return true
+}
+
 func NewDataProfile() *DataProfile {
 	generator := generator.NewValueGenerator()
 	logger.LoggerInterface.Println("Creating DataProfile")

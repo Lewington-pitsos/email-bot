@@ -15,7 +15,7 @@ type Manager struct {
 
 func (m *Manager) AddBot(port int) {
 	botProfile := m.profile.Generate().Values()
-	m.bots = append(m.bots, NewBot(port, botProfile, m.scrapeProfile.Instructions()))
+	m.bots = append(m.bots, NewBot(port, botProfile, m.scrapeProfile.Instructions(), m.profile.Saveable()))
 }
 
 func (m *Manager) AddBots(port int, number int) {

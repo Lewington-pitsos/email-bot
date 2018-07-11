@@ -14,7 +14,7 @@ func (ap *ActiveProfile) Values() map[string]datastructures.Detail {
 	return ap.profiles[ap.profileIndex]
 }
 
-func (ap *ActiveProfile) Generate() *ActiveProfile {
+func (ap *ActiveProfile) Generate() ProfileInterface {
 	ap.profileIndex++
 
 	return ap
@@ -22,6 +22,10 @@ func (ap *ActiveProfile) Generate() *ActiveProfile {
 
 func (a *ActiveProfile) Profiles() []map[string]datastructures.Detail {
 	return a.profiles
+}
+
+func (a *ActiveProfile) Saveable() bool {
+	return false
 }
 
 func (ap *ActiveProfile) Populate() *ActiveProfile {

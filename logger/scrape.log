@@ -4529,3 +4529,90 @@
 2018/07/11 20:19:46 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
 2018/07/11 20:20:05 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
 2018/07/11 20:20:14 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:32:41 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:32:43 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 20:32:43 action.go:101: &{0xc420157120 0xc4200d4fc0 false}
+2018/07/11 20:32:43 action.go:101: &{0xc420157160 0xc4200d5020 false}
+2018/07/11 20:32:43 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 20:32:43 spec.go:15: Empty Spec: Spec passed
+2018/07/11 20:32:43 interaction.go:18: Running interaction, value number:
+2018/07/11 20:32:43 command.go:15: Visiting: https://passport.yandex.com/auth
+2018/07/11 20:32:50 command.go:67: Waiting: 300 miliseconds
+2018/07/11 20:32:51 scrape.go:57: Action Succeeded
+
+2018/07/11 20:32:51 command.go:85: Checking for element: //input[@name='login']
+2018/07/11 20:32:51 command.go:85: Checking for element: //input[@name='passwd']
+2018/07/11 20:32:51 command.go:85: Checking for element: //button[@class='passport-Button']
+2018/07/11 20:32:51 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 20:32:51 interaction.go:18: Running interaction, value number:
+2018/07/11 20:32:51 command.go:26: Filling element: //input[@name='login'] with: Miraxxyindsey
+2018/07/11 20:32:51 command.go:26: Filling element: //input[@name='passwd'] with: 0eHjBvXW1BWtEHcSEV5g
+2018/07/11 20:32:51 command.go:67: Waiting: 300 miliseconds
+2018/07/11 20:32:52 command.go:57: Clicking element: //button[@class='passport-Button']
+2018/07/11 20:32:53 scrape.go:57: Action Succeeded
+
+2018/07/11 20:32:53 scrape.go:35: Scrape Completed Successfully
+2018/07/11 20:32:53 manager.go:41: Extracting data for entered profile
+2018/07/11 20:32:53 manager.go:48:   
+2018/07/11 20:32:53 archivist.go:68: map[lastname:Lindsey password:0eHjBvXW1BWtEHcSEV5g birthdate:   email:Miraxxyindsey question:Your favorite actor or actress answer:Makayla Helene firstname:Mira]
+2018/07/11 20:33:20 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:33:22 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 20:33:22 action.go:101: &{0xc420157120 0xc4200d4fc0 false}
+2018/07/11 20:33:22 action.go:101: &{0xc420157160 0xc4200d5020 false}
+2018/07/11 20:33:22 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 20:33:22 spec.go:15: Empty Spec: Spec passed
+2018/07/11 20:33:22 interaction.go:18: Running interaction, value number:
+2018/07/11 20:33:22 command.go:15: Visiting: https://passport.yandex.com/auth
+2018/07/11 20:33:28 command.go:67: Waiting: 300 miliseconds
+2018/07/11 20:33:29 scrape.go:57: Action Succeeded
+
+2018/07/11 20:33:29 command.go:85: Checking for element: //input[@name='login']
+2018/07/11 20:33:29 command.go:85: Checking for element: //input[@name='passwd']
+2018/07/11 20:33:29 command.go:85: Checking for element: //button[@class='passport-Button']
+2018/07/11 20:33:29 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 20:33:29 interaction.go:18: Running interaction, value number:
+2018/07/11 20:33:29 command.go:26: Filling element: //input[@name='login'] with: Miraxxyindsey
+2018/07/11 20:33:29 command.go:26: Filling element: //input[@name='passwd'] with: 0eHjBvXW1BWtEHcSEV5g
+2018/07/11 20:33:29 command.go:67: Waiting: 300 miliseconds
+2018/07/11 20:33:29 command.go:57: Clicking element: //button[@class='passport-Button']
+2018/07/11 20:33:31 command.go:67: Waiting: 3000 miliseconds
+2018/07/11 20:33:34 scrape.go:57: Action Succeeded
+
+2018/07/11 20:33:34 scrape.go:35: Scrape Completed Successfully
+2018/07/11 20:33:34 manager.go:41: Extracting data for entered profile
+2018/07/11 20:33:34 manager.go:48:   
+2018/07/11 20:33:34 archivist.go:68: map[password:0eHjBvXW1BWtEHcSEV5g email:Miraxxyindsey question:Your favorite actor or actress birthdate:   answer:Makayla Helene firstname:Mira lastname:Lindsey]
+2018/07/11 20:36:42 yandex_send_email.go:37: end of program
+2018/07/11 20:39:53 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:39:55 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 20:39:55 action.go:101: &{0xc4201821a0 0xc4201589c0 false}
+2018/07/11 20:39:55 action.go:101: &{0xc4201821e0 0xc420158a20 false}
+2018/07/11 20:39:55 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 20:39:55 spec.go:15: Empty Spec: Spec passed
+2018/07/11 20:39:55 interaction.go:18: Running interaction, value number:
+2018/07/11 20:39:55 command.go:15: Visiting: https://passport.yandex.com/auth
+2018/07/11 20:40:01 command.go:67: Waiting: 300 miliseconds
+2018/07/11 20:40:02 scrape.go:57: Action Succeeded
+
+2018/07/11 20:40:02 command.go:85: Checking for element: //input[@name='login']
+2018/07/11 20:40:02 command.go:85: Checking for element: //input[@name='passwd']
+2018/07/11 20:40:02 command.go:85: Checking for element: //button[@class='passport-Button']
+2018/07/11 20:40:02 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 20:40:02 interaction.go:18: Running interaction, value number:
+2018/07/11 20:40:02 command.go:26: Filling element: //input[@name='login'] with: Miraxxyindsey
+2018/07/11 20:40:02 command.go:26: Filling element: //input[@name='passwd'] with: 0eHjBvXW1BWtEHcSEV5g
+2018/07/11 20:40:02 command.go:67: Waiting: 300 miliseconds
+2018/07/11 20:40:02 command.go:57: Clicking element: //button[@class='passport-Button']
+2018/07/11 20:40:09 command.go:67: Waiting: 90000 miliseconds

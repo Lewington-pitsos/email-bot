@@ -16,6 +16,7 @@ var profileList = build.Default.GOPATH + "src/email-bot/data/profiles.json"
 // +---------------------------------------------------------------------------------------+
 
 type Bot struct {
+	save          bool
 	profile       map[string]datastructures.Detail
 	scrapeManager *scrape.Manager
 	actions       []*action.Action
@@ -32,7 +33,7 @@ func (b *Bot) saveProfile(profile map[string]string) {
 }
 
 func (b *Bot) processResults(success bool) {
-	if success {
+	if success && b.save {
 		b.saveProfile(b.scrapeManager.ActiveProfileData())
 	}
 }
@@ -51,8 +52,9 @@ func (b *Bot) Scrape() {
 //									EXPOSED FUNCTIONS
 // +---------------------------------------------------------------------------------------+
 
-func NewBot(port int, profile map[string]datastructures.Detail, actions []*action.Action) *Bot {
+func NewBot(port int, profile map[string]datastructures.Detail, actions []*action.Action, save bool) *Bot {
 	return &Bot{
+		save:          save,
 		profile:       profile,
 		scrapeManager: scrape.NewManager(port),
 		actions:       actions,
