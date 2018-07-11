@@ -3484,3 +3484,1043 @@
 2018/07/11 19:40:44 manager.go:41: Extracting data for entered profile
 2018/07/11 19:40:44 manager.go:48:   
 2018/07/11 19:40:44 archivist.go:68: map[password:ZxuLz1SWfE9NhppQ5xyT question:Your favorite actor or actress answer:Leticia Moya firstname:Loran lastname:Kaitlynn fullname:LoranKaitlynn email:LoranKait9ynn birthdate:  ]
+2018/07/11 19:41:34 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 19:41:34 dataprofile.go:66: Creating DataProfile
+2018/07/11 19:41:34 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:41:36 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:41:36 action.go:101: &{0xc4204c2220 0xc4200d2000 false}
+2018/07/11 19:41:36 action.go:101: &{0xc4204c2260 0xc4200d20c0 false}
+2018/07/11 19:41:36 action.go:101: &{0xc4204c22a0 0xc4200d2120 false}
+2018/07/11 19:41:36 action.go:101: &{0xc4204c22e0 0xc4200d2180 false}
+2018/07/11 19:41:36 action.go:101: &{0xc4204c2320 0xc4200d21e0 true}
+2018/07/11 19:41:36 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:41:36 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:41:36 interaction.go:18: Running interaction, value number:
+2018/07/11 19:41:36 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:41:44 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:41:44 scrape.go:57: Action Succeeded
+
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:41:44 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:41:44 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:41:44 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:41:44 interaction.go:18: Running interaction, value number:
+2018/07/11 19:41:44 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:41:44 command.go:26: Filling element: //input[@id='firstname'] with: Sabrina
+2018/07/11 19:41:44 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:41:44 command.go:26: Filling element: //input[@id='lastname'] with: Adrianna
+2018/07/11 19:41:44 command.go:26: Filling element: //input[@id='login'] with: Sabrin123Adrianna
+2018/07/11 19:41:45 command.go:26: Filling element: //input[@id='password'] with: OHg%c5*PYhdISPph(kN#
+2018/07/11 19:41:45 command.go:26: Filling element: //input[@id='password_confirm'] with: OHg%c5*PYhdISPph(kN#
+2018/07/11 19:41:45 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:41:45 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:41:45 scrape.go:57: Action Succeeded
+
+2018/07/11 19:41:45 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:41:45 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:41:45 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:41:45 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:41:45 interaction.go:18: Running interaction, value number:
+2018/07/11 19:41:46 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:41:46 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:41:46 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:41:46 command.go:26: Filling element: //input[@id='hint_answer'] with: Grainne Carolyn
+2018/07/11 19:41:47 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:41:47 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:41:51 scrape.go:57: Action Succeeded
+
+2018/07/11 19:41:51 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:41:51 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:41:51 interaction.go:18: Running interaction, value number:
+2018/07/11 19:41:51 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:19 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:19 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:19 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:19 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:42:19 manager.go:41: Extracting data for entered profile
+2018/07/11 19:42:19 manager.go:48:   
+2018/07/11 19:42:19 archivist.go:68: map[fullname:SabrinaAdrianna email:Sabrin123Adrianna password:OHg%c5*PYhdISPph(kN# question:Your favorite actor or actress answer:Grainne Carolyn birthdate:   firstname:Sabrina lastname:Adrianna]
+2018/07/11 19:42:31 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 19:42:31 dataprofile.go:66: Creating DataProfile
+2018/07/11 19:42:31 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:42:33 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:42:33 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:42:34 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:42:34 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:42:36 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:42:36 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:42:37 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:42:37 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:42:39 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0200 0xc4200d2a80 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0240 0xc4200d2ae0 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c02a0 0xc4200d2c00 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0420 0xc4200d2d80 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0460 0xc4200d2de0 true}
+2018/07/11 19:42:39 action.go:101: &{0xc4200be380 0xc4200d2000 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0040 0xc4200d20c0 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0080 0xc4200d2120 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c00c0 0xc4200d2180 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0100 0xc4200d21e0 true}
+2018/07/11 19:42:39 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:42:39 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:42:39 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:39 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:42:39 action.go:101: &{0xc4204c02e0 0xc4200d2660 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0320 0xc4200d26c0 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c0360 0xc4200d2720 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c03a0 0xc4200d2780 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4204c03e0 0xc4200d27e0 true}
+2018/07/11 19:42:39 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:42:39 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:42:39 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:39 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:42:39 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:42:39 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:42:39 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:39 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:42:39 action.go:101: &{0xc4200be200 0xc420084480 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42000c220 0xc420084060 false}
+2018/07/11 19:42:39 action.go:101: &{0xc4200be320 0xc4200846c0 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42000c260 0xc4200841e0 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42049a020 0xc420084720 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42000c2a0 0xc420084240 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42049a060 0xc420084780 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42000c2e0 0xc4200842a0 false}
+2018/07/11 19:42:39 action.go:101: &{0xc42000c320 0xc420084300 true}
+2018/07/11 19:42:39 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:42:39 action.go:101: &{0xc42049a0a0 0xc4200847e0 true}
+2018/07/11 19:42:39 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:42:39 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:39 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:42:39 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:42:39 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:42:39 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:39 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:42:46 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:46 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:46 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:46 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:46 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:46 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:42:46 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:42:46 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:46 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:46 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:46 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:46 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:46 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:46 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:42:46 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:46 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:46 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:42:46 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:46 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:46 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:42:46 command.go:26: Filling element: //input[@id='firstname'] with: Autumn
+2018/07/11 19:42:46 command.go:26: Filling element: //input[@id='firstname'] with: Serenity
+2018/07/11 19:42:46 command.go:26: Filling element: //input[@id='firstname'] with: Iliana
+2018/07/11 19:42:46 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:46 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='lastname'] with: Blanche
+2018/07/11 19:42:47 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:47 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='lastname'] with: Katia
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:42:47 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:47 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:47 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:47 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='login'] with: Aut-mnBlanche
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='login'] with: SerenityKaxxyia
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='lastname'] with: Alissa
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='firstname'] with: Elaina
+2018/07/11 19:42:47 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='login'] with: IlixxnaAlissa
+2018/07/11 19:42:47 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password'] with: IAdINfEaHtw%!WBCb@Ea
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password'] with: jwkA9ak*q2i06cieckxR
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:42:47 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='lastname'] with: Clarabelle
+2018/07/11 19:42:47 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:47 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:47 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:47 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='firstname'] with: Christina
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password_confirm'] with: jwkA9ak*q2i06cieckxR
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password_confirm'] with: IAdINfEaHtw%!WBCb@Ea
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='login'] with: ElainaClarabellxx
+2018/07/11 19:42:47 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password'] with: D^lPCsAtdaA2wdHZc)I0
+2018/07/11 19:42:47 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:47 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='lastname'] with: Gisselle
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password'] with: cajKfC%2gRcCSRWXVZX$
+2018/07/11 19:42:47 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='password_confirm'] with: D^lPCsAtdaA2wdHZc)I0
+2018/07/11 19:42:47 command.go:26: Filling element: //input[@id='login'] with: ChristinaGiss-lle
+2018/07/11 19:42:47 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:48 command.go:26: Filling element: //input[@id='password_confirm'] with: cajKfC%2gRcCSRWXVZX$
+2018/07/11 19:42:48 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:48 command.go:26: Filling element: //input[@id='password'] with: maG@n^akHv^LrU7me%v(
+2018/07/11 19:42:48 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:48 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:48 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:42:48 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:48 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:48 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:42:48 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:48 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:48 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:48 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:48 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:48 command.go:26: Filling element: //input[@id='password_confirm'] with: maG@n^akHv^LrU7me%v(
+2018/07/11 19:42:48 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:42:48 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:48 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:48 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:48 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:48 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:48 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:48 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:42:48 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:48 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:48 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:42:48 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:42:48 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:42:48 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:42:48 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:42:48 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:42:48 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:48 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:42:48 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:42:48 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:42:48 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:42:48 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:48 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:49 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:42:49 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:42:49 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:42:49 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:42:49 command.go:26: Filling element: //input[@id='hint_answer'] with: Isha Venus
+2018/07/11 19:42:49 command.go:26: Filling element: //input[@id='hint_answer'] with: Randi Jacinda
+2018/07/11 19:42:49 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:49 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:42:49 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:42:49 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:42:49 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:49 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:42:49 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:42:49 command.go:26: Filling element: //input[@id='hint_answer'] with: Becca Naja
+2018/07/11 19:42:49 command.go:26: Filling element: //input[@id='hint_answer'] with: Janine Zena
+2018/07/11 19:42:49 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:49 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:49 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:42:49 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:42:49 command.go:26: Filling element: //input[@id='hint_answer'] with: Latoya Anastasia
+2018/07/11 19:42:50 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:42:50 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:42:53 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:53 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:42:53 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:53 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:42:53 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:53 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:53 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:53 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:53 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:54 scrape.go:57: Action Succeeded
+
+2018/07/11 19:42:54 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:42:54 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:42:54 interaction.go:18: Running interaction, value number:
+2018/07/11 19:42:54 scrape.go:57: Action Succeeded
+
+2018/07/11 19:43:15 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:43:15 interaction.go:18: Running interaction, value number:
+2018/07/11 19:43:15 scrape.go:57: Action Succeeded
+
+2018/07/11 19:43:15 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:43:15 manager.go:41: Extracting data for entered profile
+2018/07/11 19:43:15 manager.go:48:   
+2018/07/11 19:43:15 archivist.go:68: map[birthdate:   fullname:AutumnBlanche email:Aut-mnBlanche password:IAdINfEaHtw%!WBCb@Ea question:Your favorite actor or actress answer:Randi Jacinda firstname:Autumn lastname:Blanche]
+2018/07/11 19:43:35 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:43:35 interaction.go:18: Running interaction, value number:
+2018/07/11 19:43:35 scrape.go:57: Action Succeeded
+
+2018/07/11 19:43:35 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:43:35 manager.go:41: Extracting data for entered profile
+2018/07/11 19:43:35 manager.go:48:   
+2018/07/11 19:43:35 archivist.go:68: map[fullname:IlianaAlissa email:IlixxnaAlissa password:D^lPCsAtdaA2wdHZc)I0 question:Your favorite actor or actress answer:Becca Naja firstname:Iliana lastname:Alissa birthdate:  ]
+2018/07/11 19:43:55 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:43:55 interaction.go:18: Running interaction, value number:
+2018/07/11 19:43:55 scrape.go:57: Action Succeeded
+
+2018/07/11 19:43:55 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:43:55 manager.go:41: Extracting data for entered profile
+2018/07/11 19:43:55 manager.go:48:   
+2018/07/11 19:43:55 archivist.go:68: map[email:ChristinaGiss-lle birthdate:   password:maG@n^akHv^LrU7me%v( question:Your favorite actor or actress answer:Latoya Anastasia firstname:Christina lastname:Gisselle fullname:ChristinaGisselle]
+2018/07/11 19:44:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:44:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:44:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:44:16 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:44:16 manager.go:41: Extracting data for entered profile
+2018/07/11 19:44:16 manager.go:48:   
+2018/07/11 19:44:16 archivist.go:68: map[firstname:Elaina lastname:Clarabelle fullname:ElainaClarabelle email:ElainaClarabellxx password:cajKfC%2gRcCSRWXVZX$ question:Your favorite actor or actress answer:Janine Zena birthdate:  ]
+2018/07/11 19:44:27 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:44:27 interaction.go:18: Running interaction, value number:
+2018/07/11 19:44:27 scrape.go:57: Action Succeeded
+
+2018/07/11 19:44:27 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:44:27 manager.go:41: Extracting data for entered profile
+2018/07/11 19:44:27 manager.go:48:   
+2018/07/11 19:44:27 archivist.go:68: map[question:Your favorite actor or actress birthdate:   answer:Isha Venus firstname:Serenity lastname:Katia fullname:SerenityKatia email:SerenityKaxxyia password:jwkA9ak*q2i06cieckxR]
+2018/07/11 19:45:58 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 19:45:58 dataprofile.go:66: Creating DataProfile
+2018/07/11 19:45:58 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:45:59 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:45:59 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:46:01 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:46:01 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:46:02 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:46:02 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:46:03 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:46:03 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:46:05 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:46:05 action.go:101: &{0xc4200be140 0xc420084b40 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506240 0xc4200d2540 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506280 0xc4200d25a0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506000 0xc4203f2000 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506040 0xc4203f2120 false}
+2018/07/11 19:46:05 action.go:101: &{0xc4205060c0 0xc4203f2180 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506100 0xc4203f21e0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506140 0xc4203f2240 true}
+2018/07/11 19:46:05 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:46:05 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:46:05 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:05 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:46:05 action.go:101: &{0xc4205062c0 0xc4200d2600 false}
+2018/07/11 19:46:05 action.go:101: &{0xc4200be2e0 0xc420084060 false}
+2018/07/11 19:46:05 action.go:101: &{0xc4200be380 0xc4200842a0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc42000c040 0xc420084300 false}
+2018/07/11 19:46:05 action.go:101: &{0xc42000c080 0xc420084420 false}
+2018/07/11 19:46:05 action.go:101: &{0xc42000c0c0 0xc4200845a0 true}
+2018/07/11 19:46:05 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:46:05 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:46:05 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:05 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:46:05 action.go:101: &{0xc4200be200 0xc420084ba0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc4201c0000 0xc420084cc0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc4201c0040 0xc420084de0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420156aa0 0xc4200d2000 false}
+2018/07/11 19:46:05 action.go:101: &{0xc4201c0080 0xc420084e40 true}
+2018/07/11 19:46:05 action.go:101: &{0xc420156b00 0xc4200d20c0 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420156b40 0xc4200d2120 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420156b80 0xc4200d2180 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420156bc0 0xc4200d21e0 true}
+2018/07/11 19:46:05 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:46:05 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:46:05 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:05 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:46:05 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:46:05 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:46:05 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:05 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:46:05 action.go:101: &{0xc420506320 0xc4200d2660 false}
+2018/07/11 19:46:05 action.go:101: &{0xc420506360 0xc4200d26c0 true}
+2018/07/11 19:46:05 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:46:05 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:46:05 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:05 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:46:12 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:12 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:12 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:12 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:12 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:12 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:12 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:12 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:12 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:12 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:12 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:12 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:46:13 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:13 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:13 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:13 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:46:13 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:13 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='firstname'] with: Clover
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='firstname'] with: Deanna
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:13 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:13 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='lastname'] with: Harley
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:46:13 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:46:13 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:13 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='lastname'] with: Zita
+2018/07/11 19:46:13 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:13 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:46:13 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:13 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='login'] with: CloloverHarley
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='firstname'] with: Cleopatra
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='firstname'] with: Kendall
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='login'] with: DeannaZixXsn1perXxa
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='password'] with: ykLYKhDmhA#$eGG%FYyu
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='lastname'] with: Ariadne
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='lastname'] with: Hayley
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='password'] with: LAgUv7Z66nf^xWv(hLc6
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='login'] with: CleopatraArdonkeyadne
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='login'] with: KendallHayl1337y
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='password_confirm'] with: ykLYKhDmhA#$eGG%FYyu
+2018/07/11 19:46:13 command.go:26: Filling element: //input[@id='password_confirm'] with: LAgUv7Z66nf^xWv(hLc6
+2018/07/11 19:46:14 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:14 command.go:26: Filling element: //input[@id='password'] with: sW%UJhmDnb9VFHqUnyWY
+2018/07/11 19:46:14 command.go:26: Filling element: //input[@id='password'] with: 1OQsWDn!wdjVD$pzsmam
+2018/07/11 19:46:14 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:14 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:14 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:14 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:14 command.go:26: Filling element: //input[@id='password_confirm'] with: sW%UJhmDnb9VFHqUnyWY
+2018/07/11 19:46:14 command.go:26: Filling element: //input[@id='password_confirm'] with: 1OQsWDn!wdjVD$pzsmam
+2018/07/11 19:46:14 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:14 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:14 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:14 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:14 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:14 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:14 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:14 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:46:14 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:14 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:46:14 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:14 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:14 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:46:14 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:14 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:14 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:14 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:46:14 command.go:26: Filling element: //input[@id='firstname'] with: Aoife
+2018/07/11 19:46:14 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:14 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:46:14 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:14 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:46:14 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:14 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:14 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:14 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:14 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:14 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:14 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:46:14 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:46:14 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:46:14 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:46:14 command.go:26: Filling element: //input[@id='lastname'] with: Oriana
+2018/07/11 19:46:15 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:46:15 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='login'] with: AoifpwnedOriana
+2018/07/11 19:46:15 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:46:15 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:46:15 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:46:15 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='password'] with: bn4qSdmhgrzJ5nWDwQE%
+2018/07/11 19:46:15 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:46:15 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='hint_answer'] with: Tatiana Cindy
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='password_confirm'] with: bn4qSdmhgrzJ5nWDwQE%
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='hint_answer'] with: Katya Jamie
+2018/07/11 19:46:15 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:15 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:46:15 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:46:15 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:15 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:46:15 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='hint_answer'] with: Layla Sylvia
+2018/07/11 19:46:15 command.go:26: Filling element: //input[@id='hint_answer'] with: Elana Dasia
+2018/07/11 19:46:15 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:15 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:16 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:46:16 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:46:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:16 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:46:16 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:46:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:46:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:16 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:46:16 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:46:16 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:46:16 command.go:26: Filling element: //input[@id='hint_answer'] with: Coral Chole
+2018/07/11 19:46:17 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:46:17 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:46:19 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:19 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:46:19 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:19 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:19 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:19 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:19 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:46:19 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:19 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:19 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:20 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:20 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:20 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:46:20 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:46:20 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:20 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:20 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:20 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:20 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:20 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:21 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:21 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:46:21 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:21 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:21 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:38 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:38 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:38 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:38 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:46:38 manager.go:41: Extracting data for entered profile
+2018/07/11 19:46:38 manager.go:48:   
+2018/07/11 19:46:38 archivist.go:68: map[question:Your favorite actor or actress answer:Katya Jamie firstname:Deanna lastname:Zita fullname:DeannaZita email:DeannaZixXsn1perXxa birthdate:   password:LAgUv7Z66nf^xWv(hLc6]
+2018/07/11 19:46:50 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:46:50 interaction.go:18: Running interaction, value number:
+2018/07/11 19:46:50 scrape.go:57: Action Succeeded
+
+2018/07/11 19:46:50 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:46:50 manager.go:41: Extracting data for entered profile
+2018/07/11 19:46:50 manager.go:48:   
+2018/07/11 19:46:50 archivist.go:68: map[lastname:Hayley birthdate:   fullname:KendallHayley email:KendallHayl1337y password:sW%UJhmDnb9VFHqUnyWY question:Your favorite actor or actress answer:Elana Dasia firstname:Kendall]
+2018/07/11 19:47:14 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:47:14 interaction.go:18: Running interaction, value number:
+2018/07/11 19:47:14 scrape.go:57: Action Succeeded
+
+2018/07/11 19:47:14 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:47:14 manager.go:41: Extracting data for entered profile
+2018/07/11 19:47:14 manager.go:48:   
+2018/07/11 19:47:14 archivist.go:68: map[email:AoifpwnedOriana password:bn4qSdmhgrzJ5nWDwQE% birthdate:   question:Your favorite actor or actress answer:Coral Chole firstname:Aoife lastname:Oriana fullname:AoifeOriana]
+2018/07/11 19:47:42 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:47:42 interaction.go:18: Running interaction, value number:
+2018/07/11 19:47:42 scrape.go:57: Action Succeeded
+
+2018/07/11 19:47:42 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:47:43 manager.go:41: Extracting data for entered profile
+2018/07/11 19:47:43 manager.go:48:   
+2018/07/11 19:47:43 archivist.go:68: map[firstname:Cleopatra lastname:Ariadne fullname:CleopatraAriadne email:CleopatraArdonkeyadne birthdate:   password:1OQsWDn!wdjVD$pzsmam question:Your favorite actor or actress answer:Layla Sylvia]
+2018/07/11 19:47:52 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:47:52 interaction.go:18: Running interaction, value number:
+2018/07/11 19:47:52 scrape.go:57: Action Succeeded
+
+2018/07/11 19:47:52 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:47:52 manager.go:41: Extracting data for entered profile
+2018/07/11 19:47:52 manager.go:48:   
+2018/07/11 19:47:52 archivist.go:68: map[firstname:Clover lastname:Harley fullname:CloverHarley birthdate:   email:CloloverHarley password:ykLYKhDmhA#$eGG%FYyu question:Your favorite actor or actress answer:Tatiana Cindy]
+2018/07/11 19:48:01 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 19:48:01 dataprofile.go:66: Creating DataProfile
+2018/07/11 19:48:01 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:48:02 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:48:02 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:48:04 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:48:04 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:48:05 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:48:05 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:48:06 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:48:06 dataprofile.go:56: Generating DataProfile data
+2018/07/11 19:48:08 scrape.go:97: 
+
+============= Creating Scrape =============
+2018/07/11 19:48:08 action.go:101: &{0xc4204060c0 0xc4204a2540 false}
+2018/07/11 19:48:08 action.go:101: &{0xc420406100 0xc4204a2780 false}
+2018/07/11 19:48:08 action.go:101: &{0xc420154ae0 0xc42009a060 false}
+2018/07/11 19:48:08 action.go:101: &{0xc420154b20 0xc42009a120 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42000c220 0xc4204a2060 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42000c260 0xc4204a20c0 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42000c2a0 0xc4204a2120 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42000c2e0 0xc4204a2180 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42000c320 0xc4204a21e0 true}
+2018/07/11 19:48:08 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:48:08 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:48:08 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:08 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:48:08 action.go:101: &{0xc4204061a0 0xc4204a27e0 false}
+2018/07/11 19:48:08 action.go:101: &{0xc4204061e0 0xc4204a2900 false}
+2018/07/11 19:48:08 action.go:101: &{0xc420406220 0xc4204a2ae0 true}
+2018/07/11 19:48:08 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:48:08 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:48:08 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:08 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:48:08 action.go:101: &{0xc420154b60 0xc42009a180 false}
+2018/07/11 19:48:08 action.go:101: &{0xc420154ba0 0xc42009a1e0 false}
+2018/07/11 19:48:08 action.go:101: &{0xc420154be0 0xc42009a240 true}
+2018/07/11 19:48:08 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:48:08 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:48:08 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:08 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:48:08 action.go:101: &{0xc42035e100 0xc420362120 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42035e160 0xc420362240 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42035e1a0 0xc4203622a0 false}
+2018/07/11 19:48:08 action.go:101: &{0xc4200be300 0xc4200de000 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42035e1e0 0xc420362300 false}
+2018/07/11 19:48:08 action.go:101: &{0xc42035e220 0xc420362360 true}
+2018/07/11 19:48:08 action.go:101: &{0xc4200be380 0xc4200de120 false}
+2018/07/11 19:48:08 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:48:08 action.go:101: &{0xc4201548c0 0xc4200de180 false}
+2018/07/11 19:48:08 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:48:08 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:08 action.go:101: &{0xc420154900 0xc4200de1e0 false}
+2018/07/11 19:48:08 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:48:08 action.go:101: &{0xc420154940 0xc4200de240 true}
+2018/07/11 19:48:08 scrape.go:84: ============= Commencing Scrape =============
+
+
+2018/07/11 19:48:08 spec.go:15: Empty Spec: Spec passed
+2018/07/11 19:48:08 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:08 command.go:15: Visiting: https://passport.yandex.com/registration
+2018/07/11 19:48:16 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:16 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:16 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:16 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:48:16 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:16 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:16 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:48:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:48:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:48:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='firstname'] with: Alayah
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='firstname'] with: Xanthe
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='firstname'] with: Melina
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='firstname'] with: Sadhbh
+2018/07/11 19:48:16 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='login']
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='lastname'] with: Wynne
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password']
+2018/07/11 19:48:16 command.go:85: Checking for element: //input[@id='password_confirm']
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='lastname'] with: Mabel
+2018/07/11 19:48:16 command.go:85: Checking for element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='lastname'] with: Ellie
+2018/07/11 19:48:16 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:16 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:16 command.go:57: Clicking element: //input[@id='firstname']
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='lastname'] with: Abrielle
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='login'] with: Xant3eWynne
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='firstname'] with: Jenni
+2018/07/11 19:48:16 command.go:26: Filling element: //input[@id='login'] with: Alayah123abel
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='login'] with: Me123inaEllie
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='login'] with: Sad-bhAbrielle
+2018/07/11 19:48:17 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password'] with: ^dn21hT%LnL)MSr7*peN
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password'] with: M@)MEytX#g*vXt7!R$rW
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='lastname'] with: Rianna
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password'] with: LpZnlrM*vH0S!tb(ONM8
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password'] with: (5lVHFd1EdG(kzjk34b(
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='login'] with: JenniRlolanna
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password_confirm'] with: ^dn21hT%LnL)MSr7*peN
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password_confirm'] with: M@)MEytX#g*vXt7!R$rW
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password_confirm'] with: LpZnlrM*vH0S!tb(ONM8
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password_confirm'] with: (5lVHFd1EdG(kzjk34b(
+2018/07/11 19:48:17 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password'] with: iRZKGiUa!2ikqwqCE%MA
+2018/07/11 19:48:17 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:17 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:17 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:17 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:17 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:17 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:17 command.go:26: Filling element: //input[@id='password_confirm'] with: iRZKGiUa!2ikqwqCE%MA
+2018/07/11 19:48:17 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:17 command.go:57: Clicking element: //span[contains(@class, 'link_has-no-phone')]
+2018/07/11 19:48:17 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:17 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:48:17 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:48:17 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:17 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:48:17 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:48:18 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:18 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:48:18 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:18 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:48:18 command.go:67: Waiting: 300 miliseconds
+2018/07/11 19:48:18 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:18 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:18 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:18 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:18 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:18 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:18 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:18 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:18 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:18 command.go:85: Checking for element: //button[contains(@class, 'control-questions')]
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='hint_answer']
+2018/07/11 19:48:18 command.go:85: Checking for element: //input[@id='lastname']
+2018/07/11 19:48:18 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:18 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:18 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:48:18 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:48:18 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:48:18 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:48:18 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:48:18 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:48:18 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:48:18 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:48:18 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:48:18 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:48:18 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:48:18 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:48:18 command.go:42: Setting Selection: //span[contains(text(), '%s')] as: Your favorite actor or actress
+2018/07/11 19:48:18 command.go:46: //span[contains(text(), 'Your favorite actor or actress')]
+2018/07/11 19:48:18 command.go:26: Filling element: //input[@id='hint_answer'] with: Jordan Nelly
+2018/07/11 19:48:18 command.go:67: Waiting: 400 miliseconds
+2018/07/11 19:48:18 command.go:26: Filling element: //input[@id='hint_answer'] with: Sorrel Tiffany
+2018/07/11 19:48:18 command.go:26: Filling element: //input[@id='hint_answer'] with: Frankie Melanie
+2018/07/11 19:48:19 command.go:26: Filling element: //input[@id='hint_answer'] with: Lydia Tasmin
+2018/07/11 19:48:19 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:19 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:48:19 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:19 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:19 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:19 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:48:19 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:48:19 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:48:19 command.go:26: Filling element: //input[@id='hint_answer'] with: Neve Alondra
+2018/07/11 19:48:19 command.go:57: Clicking element: //input[@id='lastname']
+2018/07/11 19:48:19 command.go:67: Waiting: 4000 miliseconds
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:48:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:23 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:48:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:23 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:23 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:23 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:23 command.go:93: Confirming missing element: //*[@class='error-message']
+2018/07/11 19:48:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:23 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:44 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:44 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:44 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:44 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:48:44 manager.go:41: Extracting data for entered profile
+2018/07/11 19:48:44 manager.go:48:   
+2018/07/11 19:48:44 archivist.go:68: map[lastname:Abrielle fullname:SadhbhAbrielle email:Sad-bhAbrielle password:(5lVHFd1EdG(kzjk34b( question:Your favorite actor or actress answer:Lydia Tasmin birthdate:   firstname:Sadhbh]
+2018/07/11 19:48:59 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:48:59 interaction.go:18: Running interaction, value number:
+2018/07/11 19:48:59 scrape.go:57: Action Succeeded
+
+2018/07/11 19:48:59 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:48:59 manager.go:41: Extracting data for entered profile
+2018/07/11 19:48:59 manager.go:48:   
+2018/07/11 19:48:59 archivist.go:68: map[password:iRZKGiUa!2ikqwqCE%MA question:Your favorite actor or actress answer:Neve Alondra birthdate:   firstname:Jenni lastname:Rianna fullname:JenniRianna email:JenniRlolanna]
+2018/07/11 19:49:23 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:49:23 interaction.go:18: Running interaction, value number:
+2018/07/11 19:49:23 scrape.go:57: Action Succeeded
+
+2018/07/11 19:49:23 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:49:23 manager.go:41: Extracting data for entered profile
+2018/07/11 19:49:23 manager.go:48:   
+2018/07/11 19:49:23 archivist.go:68: map[email:Alayah123abel password:M@)MEytX#g*vXt7!R$rW birthdate:   question:Your favorite actor or actress answer:Frankie Melanie firstname:Alayah lastname:Mabel fullname:AlayahMabel]
+2018/07/11 19:49:40 spec.go:29: Spec Passed... proceeding to interaction
+2018/07/11 19:49:40 interaction.go:18: Running interaction, value number:
+2018/07/11 19:49:40 scrape.go:57: Action Succeeded
+
+2018/07/11 19:49:40 scrape.go:35: Scrape Completed Successfully
+2018/07/11 19:49:41 manager.go:41: Extracting data for entered profile
+2018/07/11 19:49:41 manager.go:48:   
+2018/07/11 19:49:41 archivist.go:68: map[firstname:Xanthe lastname:Wynne fullname:XantheWynne email:Xant3eWynne password:^dn21hT%LnL)MSr7*peN birthdate:   question:Your favorite actor or actress answer:Jordan Nelly]
