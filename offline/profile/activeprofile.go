@@ -8,7 +8,6 @@ import (
 type ActiveProfile struct {
 	profiles     []map[string]datastructures.Detail
 	profileIndex int
-	Name         string
 }
 
 func (ap *ActiveProfile) Values() map[string]datastructures.Detail {
@@ -27,7 +26,7 @@ func (a *ActiveProfile) Profiles() []map[string]datastructures.Detail {
 
 func (ap *ActiveProfile) Populate() *ActiveProfile {
 	loader := database.NewLibrarian()
-	data := loader.FindProfiles(1)
+	data := loader.FindProfiles(20)
 	loader.Close()
 	for _, profile := range data {
 		permanentProfile := make(map[string]datastructures.Detail)
@@ -40,10 +39,9 @@ func (ap *ActiveProfile) Populate() *ActiveProfile {
 	return ap
 }
 
-func NewActiveProfile(name string) *ActiveProfile {
+func NewActiveProfile() *ActiveProfile {
 	return &ActiveProfile{
 		profiles:     make([]map[string]datastructures.Detail, 0, 100),
 		profileIndex: 0,
-		Name:         name,
 	}
 }

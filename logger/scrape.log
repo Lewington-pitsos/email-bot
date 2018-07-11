@@ -4524,3 +4524,8 @@
 2018/07/11 19:49:41 manager.go:41: Extracting data for entered profile
 2018/07/11 19:49:41 manager.go:48:   
 2018/07/11 19:49:41 archivist.go:68: map[firstname:Xanthe lastname:Wynne fullname:XantheWynne email:Xant3eWynne password:^dn21hT%LnL)MSr7*peN birthdate:   question:Your favorite actor or actress answer:Jordan Nelly]
+2018/07/11 20:17:30 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:18:47 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:19:46 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:20:05 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
+2018/07/11 20:20:14 logger.go:21: LogFile : /home/louka/code/go/src/email-bot/logger/scrape.log
