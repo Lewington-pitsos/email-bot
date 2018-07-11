@@ -4616,3 +4616,7 @@
 2018/07/11 20:40:02 command.go:67: Waiting: 300 miliseconds
 2018/07/11 20:40:02 command.go:57: Clicking element: //button[@class='passport-Button']
 2018/07/11 20:40:09 command.go:67: Waiting: 90000 miliseconds
+2018/07/11 20:41:39 scrape.go:57: Action Succeeded
+
+2018/07/11 20:41:39 scrape.go:35: Scrape Completed Successfully
+2018/07/11 20:43:15 yandex_send_email.go:37: end of program
