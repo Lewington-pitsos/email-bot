@@ -2,7 +2,7 @@ package chunk
 
 // Chunk is a single instruction used by valueGenerator to generate part of a string.
 // This string will ultimately make up part of a Profile.
-// It has no methods, basically justa a bag.
+// It has no methods, basically just a bag.
 type Chunk struct {
 	Mode     string
 	Source   string

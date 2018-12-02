@@ -86,6 +86,6 @@ func CheckDoesntExist(selector string) func(*spec) bool {
 	return func(s *spec) bool {
 		logger.LoggerInterface.Println("Confirming missing element:", selector)
 
-		return ElementCount(s, selector) <= 1
+		return ElementCount(s, selector) <= 0
 	}
 }

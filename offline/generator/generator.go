@@ -103,7 +103,7 @@ func (vg *ValueGenerator) SetValues(values map[string]datastructures.Detail) *Va
 
 // Generate iterates over all the Chunk's in format.
 // For each of these it generates a string, according to that spec.
-// All the substrings are concatonated, and the result is returned.
+// All the substrings are concatanated, and the result is returned.
 func (vg *ValueGenerator) Generate(format []*chunk.Chunk, valueNumber int) datastructures.Detail {
 	if valueNumber == 1 {
 		return vg.detailMono(format)
