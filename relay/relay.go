@@ -22,7 +22,7 @@ func (r *Relay) startListening() {
 	for signal := range r.incoming {
 		switch signal.Name {
 		case "visit-link":
-			print(signal.Value)
+			lg.Debug("linbk: %v", signal.Value)
 		default:
 			time.Sleep(time.Millisecond * 3000)
 			lg.Debug("No signals received for %v milliseconds", 3000)

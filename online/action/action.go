@@ -56,6 +56,12 @@ func (a *Action) AddVisit(url string) *Action {
 	return a
 }
 
+func (a *Action) AddExtractOperation(name string, selector string, attributeName string, channel chan *datastructures.Signal) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(ExtractData(name, selector, attributeName, channel))
+	return a
+}
+
 func (a *Action) AddSelectOperation(selector string, optionSelector string, valueType string) *Action {
 	a.spec.AddCommand(CheckExists(selector))
 	a.interaction.AddValueCommand(SelectOption(selector, optionSelector), valueType)

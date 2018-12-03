@@ -65,17 +65,17 @@ func Click(selector string) func(*interaction) {
 
 func Wait(wait int) func(*interaction) {
 	return func(i *interaction) {
-		lg.Debug("Waiting:", wait, "miliseconds")
+		lg.Debug("Waiting:", wait, "milliseconds")
 		generalhelpers.Wait(wait)
 	}
 }
 
-func ExtractData(name, string, selector string, attributeName string, channel chan datastructures.Signal) func(*interaction) {
+func ExtractData(name string, selector string, attributeName string, channel chan *datastructures.Signal) func(*interaction) {
 	return func(i *interaction) {
 		lg.Debug("Extracting contents from:", selector)
 		attributes := i.browser.FindElementAttributes("xpath", selector, attributeName)
 		for _, attribute := range attributes {
-			channel <- datastructures.Signal{
+			channel <- &datastructures.Signal{
 				Name:  name,
 				Value: attribute,
 			}
