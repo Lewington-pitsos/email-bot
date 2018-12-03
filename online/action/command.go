@@ -1,6 +1,7 @@
 package action
 
 import (
+	"email-bot/datastructures"
 	"email-bot/helpers/generalhelpers"
 	"email-bot/logger"
 	"fmt"
@@ -66,6 +67,20 @@ func Wait(wait int) func(*interaction) {
 	return func(i *interaction) {
 		logger.LoggerInterface.Println("Waiting:", wait, "miliseconds")
 		generalhelpers.Wait(wait)
+	}
+}
+
+func ExtractData(name, string, selector string, attributeName string, channel chan datastructures.Signal) func(*interaction) {
+	return func(i *interaction) {
+		gl.Debug("Extracting contents from:", selector)
+		attributes := i.browser.FindElementAttributes("xpath", selector, attributeName)
+		for _, attribute := range attributes {
+			channel <- datastructures.Signal{
+				Name:  name,
+				Value: attribute,
+			}
+		}
+
 	}
 }
 

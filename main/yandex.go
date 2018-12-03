@@ -93,7 +93,7 @@ func main() {
 			200,
 		)
 
-	botManager.AddBots(8081, 5)
+	botManager.AddBots(8081, 1)
 
 	botManager.ScrapeAll()
 
