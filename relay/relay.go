@@ -13,8 +13,12 @@ type Relay struct {
 }
 
 // Listen starts listening for signals and processing them depending
-// on their name.
+// on their name in a new goroutine.
 func (r *Relay) Listen() {
+	go r.startListening()
+}
+
+func (r *Relay) startListening() {
 	for signal := range r.incoming {
 		switch signal.Name {
 		case "visit-link":
@@ -23,5 +27,11 @@ func (r *Relay) Listen() {
 			time.Sleep(time.Millisecond * 3000)
 			lg.Debug("No signals received for %v milliseconds", 3000)
 		}
+	}
+}
+
+func NewRelay(incomingChannel chan *datastructures.Signal) *Relay {
+	return &Relay{
+		incoming: incomingChannel,
 	}
 }

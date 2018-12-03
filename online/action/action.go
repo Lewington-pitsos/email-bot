@@ -2,7 +2,6 @@ package action
 
 import (
 	"email-bot/datastructures"
-	"email-bot/logger"
 	"email-bot/online/browser"
 )
 
@@ -98,7 +97,6 @@ func (a *Action) AddContinuousCheck(selectors []string, interval int, times int)
 }
 
 func (a *Action) AddCandidateValues(candidateValues map[string]datastructures.Detail) *Action {
-	logger.LoggerInterface.Println(a)
 	a.interaction.addCandidateValues(candidateValues)
 	return a
 }
