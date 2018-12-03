@@ -1,7 +1,7 @@
 package scrape
 
 import (
-	"email-bot/logger"
+	"email-bot/lg"
 	"email-bot/online/action"
 )
 
@@ -32,7 +32,7 @@ func (s *Scrape) moveToNextAction() {
 	if s.currentActionIndex >= len(s.actions) {
 		s.continueScrape = false
 		s.Success = true
-		logger.LoggerInterface.Println("Scrape Completed Successfully")
+		lg.Debug("Scrape Completed Successfully")
 	}
 }
 
@@ -42,10 +42,10 @@ func (s *Scrape) returnToPreviousAction() {
 
 func (s *Scrape) handleFailure(failedAction *action.Action) {
 	if failedAction.Critical {
-		logger.LoggerInterface.Println("\n\n>>>>>>>>>>>>>>>> Scrape Failed: Critical Action Failed <<<<<<<<<<<<<<<<\n\n")
+		lg.Debug("\n\n>>>>>>>>>>>>>>>> Scrape Failed: Critical Action Failed <<<<<<<<<<<<<<<<\n\n")
 		s.continueScrape = false
 	} else if s.fails >= maxFails {
-		logger.LoggerInterface.Println("\n\n>>>>>>>>>>>>>>>> Scrape Failed: Too Many Failures <<<<<<<<<<<<<<<<\n\n")
+		lg.Debug("\n\n>>>>>>>>>>>>>>>> Scrape Failed: Too Many Failures <<<<<<<<<<<<<<<<\n\n")
 		s.continueScrape = false
 	} else {
 		s.returnToPreviousAction()
@@ -54,10 +54,10 @@ func (s *Scrape) handleFailure(failedAction *action.Action) {
 
 func (s *Scrape) determineNextAction(perfomedAction *action.Action, success bool) {
 	if success {
-		logger.LoggerInterface.Println("Action Succeeded\n")
+		lg.Debug("Action Succeeded\n")
 		s.moveToNextAction()
 	} else {
-		logger.LoggerInterface.Println("Action failed\n")
+		lg.Debug("Action failed\n")
 		s.handleFailure(perfomedAction)
 	}
 }
@@ -81,7 +81,7 @@ func (s *Scrape) AddActions(actions []*action.Action) *Scrape {
 }
 
 func (s *Scrape) Scrape() {
-	logger.LoggerInterface.Println("============= Commencing Scrape =============\n\n")
+	lg.Debug("============= Commencing Scrape =============\n\n")
 	for s.continueScrape {
 		action := s.currentAction()
 		success := action.Perform()
@@ -94,7 +94,7 @@ func (s *Scrape) Scrape() {
 // +-------------------------------------------------------------------------------------+
 
 func NewScrape() *Scrape {
-	logger.LoggerInterface.Println("\n\n============= Creating Scrape =============")
+	lg.Debug("\n\n============= Creating Scrape =============")
 	return &Scrape{
 		actions:            make([]*action.Action, 0, 50),
 		fails:              0,

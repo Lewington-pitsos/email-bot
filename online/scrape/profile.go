@@ -16,8 +16,10 @@ func (p *Profile) Instructions() []*action.Action {
 	return instructionClone
 }
 
-func (p *Profile) AddAction(newAction *action.Action) {
+func (p *Profile) AddAction(critical bool) *action.Action {
+	newAction := action.NewAction(critical)
 	p.instructions = append(p.instructions, newAction)
+	return newAction
 }
 
 func NewProfile() *Profile {

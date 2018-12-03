@@ -1,7 +1,7 @@
 package action
 
 import (
-	"email-bot/logger"
+	"email-bot/lg"
 	"email-bot/online/browser"
 )
 
@@ -12,7 +12,7 @@ type spec struct {
 
 func (s *spec) check() bool {
 	if len(s.commands) == 0 {
-		logger.LoggerInterface.Println("Empty Spec: Spec passed")
+		lg.Debug("Empty Spec: Spec passed")
 		return true
 	}
 
@@ -22,11 +22,11 @@ func (s *spec) check() bool {
 func (s *spec) runChecks() bool {
 	for _, command := range s.commands {
 		if !command(s) {
-			logger.LoggerInterface.Println("Spec failed")
+			lg.Debug("Spec failed")
 			return false
 		}
 	}
-	logger.LoggerInterface.Println("Spec Passed... proceeding to interaction")
+	lg.Debug("Spec Passed... proceeding to interaction")
 	return true
 }
 

@@ -6,30 +6,46 @@ import (
 )
 
 type ActiveProfile struct {
-	values map[string]datastructures.Detail
-	Name   string
+	profiles     []map[string]datastructures.Detail
+	profileIndex int
 }
 
-func (a *ActiveProfile) saveDetails(profileData map[string]string) {
-	for key, value := range profileData {
-		a.values[key] = datastructures.NewDetaiMono(value)
-	}
+func (ap *ActiveProfile) Values() map[string]datastructures.Detail {
+	return ap.profiles[ap.profileIndex]
 }
 
-func(a *ActiveProfile) Values() map[string]datastructures.Detail {
-	return a.values
+func (ap *ActiveProfile) Generate() ProfileInterface {
+	ap.profileIndex++
+
+	return ap
 }
 
-func (a *ActiveProfile) Generate() {
+func (a *ActiveProfile) Profiles() []map[string]datastructures.Detail {
+	return a.profiles
+}
+
+func (a *ActiveProfile) Saveable() bool {
+	return false
+}
+
+func (ap *ActiveProfile) Populate() *ActiveProfile {
 	loader := database.NewLibrarian()
-	data := loader.FindProfiles(1)[0]
+	data := loader.FindProfiles(20)
 	loader.Close()
-	a.saveDetails(data)
+	for _, profile := range data {
+		permanentProfile := make(map[string]datastructures.Detail)
+		for key, value := range profile {
+			permanentProfile[key] = datastructures.NewDetaiMono(value)
+		}
+		ap.profiles = append(ap.profiles, permanentProfile)
+	}
+
+	return ap
 }
 
-func NewActiveProfile(name string) *ActiveProfile {
+func NewActiveProfile() *ActiveProfile {
 	return &ActiveProfile{
-		values: make(map[string]datastructures.Detail),
-		Name:   name,
+		profiles:     make([]map[string]datastructures.Detail, 0, 100),
+		profileIndex: 0,
 	}
 }

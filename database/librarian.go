@@ -18,6 +18,44 @@ func (l *Librarian) profileQuery() *sql.Stmt {
 	return stmt
 }
 
+func (l *Librarian) yandexProfileQuery() *sql.Stmt {
+	stmt, err := l.db.Prepare("SELECT first_name, last_name, password, email, question, answer FROM yandex_profiles LIMIT $1;")
+
+	generalhelpers.Check(err)
+	return stmt
+}
+
+func (l *Librarian) allYandexProfiles(stmt *sql.Stmt, number int) []map[string]string {
+	rows, err := stmt.Query(number)
+	generalhelpers.Check(err)
+
+	profiles := make([]map[string]string, 0, number)
+
+	var firstName, lastName, pass, email, question, answer string
+
+	defer rows.Close()
+	for rows.Next() {
+		err := rows.Scan(&firstName, &lastName, &pass, &email, &question, &answer)
+		generalhelpers.Check(err)
+
+		profile := map[string]string{
+			"firstname": firstName,
+			"lastname":  lastName,
+			"password":  pass,
+			"email":     email,
+			"question":  question,
+			"answer":    answer,
+		}
+
+		profiles = append(profiles, profile)
+	}
+
+	err = rows.Err()
+	generalhelpers.Check(err)
+
+	return profiles
+}
+
 func (l *Librarian) allProfiles(stmt *sql.Stmt, number int) []map[string]string {
 	rows, err := stmt.Query(number)
 	generalhelpers.Check(err)
@@ -48,8 +86,8 @@ func (l *Librarian) allProfiles(stmt *sql.Stmt, number int) []map[string]string 
 }
 
 func (l *Librarian) FindProfiles(number int) []map[string]string {
-	stmt := l.profileQuery()
-	profiles := l.allProfiles(stmt, number)
+	stmt := l.yandexProfileQuery()
+	profiles := l.allYandexProfiles(stmt, number)
 	return profiles
 }
 

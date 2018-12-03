@@ -2,7 +2,7 @@ package action
 
 import (
 	"email-bot/datastructures"
-	"email-bot/logger"
+	"email-bot/lg"
 	"email-bot/online/browser"
 )
 
@@ -15,7 +15,7 @@ type interaction struct {
 }
 
 func (i *interaction) run() {
-	logger.LoggerInterface.Println("Running interaction, value number:")
+	lg.Debug("Running interaction, value number:")
 	i.valueIndex = 0
 	for _, command := range i.commands {
 		command(i)

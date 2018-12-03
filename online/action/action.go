@@ -2,7 +2,6 @@ package action
 
 import (
 	"email-bot/datastructures"
-	"email-bot/logger"
 	"email-bot/online/browser"
 )
 
@@ -57,9 +56,15 @@ func (a *Action) AddVisit(url string) *Action {
 	return a
 }
 
+func (a *Action) AddExtractOperation(name string, selector string, attributeName string, channel chan *datastructures.Signal) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(ExtractData(name, selector, attributeName, channel))
+	return a
+}
+
 func (a *Action) AddSelectOperation(selector string, optionSelector string, valueType string) *Action {
 	a.spec.AddCommand(CheckExists(selector))
-	a.interaction.AddValueCommand(SelectOption(selector+optionSelector), valueType)
+	a.interaction.AddValueCommand(SelectOption(selector, optionSelector), valueType)
 
 	return a
 }
@@ -78,14 +83,26 @@ func (a *Action) AddSubmitOperation(selector string) *Action {
 	return a
 }
 
+func (a *Action) AddClick(selector string) *Action {
+	a.spec.AddCommand(CheckExists(selector))
+	a.interaction.AddCommand(Click(selector))
+
+	return a
+}
+
 func (a *Action) AddBrowser(browser *browser.Browser) *Action {
 	a.interaction.addBrowser(browser)
 	a.spec.addBrowser(browser)
 	return a
 }
 
+func (a *Action) AddContinuousCheck(selectors []string, interval int, times int) *Action {
+	a.spec.AddCommand(KeepCheckingForElements(selectors, interval, times))
+
+	return a
+}
+
 func (a *Action) AddCandidateValues(candidateValues map[string]datastructures.Detail) *Action {
-	logger.LoggerInterface.Println(a)
 	a.interaction.addCandidateValues(candidateValues)
 	return a
 }
