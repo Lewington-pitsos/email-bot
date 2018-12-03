@@ -3,7 +3,7 @@ package main
 import (
 	"email-bot/emailbot"
 	"email-bot/helpers/generalhelpers"
-	"email-bot/logger"
+	"email-bot/lg"
 	"fmt"
 )
 
@@ -50,5 +50,5 @@ func main() {
 	bm.ScrapeAll()
 
 	generalhelpers.Wait(200000)
-	logger.LoggerInterface.Println("end of program")
+	lg.Debug("end of program")
 }

@@ -1,13 +1,20 @@
 package main
 
 import (
-	"email-bot/datastructures"
-	"email-bot/relay"
+	"email-bot/emailbot"
 )
 
 func main() {
-	channel = make(chan *datastructures.Signal)
-	r := relay.NewRelay(channel)
+	//channel := make(chan *datastructures.Signal)
+	//r := relay.NewRelay(channel)
+
+	b := emailbot.NewBot(3334)
+
+	b.AddAction(false).
+		AddVisit("https://beteasy.com.au/?fbclid=IwAR1nHIJvuIdCYvXTS5Pq-Z8CXUGRrPzUFOXdAjFZv5AFQ57tZVqO9PUdGds").
+		AddWait(300)
+
+	b.Scrape()
 
 	// b := browser.NewBrowser(3334)
 	// b.Wd.Get("https://beteasy.com.au/?fbclid=IwAR1nHIJvuIdCYvXTS5Pq-Z8CXUGRrPzUFOXdAjFZv5AFQ57tZVqO9PUdGds")

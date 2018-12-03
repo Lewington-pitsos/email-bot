@@ -3,7 +3,7 @@ package action
 import (
 	"email-bot/datastructures"
 	"email-bot/helpers/generalhelpers"
-	"email-bot/logger"
+	"email-bot/lg"
 	"fmt"
 )
 
@@ -13,7 +13,7 @@ import (
 
 func VisitPage(url string) func(*interaction) {
 	return func(i *interaction) {
-		logger.LoggerInterface.Println("Visiting:", url)
+		lg.Debug("Visiting:", url)
 		i.browser.Wd.Get(url)
 	}
 }
@@ -24,7 +24,7 @@ func FillField(selector string) func(*interaction) {
 		generalhelpers.Check(err)
 
 		value := i.CurrentValue()
-		logger.LoggerInterface.Println("Filling element:", selector, "with:", value)
+		lg.Debug("Filling element:", selector, "with:", value)
 		element.Clear()
 
 		element.SendKeys(value)
@@ -40,11 +40,11 @@ func SelectOption(selector string, option string) func(*interaction) {
 		generalhelpers.Wait(300)
 
 		value := i.CurrentValue()
-		logger.LoggerInterface.Println("Setting Selection:", option, "as:", value)
+		lg.Debug("Setting Selection:", option, "as:", value)
 
 		optionSelector := fmt.Sprintf(option, value)
 
-		logger.LoggerInterface.Println(optionSelector)
+		lg.Debug(optionSelector)
 
 		element, err2 := i.browser.Wd.FindElement("xpath", optionSelector)
 		generalhelpers.Check(err2)
@@ -55,7 +55,7 @@ func SelectOption(selector string, option string) func(*interaction) {
 
 func Click(selector string) func(*interaction) {
 	return func(i *interaction) {
-		logger.LoggerInterface.Println("Clicking element:", selector)
+		lg.Debug("Clicking element:", selector)
 		element, err := i.browser.Wd.FindElement("xpath", selector)
 		generalhelpers.Check(err)
 
@@ -65,14 +65,14 @@ func Click(selector string) func(*interaction) {
 
 func Wait(wait int) func(*interaction) {
 	return func(i *interaction) {
-		logger.LoggerInterface.Println("Waiting:", wait, "miliseconds")
+		lg.Debug("Waiting:", wait, "miliseconds")
 		generalhelpers.Wait(wait)
 	}
 }
 
 func ExtractData(name, string, selector string, attributeName string, channel chan datastructures.Signal) func(*interaction) {
 	return func(i *interaction) {
-		gl.Debug("Extracting contents from:", selector)
+		lg.Debug("Extracting contents from:", selector)
 		attributes := i.browser.FindElementAttributes("xpath", selector, attributeName)
 		for _, attribute := range attributes {
 			channel <- datastructures.Signal{
@@ -97,7 +97,7 @@ func ElementCount(spec *spec, selector string) int {
 
 func CheckExists(selector string) func(*spec) bool {
 	return func(s *spec) bool {
-		logger.LoggerInterface.Println("Checking for element:", selector)
+		lg.Debug("Checking for element:", selector)
 
 		return ElementCount(s, selector) > 0
 	}
@@ -105,7 +105,7 @@ func CheckExists(selector string) func(*spec) bool {
 
 func CheckDoesntExist(selector string) func(*spec) bool {
 	return func(s *spec) bool {
-		logger.LoggerInterface.Println("Confirming missing element:", selector)
+		lg.Debug("Confirming missing element:", selector)
 
 		return ElementCount(s, selector) <= 0
 	}

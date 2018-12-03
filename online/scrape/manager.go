@@ -2,7 +2,7 @@ package scrape
 
 import (
 	"email-bot/datastructures"
-	"email-bot/logger"
+	"email-bot/lg"
 	"email-bot/online/action"
 	"email-bot/online/browser"
 	"fmt"
@@ -38,14 +38,14 @@ func (m *Manager) Scrape() bool {
 
 func (m *Manager) ActiveProfileData() map[string]string {
 	profile := make(map[string]string)
-	logger.LoggerInterface.Println("Extracting data for entered profile")
+	lg.Debug("Extracting data for entered profile")
 
 	for name, detail := range m.candidateValues {
 		profile[name] = detail.CurrentValue()
 	}
 
 	profile["birthdate"] = m.birthDate(profile)
-	logger.LoggerInterface.Println(profile["birthdate"])
+	lg.Debug(profile["birthdate"])
 
 	return profile
 }

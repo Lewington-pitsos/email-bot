@@ -3,7 +3,6 @@ package database
 import (
 	"database/sql"
 	"email-bot/helpers/generalhelpers"
-	"email-bot/logger"
 
 	_ "github.com/lib/pq"
 )
@@ -65,7 +64,6 @@ func (a *Archivist) yandexProfileRecordPS() *sql.Stmt {
 }
 
 func (a *Archivist) RecordYandexProfile(profile map[string]string) {
-	logger.LoggerInterface.Println(profile)
 	stmt := a.yandexProfileRecordPS()
 	_, err := stmt.Exec(
 		profile["firstname"],

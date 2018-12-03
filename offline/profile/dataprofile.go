@@ -2,7 +2,7 @@ package profile
 
 import (
 	"email-bot/datastructures"
-	"email-bot/logger"
+	"email-bot/lg"
 	"email-bot/offline/chunk"
 	"email-bot/offline/generator"
 	"email-bot/offline/valuebank"
@@ -53,7 +53,7 @@ func (p *DataProfile) WithModifiedChunk(mode string, source string, modBank stri
 }
 
 func (p *DataProfile) Generate() ProfileInterface {
-	logger.LoggerInterface.Println("Generating DataProfile data")
+	lg.Debug("Generating DataProfile data")
 	for _, field := range p.fields {
 		p.values[field.Name] = p.generator.Generate(field.Format, field.ValueNumber)
 	}
@@ -67,7 +67,7 @@ func (d *DataProfile) Saveable() bool {
 
 func NewDataProfile() *DataProfile {
 	generator := generator.NewValueGenerator()
-	logger.LoggerInterface.Println("Creating DataProfile")
+	lg.Debug("Creating DataProfile")
 	values := make(map[string]datastructures.Detail)
 	generator.SetValues(values)
 
