@@ -8,15 +8,14 @@ CREATE TABLE odds (
     PRIMARY KEY(id),
     FOREIGN KEY (horse_id) REFERENCES horses(id),
     FOREIGN KEY (provider_id) REFERENCES providers(id),
-    FOREIGN KEY (race_id) REFERENCES races(id),
-    CONSTRAINT only_record_each_bet_once UNIQUE(horse_id, race_id, provider_id, recorded_at)
+    FOREIGN KEY (race_id) REFERENCES races(id)
 )
 
 CREATE TABLE bets (
     id SERIAL,
     odd_id INTEGER,
     amount INTEGER NOT NULL DEFAULT 0,
-    to_win BOOL NOT NULL DEAFAULT TRUE,
+    to_win BOOL NOT NULL DEFAULT TRUE,
     made_at TIMESTAMP NOT NULL DEFAULT NOW(),
     PRIMARY KEY(id),
     FOREIGN KEY (odd_id) REFERENCES odds(id),

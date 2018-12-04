@@ -9,7 +9,7 @@ import (
 //Relay keeps listening for signals coming in from scrapes.
 //Relay sends each signal on to be processed depending on the signals name.
 type Relay struct {
-	incoming <-chan *datastructures.Signal
+	incoming <-chan *datastructures.Chunk
 }
 
 // Listen starts listening for signals and processing them depending
@@ -19,10 +19,11 @@ func (r *Relay) Listen() {
 }
 
 func (r *Relay) startListening() {
-	for signal := range r.incoming {
-		switch signal.Name {
+	for chunk := range r.incoming {
+		switch chunk.Name {
 		case "visit-link":
-			lg.Debug("linbk: %v", signal.Value)
+			links := chunk.Value.([]string)
+			lg.Debug("linbk: %v", links)
 		default:
 			time.Sleep(time.Millisecond * 3000)
 			lg.Debug("No signals received for %v milliseconds", 3000)
@@ -30,7 +31,7 @@ func (r *Relay) startListening() {
 	}
 }
 
-func NewRelay(incomingChannel chan *datastructures.Signal) *Relay {
+func NewRelay(incomingChannel chan *datastructures.Chunk) *Relay {
 	return &Relay{
 		incoming: incomingChannel,
 	}

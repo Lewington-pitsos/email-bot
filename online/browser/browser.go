@@ -30,6 +30,16 @@ func (b *Browser) FindElementAttributes(selectMode string, selector string, attr
 	return attributes
 }
 
+func (b *Browser) FindElementAttribute(selectMode string, selector string, attributeName string) string {
+	element, err := b.Wd.FindElement(selectMode, selector)
+	generalhelpers.Check(err)
+
+	attribute, err := element.GetAttribute(attributeName)
+	generalhelpers.Check(err)
+
+	return attribute
+}
+
 func NewBrowser(portNum int) *Browser {
 	browser, service := NewWebDriver(portNum)
 

@@ -70,17 +70,38 @@ func Wait(wait int) func(*interaction) {
 	}
 }
 
-func ExtractData(name string, selector string, attributeName string, channel chan *datastructures.Signal) func(*interaction) {
+func ExtractData(name string, selector string, attributeName string, channel chan *datastructures.Chunk) func(*interaction) {
 	return func(i *interaction) {
 		lg.Debug("Extracting contents from:", selector)
-		attributes := i.browser.FindElementAttributes("xpath", selector, attributeName)
-		for _, attribute := range attributes {
-			channel <- &datastructures.Signal{
-				Name:  name,
-				Value: attribute,
+		channel <- &datastructures.Chunk{
+			Name:  name,
+			Value: i.browser.FindElementAttributes("xpath", selector, attributeName),
+		}
+	}
+}
+
+func ExtractStructuredData(name string, selector string, subSelectors map[string]*datastructures.Selector, channel chan *datastructures.Chunk) func(*interaction) {
+	return func(i *interaction) {
+		lg.Debug("Extracting structured contents from:", selector)
+
+		containerElements, err := i.browser.Wd.FindElements("xpath", selector)
+		generalhelpers.Check(err)
+		data := make([]map[string]string, len(containerElements))
+
+		for index, container := range containerElements {
+			data[index] = make(map[string]string)
+			for key, subSelector := range subSelectors {
+				subElement, err := container.FindElement("xpath", subSelector.Selector)
+				generalhelpers.Check(err)
+				data[index][key], err = subElement.GetAttribute(subSelector.Attribute)
+				generalhelpers.Check(err)
 			}
 		}
 
+		channel <- &datastructures.Chunk{
+			Name:  name,
+			Value: data,
+		}
 	}
 }
 
@@ -133,6 +154,6 @@ func KeepCheckingForElements(selectors []string, interval int, times int) func(*
 			}
 		}
 
-		return ElementCount(s, selector) <= 0
+		return false
 	}
 }

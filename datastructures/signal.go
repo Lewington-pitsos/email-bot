@@ -1,7 +1,7 @@
 package datastructures
 
-// Signal is sent by scrapes to the relay.
-type Signal struct {
+// Chunk is sent by scrapes to the relay.
+type Chunk struct {
 	Name  string
 	Value interface{}
 }

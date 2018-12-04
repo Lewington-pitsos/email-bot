@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	channel := make(chan *datastructures.Signal)
+	channel := make(chan *datastructures.Chunk)
 	r := relay.NewRelay(channel)
 	r.Listen()
 
@@ -19,13 +19,13 @@ func main() {
 		AddWait(300)
 
 	b.AddAction(true).
-		AddExtractOperation("//div[@id='racesToday']/div[contains(@class, 'fullbox')][1]//td[contains(@class, 'odds')]//a[contains(@class, 'subpage')]", "href", channel)
+		AddExtractOperation("visit-link", "//div[@id='racesToday']/div[contains(@class, 'fullbox')][1]//td[contains(@class, 'odds')]//a[contains(@class, 'subpage')]", "href", channel)
 
 	b.Scrape()
 
 	time.Sleep(time.Millisecond * 80000)
 
-	// channel := make(chan *datastructures.Signal)
+	// channel := make(chan *datastructures.Chunk)
 	// r := relay.NewRelay(channel)
 	// r.Listen()
 
